@@ -12,20 +12,36 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: lightMode,
-      darkTheme: darkMode,
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      themeMode: ThemeMode.system,
       home: Scaffold(
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('ParsonsKellogg'),
+              Text(
+                'ParsonsKellogg',
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
               ElevatedButton(
                 onPressed: () {},
                 child: const Text(
-                  'Theme Change',
+                  'Theme Change Button',
                 ),
-              )
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Card(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: Text('This is Card'),
+                ),
+              ),
             ],
           ),
         ),
