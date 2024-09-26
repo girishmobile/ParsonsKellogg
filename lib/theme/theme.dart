@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 
 final kColorScheme = ColorScheme.fromSeed(
-  brightness: Brightness.light,
   seedColor: const Color.fromRGBO(96, 209, 56, 1),
+  brightness: Brightness.light,
 );
 final kDarkColorScheme = ColorScheme.fromSeed(
-  brightness: Brightness.dark,
   seedColor: const Color.fromRGBO(9, 10, 9, 1),
+  brightness: Brightness.dark,
 );
 
-final ThemeData lightTheme = ThemeData(
-  brightness: Brightness.light,
+ThemeData lightTheme = ThemeData(
   colorScheme: const ColorScheme.light().copyWith(
     surface: kColorScheme.surface,
     primary: kColorScheme.primary,
@@ -35,8 +34,7 @@ final ThemeData lightTheme = ThemeData(
       ),
 );
 
-final ThemeData darkTheme = ThemeData().copyWith(
-  brightness: Brightness.dark,
+ThemeData darkTheme = ThemeData().copyWith(
   colorScheme: const ColorScheme.dark().copyWith(
     surface: kDarkColorScheme.surface,
     primary: kDarkColorScheme.primary,
