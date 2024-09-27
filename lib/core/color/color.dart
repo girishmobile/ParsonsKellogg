@@ -1,0 +1,14 @@
+import 'package:flutter/material.dart';
+
+const Color colorWhite=Colors.white;
+
+const Color colorText=Color.fromRGBO(52, 52, 52, 1);
+const Color colorDarkBlue=Color.fromRGBO(70, 70, 229, 1);
+const Color colorButton=Color.fromRGBO(102, 176, 23, 1);
+
+const colorPRIMARY = Colors.deepOrangeAccent;
+const colorAccent = Colors.orange;
+const colorBackgroundDark = Color(0xFF171822);
+const colorDarkFillColor = Color(0xFF212330);
+
+const colorBackGroundLight = Color(0xFFF1F3F6);

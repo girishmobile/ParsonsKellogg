@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:parsonskellogg/theme/theme.dart';
 
-class ThemeProvider with ChangeNotifier {
-  ThemeData _themeData = lightMode;
-  ThemeData get themeData => _themeData;
-  set themeData(ThemeData themeData) {
-    _themeData = themeData;
-    notifyListeners();
-  }
+class ThemeProvider extends ChangeNotifier {
+  ThemeMode _themeMode = ThemeMode.system; // Default to system theme
+
+  ThemeMode get themeMode => _themeMode;
 
   void toggleTheme() {
-    if (_themeData == lightMode) {
-      _themeData = darkMode;
+    // Cycle through the themes: System -> Light -> Dark
+    if (_themeMode == ThemeMode.system) {
+      _themeMode = ThemeMode.light;
+    } else if (_themeMode == ThemeMode.light) {
+      _themeMode = ThemeMode.dark;
     } else {
-      _themeData = lightMode;
+      _themeMode = ThemeMode.system;
     }
+    notifyListeners();
   }
 }

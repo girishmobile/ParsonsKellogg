@@ -1,0 +1,9 @@
+const String appName="ParsonsKellogg";
+const String password="Password";
+const String forgotPassword="Forgot your password?";
+const String login="Login";
+const String emailAddress="Email Address";
+const String backToLogin="Back to Login";
+const String sendResetLink="Send Reset Link";
+const String passwordError="Password is required.";
+const String emailError="Email is required.";
