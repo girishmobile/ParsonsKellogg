@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:parsonskellogg/core/color/color.dart';
 import 'package:parsonskellogg/core/constants/num_constants.dart';
 
 class CommonTextFieldWidget extends StatelessWidget {
@@ -37,7 +36,7 @@ class CommonTextFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    //final theme = Theme.of(context);
 
     // Set border color based on the theme mode
   //  final borderColor = theme.brightness == Brightness.dark ? Colors.black : Colors.grey.withOpacity(0.20);
