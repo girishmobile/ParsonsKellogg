@@ -40,8 +40,8 @@ class CommonTextFieldWidget extends StatelessWidget {
     final theme = Theme.of(context);
 
     // Set border color based on the theme mode
-    final borderColor = theme.brightness == Brightness.dark ? Colors.black : Colors.grey.withOpacity(0.20);
-    final colorFill = theme.brightness == Brightness.dark ?colorDarkFillColor : Colors.white;
+  //  final borderColor = theme.brightness == Brightness.dark ? Colors.black : Colors.grey.withOpacity(0.20);
+  //  final colorFill = theme.brightness == Brightness.dark ?colorDarkFillColor : Colors.white;
 
     return Container(
       margin: EdgeInsets.only(
