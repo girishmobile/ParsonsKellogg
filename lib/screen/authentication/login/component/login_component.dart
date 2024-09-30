@@ -6,6 +6,7 @@ import 'package:parsonskellogg/core/common/common_text_widget.dart';
 import 'package:parsonskellogg/core/component/component.dart';
 import 'package:parsonskellogg/core/constants/num_constants.dart';
 import 'package:parsonskellogg/core/image_path/image_path.dart';
+import 'package:parsonskellogg/core/responsive/responsive.dart';
 import 'package:parsonskellogg/core/router/route_name.dart';
 import 'package:parsonskellogg/core/string_utils/string_utils.dart';
 import 'package:parsonskellogg/core/validation/validation_util.dart';
@@ -87,9 +88,11 @@ class LoginComponent extends StatelessWidget {
               CommonButtonWidget(
                 text: login,
                 onTap: () {
-                  if(provider.formLoginKey.currentState!.validate()){
+                 /* if(provider.formLoginKey.currentState!.validate()){
 
-                  }
+                  }*/
+
+                  provider.redirectToDashboard(context);
 
                 },
                 top: size.height * zero03,

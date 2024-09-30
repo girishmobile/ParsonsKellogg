@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:parsonskellogg/core/color/color.dart';
 import 'package:parsonskellogg/core/common/common_text_field_widget.dart';
 import 'package:parsonskellogg/core/common/common_text_widget.dart';
 import 'package:parsonskellogg/core/constants/num_constants.dart';
 import 'package:parsonskellogg/core/string_utils/string_utils.dart';
+import 'package:parsonskellogg/provider/menu_provider.dart';
+import 'package:provider/provider.dart';
 
 commonInkWell({Widget? child, VoidCallback? onTap}) {
   return InkWell(
@@ -24,6 +27,15 @@ loadAssetImage({required String path, double? width, double? height}) {
     path,
     width: width,
     height: height,
+  );
+}
+
+TextStyle commonTextStyle({Color? color,FontWeight? fontWeight,double? fontSize}){
+
+ return  GoogleFonts.inter(
+    color: color??colorText,
+   fontWeight: fontWeight??FontWeight.w500,
+   fontSize: fontSize??fourteen
   );
 }
 
@@ -66,4 +78,5 @@ BoxDecoration commonBoxDecoration({Color? color,
       shape: shape,
       borderRadius: borderRadius);
 }
+
 

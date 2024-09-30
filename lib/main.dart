@@ -4,6 +4,8 @@ import 'package:parsonskellogg/core/router/route_name.dart';
 import 'package:parsonskellogg/core/string_utils/string_utils.dart';
 import 'package:parsonskellogg/core/theme/theme.dart';
 import 'package:parsonskellogg/provider/auth_provider.dart';
+import 'package:parsonskellogg/provider/dashboard_provider.dart';
+import 'package:parsonskellogg/provider/menu_provider.dart';
 import 'package:parsonskellogg/provider/theme_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -23,6 +25,8 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<ThemeProvider>(create: (_) => ThemeProvider()),
         ChangeNotifierProvider<AuthProvider>(create: (_) => AuthProvider()),
+        ChangeNotifierProvider<MenuProvider>(create: (_) => MenuProvider()),
+        ChangeNotifierProvider<DashboardProvider>(create: (_) => DashboardProvider()),
 
       ],
       child: Consumer<ThemeProvider>(
