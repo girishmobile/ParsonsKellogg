@@ -44,4 +44,11 @@ class AuthProvider extends ChangeNotifier {
     _password = password;
     notifyListeners();
   }
+
+  /*-------------------------------------------------------------------------- */
+
+  void redirectToDashboard(BuildContext context) {
+    Navigator.pushNamedAndRemoveUntil(
+        context, dashboardScreen, (Route<dynamic> route) => false);
+  }
 }
