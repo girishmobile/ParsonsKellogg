@@ -202,7 +202,7 @@ commonText({
 
 commonColText({String? text}) {
   return commonText(
-      fontSize: ten,
+      fontSize: 8,
       text: text ?? user,
       fontWeight: FontWeight.w800,
       colorText: Colors.grey.withOpacity(zero50));

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:parsonskellogg/core/color/color.dart';
 import 'package:parsonskellogg/core/common/common_text_field_widget.dart';
 import 'package:parsonskellogg/core/common/common_text_widget.dart';
 import 'package:parsonskellogg/core/component/component.dart';
@@ -89,6 +90,8 @@ class EditColumnsDialog extends StatelessWidget {
             final column = filteredColumns[index];
             return CheckboxListTile(
               dense: true,
+              
+              activeColor: colorBtnChange,
               visualDensity: const VisualDensity(vertical: -3),
               title: CommonTextWidget(
                 text: column,

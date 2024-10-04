@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:parsonskellogg/core/component/component.dart';
 import 'package:parsonskellogg/models/dashboard_item.dart';
 
 class DashboardGridItem extends StatelessWidget {
@@ -43,7 +44,7 @@ class DashboardGridItem extends StatelessWidget {
             ),
             Text(
               dashBoardItem.title,
-              style: Theme.of(context).textTheme.titleLarge,
+              style: commonTextStyle(fontSize: 14),
               textAlign: TextAlign.center,
             ),
             Text(

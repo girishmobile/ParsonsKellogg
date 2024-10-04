@@ -53,7 +53,7 @@ class AuthProvider extends ChangeNotifier {
   }
 
   void redirectToDragDropView(BuildContext context) {
-    Navigator.pushNamedAndRemoveUntil(
-        context, dragdropExample, (Route<dynamic> route) => false);
+    /*Navigator.pushNamedAndRemoveUntil(
+        context, dragdropExample, (Route<dynamic> route) => false);*/
   }
 }

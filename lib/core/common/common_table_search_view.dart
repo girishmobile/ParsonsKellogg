@@ -45,16 +45,22 @@ class CommonTableSearchView extends StatelessWidget {
               buildIconContainer(
                   context: context, icon: icDownload, label: download),
               buildIconContainer(context: context, icon: icRefresh),
-              buildIconContainer(
-                  context: context, icon: icDownload, label: save),
+
 
             ],
           );
         }),
-        SizedBox(
-          width: size.width * zero33,
-          child: buildIconContainer(
-              context: context, icon: icFilter, label: moreFilter),
+        Row(
+          children: [
+            SizedBox(
+
+              child: buildIconContainer(
+                  context: context, icon: icFilter, label: moreFilter),
+            ),
+            SizedBox(width: 20,),
+            buildIconContainer(
+                context: context, icon: icDownload, label: save),
+          ],
         )
       ],
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:parsonskellogg/screen/dashboard/dashboard_page.dart';
 import 'package:parsonskellogg/screen/profile/profile_view.dart';
 
 class DashboardProvider extends ChangeNotifier{
@@ -11,10 +12,10 @@ class DashboardProvider extends ChangeNotifier{
     notifyListeners();
   }
 
-  Widget _currentPage = Container(); // Default page
+  Widget _currentPage = const DashboardPage(); // Default page
 
   Widget get currentPage => _currentPage;
-  void updatePage(String value) {
+  set updatePage(String value) {
     if (value == "profile") {
       _currentPage = const ProfileView();
     } else {

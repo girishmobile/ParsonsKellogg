@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:parsonskellogg/core/router/route_generate.dart';
 import 'package:parsonskellogg/core/router/route_name.dart';
 import 'package:parsonskellogg/core/string_utils/string_utils.dart';
-import 'package:parsonskellogg/core/theme/theme.dart';
 import 'package:parsonskellogg/provider/auth_provider.dart';
 import 'package:parsonskellogg/provider/common_provider.dart';
 import 'package:parsonskellogg/provider/dashboard_provider.dart';
 import 'package:parsonskellogg/provider/menu_provider.dart';
 import 'package:parsonskellogg/provider/profile_provider.dart';
 import 'package:parsonskellogg/provider/theme_provider.dart';
+import 'package:parsonskellogg/theme/theme.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -37,13 +37,12 @@ class MyApp extends StatelessWidget {
         builder: (context,themeProvider,child) {
           return MaterialApp(
             title: appName,
-            theme: lightMode,
+            theme: lightTheme,
             debugShowCheckedModeBanner: false,
             onGenerateRoute: RouterGenerated.generateRoute,
             initialRoute: RouteName.splashScreen,
-            darkTheme: darkMode,
-            themeMode: themeProvider.themeMode,
-            //theme: ThemeData.light(),
+            darkTheme: darkTheme,
+            themeMode: ThemeMode.system,
           );
         }
       ),

@@ -62,7 +62,7 @@ class CommonTextFieldWidget extends StatelessWidget {
         controller: controller,
         readOnly: readOnly ?? false,
         autocorrect: false,
-        style: style ?? Theme.of(context).textTheme.bodyMedium,
+        style: style ?? Theme.of(context).textTheme.bodySmall,
         onChanged: onChanged,
         obscureText: obscureText ?? false,
         textAlignVertical: TextAlignVertical.center,
