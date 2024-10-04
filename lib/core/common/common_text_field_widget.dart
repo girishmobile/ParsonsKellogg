@@ -40,7 +40,11 @@ class CommonTextFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ;
+    //final theme = Theme.of(context);
+
+    // Set border color based on the theme mode
+  //  final borderColor = theme.brightness == Brightness.dark ? Colors.black : Colors.grey.withOpacity(0.20);
+  //  final colorFill = theme.brightness == Brightness.dark ?colorDarkFillColor : Colors.white;
 
     return Container(
       margin: EdgeInsets.only(
@@ -63,6 +67,7 @@ class CommonTextFieldWidget extends StatelessWidget {
         obscureText: obscureText ?? false,
         textAlignVertical: TextAlignVertical.center,
         decoration: InputDecoration(
+          contentPadding: const EdgeInsets.symmetric(horizontal: 10),
           hintText: hint,
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
