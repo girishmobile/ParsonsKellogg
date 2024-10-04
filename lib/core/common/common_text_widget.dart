@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:parsonskellogg/core/constants/num_constants.dart';
 
@@ -10,7 +9,7 @@ class CommonTextWidget extends StatelessWidget {
       this.bottom,
       this.textAlign,
       this.text,
-        this.textOverflow,
+      this.textOverflow,
       this.style,
       super.key});
 
@@ -33,11 +32,10 @@ class CommonTextWidget extends StatelessWidget {
           bottom: bottom ?? zero,
           top: top ?? zero),
       child: Text(
-      overflow: textOverflow,
+        overflow: textOverflow,
         textAlign: textAlign,
         text ?? '',
-        style: style ??
-            Theme.of(context).textTheme.bodyMedium,
+        style: style ?? Theme.of(context).textTheme.bodyMedium,
       ),
     );
   }

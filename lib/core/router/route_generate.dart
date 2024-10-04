@@ -9,16 +9,16 @@ import 'package:parsonskellogg/screen/splash/splash_screen.dart';
 class RouterGenerated {
    static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case splashScreen:
+      case RouteName.splashScreen:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
-      case loginScreen:
+      case RouteName.loginScreen:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
 
-      case forgotPasswordScreen:
+      case RouteName.forgotPasswordScreen:
         return MaterialPageRoute(builder: (_) => const ForgotPasswordScreen());
 
-      case dashboardScreen:
-        return MaterialPageRoute(builder: (_) => const DashboardScreen());
+      case RouteName.dashboardScreen:
+        return MaterialPageRoute(builder: (_) =>  DashboardScreen());
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(

@@ -23,7 +23,7 @@ class CustomDrawer extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-             DrawerHeader(
+            DrawerHeader(
               decoration: const BoxDecoration(
                 color: Colors.blue,
               ),
@@ -32,43 +32,40 @@ class CustomDrawer extends StatelessWidget {
                 children: [
                   SizedBox(
                     height: eighty,
-                    width: eighty ,
+                    width: eighty,
                     child: CircleAvatar(
                       backgroundColor: Colors.white,
-                      child: CommonTextWidget(text: 'PK', style: commonTextStyle(),),
+                      child: CommonTextWidget(
+                        text: 'PK',
+                        style: commonTextStyle(),
+                      ),
                     ),
                   ),
                   const SizedBox(height: eight),
                   CommonTextWidget(
-                  text:   'PARSONSKELLOGG',
-                    style:  commonTextStyle(color: Colors.white),
+                    text: 'PARSONSKELLOGG',
+                    style: commonTextStyle(color: Colors.white),
                   ),
                 ],
               ),
             ),
-        SizedBox(
+            SizedBox(
               width: size.width,
               height: size.height,
               child: ListView(
-
                 padding: EdgeInsets.zero,
                 children: provider.itemMenu.asMap().entries.map((items) {
-                  int index = items.key; // Get the index
-                  var item = items.value; // Get the item
+                  int index = items.key;
+                  var item = items.value;
                   final isSelected = menuProvider.expandedIndex == index;
                   return Container(
                     child: commonListView(
                         item: item,
-
                         initiallyExpanded: index == provider.selected,
                         key: Key(provider.selected.toString()),
-                     //
-                        //   colorBg:colorSelectedMenu,
                         onExpansionChanged: (bool expanded) {
-
-                          if(expanded){
-                            menuProvider.setExpandIndex=index;
-                            print('========ind${menuProvider.expandedIndex}');
+                          if (expanded) {
+                            menuProvider.setExpandIndex = index;
                           }
                         },
                         showTrailingIcon:
@@ -81,23 +78,19 @@ class CustomDrawer extends StatelessWidget {
                 }).toList(),
               ),
             ),
-
-
-
           ],
         ),
       );
     });
   }
 
-
   List<Widget> buildSubItems(
       List<SubMenuItem>? subItems, MenuProvider menuProvider) {
     if (subItems == null) return [];
 
     return subItems.asMap().entries.map<Widget>((subItem) {
-      int index = subItem.key; // Get the index
-      var item = subItem.value; // Get the item
+      int index = subItem.key;
+      var item = subItem.value;
       final isSelected = menuProvider.expandedSubIndex == index;
       return Container(
         child: commonListView(
@@ -119,8 +112,8 @@ class CustomDrawer extends StatelessWidget {
       List<SubORMenuItem>? subSubItems, MenuProvider menuProvider) {
     if (subSubItems == null) return [];
     return subSubItems.asMap().entries.map<Widget>((subSubItem) {
-      int index = subSubItem.key; // Get the index
-      var item = subSubItem.value; // Get the item
+      int index = subSubItem.key;
+      var item = subSubItem.value;
       final isSelected = menuProvider.expandedSubSubIndex == index;
       return Container(
         child: commonListView(
@@ -128,7 +121,7 @@ class CustomDrawer extends StatelessWidget {
             isSelected: isSelected,
             showLeadingIcon: false,
             item: item,
-            left: 20,
+            left: twenty,
             menuProvider: menuProvider,
             showTrailingIcon: false,
             onExpansionChanged: (bool expanded) {
@@ -146,7 +139,7 @@ class CustomDrawer extends StatelessWidget {
       required MenuProvider menuProvider,
       required bool showTrailingIcon,
       double? left,
-        Key? key,
+      Key? key,
       Color? colorBg,
       bool? showLeadingIcon = true,
       bool? isHeading = false,
@@ -156,7 +149,7 @@ class CustomDrawer extends StatelessWidget {
       Widget? text,
       dynamic item}) {
     return ExpansionTile(
-    key: key,
+      key: key,
       collapsedBackgroundColor: Colors.white,
       backgroundColor: colorBg,
       shape: const Border(),

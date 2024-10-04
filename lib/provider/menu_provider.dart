@@ -6,7 +6,7 @@ class MenuProvider extends ChangeNotifier {
   int _expandedIndex = -1;
   int _expandedSubIndex = -1;
   int _expandedSubSubIndex = -1;
-  int _selected  = -1;
+  final int _selected  = -1;
 
   int get selectedMenu => _selectedMenu;
 
@@ -31,7 +31,7 @@ class MenuProvider extends ChangeNotifier {
     _expandedSubSubIndex = index;
     notifyListeners();
   }
-  bool _isExpanded = false;
+  final bool _isExpanded = false;
 
   bool get isExpanded => _isExpanded;
 

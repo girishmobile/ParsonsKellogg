@@ -12,14 +12,16 @@ class ForgotPasswordScreen extends StatelessWidget {
     return Container(
       decoration: commonBoxDecoration(
           image: const DecorationImage(
-            fit: BoxFit.cover,
-            image: AssetImage(
-              icLoginBg,
-            ),
-          )),
+        fit: BoxFit.cover,
+        image: AssetImage(
+          icLoginBg,
+        ),
+      )),
       child: Material(
         color: Colors.transparent,
-        child:ForgotPasswordComponent(size: size,),
+        child: ForgotPasswordComponent(
+          size: size,
+        ),
       ),
     );
   }

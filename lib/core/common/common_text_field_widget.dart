@@ -13,9 +13,11 @@ class CommonTextFieldWidget extends StatelessWidget {
       this.right,
       this.left,
       this.hintStyle,
-        this.validator,
+      this.validator,
       this.style,
+      this.colorFill,
       this.borderRadius,
+      this.readOnly = false,
       this.top,
       this.prefixIcon});
 
@@ -24,6 +26,7 @@ class CommonTextFieldWidget extends StatelessWidget {
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final bool? obscureText;
+  final bool? readOnly;
   final double? left;
   final double? right;
   final double? top;
@@ -31,16 +34,13 @@ class CommonTextFieldWidget extends StatelessWidget {
   final TextStyle? style;
   final TextStyle? hintStyle;
   final double? bottom;
+  final Color? colorFill;
   final String? Function(String?)? validator;
   final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
-    //final theme = Theme.of(context);
-
-    // Set border color based on the theme mode
-  //  final borderColor = theme.brightness == Brightness.dark ? Colors.black : Colors.grey.withOpacity(0.20);
-  //  final colorFill = theme.brightness == Brightness.dark ?colorDarkFillColor : Colors.white;
+    ;
 
     return Container(
       margin: EdgeInsets.only(
@@ -56,6 +56,7 @@ class CommonTextFieldWidget extends StatelessWidget {
         cursorColor: Colors.black,
         validator: validator,
         controller: controller,
+        readOnly: readOnly ?? false,
         autocorrect: false,
         style: style ?? Theme.of(context).textTheme.bodyMedium,
         onChanged: onChanged,
@@ -67,13 +68,13 @@ class CommonTextFieldWidget extends StatelessWidget {
           suffixIcon: suffixIcon,
           hintStyle: hintStyle ?? Theme.of(context).textTheme.bodyMedium,
           focusedBorder: commonBorderView(borderColor: Colors.green),
-          enabledBorder:  commonBorderView(),
+          enabledBorder: commonBorderView(),
           filled: true,
           // <-- add filled
           //  fillColor: Colors.white,
           // <--- and this
 
-         // fillColor: colorFill,
+          fillColor: colorFill,
 
           border: commonBorderView(),
         ),
@@ -81,12 +82,11 @@ class CommonTextFieldWidget extends StatelessWidget {
     );
   }
 
-
-  commonBorderView({Color? borderColor}){
+  commonBorderView({Color? borderColor}) {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(borderRadius ?? ten),
       borderSide: BorderSide(
-        color: borderColor??Colors.black.withOpacity(0.20),
+        color: borderColor ?? Colors.black.withOpacity(0.20),
         width: one,
       ),
     );
