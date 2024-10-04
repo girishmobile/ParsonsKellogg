@@ -2,6 +2,7 @@
  const double zero1 = 0.1;
  const double one = 1.0;
  const double zero2 = 0.2;
+ const double zero01 = 0.01;
  const double zero02 = 0.02;
  const double zero03 = 0.03;
  const double zero04 = 0.04;
@@ -26,8 +27,10 @@
  const double zero29 = 0.29;
  const double zero30 = 0.30;
  const double zero32 = 0.32;
+ const double zero33 = 0.33;
  const double zero35 =  0.35;
  const double zero40 = 0.40;
+ const double zero42 = 0.42;
  const double zero50 = 0.50;
  const double zero80 = 0.80;
  const double zero85 = 0.85;

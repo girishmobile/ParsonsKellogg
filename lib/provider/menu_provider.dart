@@ -6,7 +6,7 @@ class MenuProvider extends ChangeNotifier {
   int _expandedIndex = -1;
   int _expandedSubIndex = -1;
   int _expandedSubSubIndex = -1;
-  int _selected = -1;
+  final int _selected  = -1;
 
   int get selectedMenu => _selectedMenu;
 
@@ -23,20 +23,19 @@ class MenuProvider extends ChangeNotifier {
     _expandedIndex = index;
     notifyListeners();
   }
-
   set setSubExpandIndex(int index) {
     _expandedSubIndex = index;
     notifyListeners();
   }
-
   set setSubSubExpandIndex(int index) {
     _expandedSubSubIndex = index;
     notifyListeners();
   }
-
-  bool _isExpanded = false;
+  final bool _isExpanded = false;
 
   bool get isExpanded => _isExpanded;
+
+
 
   /*-------------------------------Menu-----------------------------------*/
   List<MenuModel> _itemMenu = [];
@@ -46,28 +45,21 @@ class MenuProvider extends ChangeNotifier {
     _itemMenu[index].isExpanded = !_itemMenu[index].isExpanded;
     notifyListeners();
   }
-
   void loadMenu() {
     notifyListeners();
 
     _itemMenu = [
-      MenuModel(
-        title: "Dashboard",
-        titleIndex: 500,
-      ),
+      MenuModel(title: "Dashboard", titleIndex: 500, ),
       MenuModel(title: "Master Product Feed", titleIndex: 501, subMenuItem: [
         SubMenuItem(index: 0, title: "Dashboard"),
         SubMenuItem(index: 1, title: "Product Database"),
         SubMenuItem(index: 2, title: "Core ProductFeed"),
-        SubMenuItem(
-            index: 3,
-            title: "Configurator",
-            isBold: true,
-            subOrMenuItem: [
-              SubORMenuItem(index: 1001, title: "ddd"),
-              SubORMenuItem(index: 1002, title: "ddd Database"),
-              SubORMenuItem(index: 1003, title: "Cordddde ProductFeed"),
-            ]),
+        SubMenuItem(index: 3, title: "Configurator", isBold: true,subOrMenuItem: [
+
+          SubORMenuItem(index: 1001, title: "ddd"),
+          SubORMenuItem(index: 1002, title: "ddd Database"),
+          SubORMenuItem(index: 1003, title: "Cordddde ProductFeed"),
+        ]),
         SubMenuItem(index: 4, title: "Setting", isBold: true),
       ]),
       MenuModel(title: "Store", titleIndex: 502, subMenuItem: [
@@ -123,14 +115,8 @@ class MenuProvider extends ChangeNotifier {
         SubMenuItem(index: 42, title: "Setting"),
         SubMenuItem(index: 43, title: "Widget Module Mapping"),
       ]),
-      MenuModel(
-        title: "Google Analytics",
-        titleIndex: 509,
-      ),
-      MenuModel(
-        title: "Report",
-        titleIndex: 510,
-      ),
+      MenuModel(title: "Google Analytics", titleIndex: 509, ),
+      MenuModel(title: "Report", titleIndex: 510, ),
     ];
   }
 }

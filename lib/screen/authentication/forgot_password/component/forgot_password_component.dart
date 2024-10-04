@@ -53,7 +53,7 @@ class ForgotPasswordComponent extends StatelessWidget {
                   validator: ValidationUtil.validateEmail,
                   top: size.height * zero05),
               commonInkWell(
-                onTap: () => Navigator.pushNamed(context, loginScreen),
+                onTap: () => Navigator.pushNamed(context, RouteName.loginScreen),
                 child: Align(
                     alignment: Alignment.center,
                     child: CommonTextWidget(

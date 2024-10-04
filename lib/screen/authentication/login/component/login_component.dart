@@ -6,16 +6,18 @@ import 'package:parsonskellogg/core/common/common_text_widget.dart';
 import 'package:parsonskellogg/core/component/component.dart';
 import 'package:parsonskellogg/core/constants/num_constants.dart';
 import 'package:parsonskellogg/core/image_path/image_path.dart';
-import 'package:parsonskellogg/core/responsive/responsive.dart';
 import 'package:parsonskellogg/core/router/route_name.dart';
 import 'package:parsonskellogg/core/string_utils/string_utils.dart';
 import 'package:parsonskellogg/core/validation/validation_util.dart';
 import 'package:parsonskellogg/provider/auth_provider.dart';
+
 import 'package:provider/provider.dart';
 
 class LoginComponent extends StatelessWidget {
   const LoginComponent({super.key, required this.size});
+
   final Size size;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,21 +35,17 @@ class LoginComponent extends StatelessWidget {
   }
 
   _loginView({required Size size, required BuildContext context}) {
+
     return Consumer<AuthProvider>(builder: (context, provider, child) {
       return Form(
         key: provider.formLoginKey,
         child: Container(
           margin: const EdgeInsets.all(fifteen),
           decoration: commonBoxDecoration(
-            color: Theme.of(context).colorScheme.primary.withOpacity(1),
-            borderRadius: BorderRadius.circular(ten),
-          ),
+              color: Colors.white, borderRadius: BorderRadius.circular(ten)),
           padding: const EdgeInsets.all(twenty),
           child: Column(
             children: [
-              const SizedBox(
-                height: 16,
-              ),
               loadAssetImage(path: icLoginLogo, width: size.width * zero5),
               commonTextFieldWithTextView(
                   onChanged: (value) {
@@ -59,6 +57,7 @@ class LoginComponent extends StatelessWidget {
               commonTextFieldWithTextView(
                   top: fifteen,
                   title: password,
+
                   onChanged: (value) {
                     provider.setPassword = value;
                   },
@@ -76,7 +75,7 @@ class LoginComponent extends StatelessWidget {
                     onPressed: () => provider.togglePasswordVisibility(),
                   )),
               commonInkWell(
-                onTap: () => Navigator.pushNamed(context, forgotPasswordScreen),
+                onTap: () => Navigator.pushNamed(context, RouteName.forgotPasswordScreen),
                 child: Align(
                     alignment: Alignment.centerRight,
                     child: CommonTextWidget(
@@ -89,13 +88,9 @@ class LoginComponent extends StatelessWidget {
               CommonButtonWidget(
                 text: login,
                 onTap: () {
-                  /* if(provider.formLoginKey.currentState!.validate()){
 
-                  }*/
+                      provider.redirectToDashboard(context);
 
-                  //provider.redirectToDashboard(context);
-
-                  provider.redirectToDragDropView(context);
                 },
                 top: size.height * zero03,
                 width: size.width,

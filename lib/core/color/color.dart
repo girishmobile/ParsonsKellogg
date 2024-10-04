@@ -7,6 +7,8 @@ const Color colorDarkBlue=Color.fromRGBO(70, 70, 229, 1);
 const Color colorButton=Color.fromRGBO(102, 176, 23, 1);
 const Color colorSelectedMenu=Color.fromRGBO(10, 160, 219, 1);
 const Color colorBg=Color.fromRGBO(241, 245, 249, 1);
+const Color colorTab=Color.fromRGBO(10, 160, 219, 1);
+const Color colorBtnChange=Color.fromRGBO(99, 102, 241, 1);
 
 const colorPRIMARY = Colors.deepOrangeAccent;
 const colorAccent = Colors.orange;

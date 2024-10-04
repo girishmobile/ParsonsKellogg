@@ -8,7 +8,7 @@ class AuthProvider extends ChangeNotifier {
   void redirectToLogin(BuildContext context) {
     Timer(const Duration(seconds: 3), () {
       Navigator.pushNamedAndRemoveUntil(
-          context, loginScreen, (Route<dynamic> route) => false);
+          context, RouteName.loginScreen, (Route<dynamic> route) => false);
     });
   }
 
@@ -49,11 +49,11 @@ class AuthProvider extends ChangeNotifier {
 
   void redirectToDashboard(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(
-        context, dashboardScreen, (Route<dynamic> route) => false);
+        context, RouteName.dashboardScreen, (Route<dynamic> route) => false);
   }
 
   void redirectToDragDropView(BuildContext context) {
-    Navigator.pushNamedAndRemoveUntil(
-        context, dragdropExample, (Route<dynamic> route) => false);
+    /*Navigator.pushNamedAndRemoveUntil(
+        context, dragdropExample, (Route<dynamic> route) => false);*/
   }
 }

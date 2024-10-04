@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:parsonskellogg/core/color/color.dart';
@@ -28,47 +29,49 @@ loadAssetImage({required String path, double? width, double? height}) {
   );
 }
 
-TextStyle commonTextStyle({
-  Color? color,
-  FontWeight? fontWeight,
-  double? fontSize,
-}) {
+TextStyle commonTextStyle(
+    {Color? color, FontWeight? fontWeight, double? fontSize}) {
   return GoogleFonts.inter(
-    color: color ?? colorText,
-    fontWeight: fontWeight ?? FontWeight.w500,
-    fontSize: fontSize ?? fourteen,
-    letterSpacing: 1.1,
-  );
+      color: color ?? colorText,
+      fontWeight: fontWeight ?? FontWeight.w500,
+      fontSize: fontSize ?? fourteen);
 }
 
-commonTextFieldWithTextView({
-  String? title,
-  String? hint,
-  double? top,
-  double? topTextFiled,
-  bool? obscureText = false,
-  Widget? suffixIcon,
-  void Function(String)? onChanged,
-  String? Function(String?)? validator,
-  TextEditingController? controller,
-}) {
+commonTextFieldWithTextView(
+    {String? title,
+    String? hint,
+    bool? readOnly,
+    double? top,
+    double? fontSize,
+    Color? colorFill,
+    double? topTextFiled,
+    bool? obscureText = false,
+    Widget? suffixIcon,
+    void Function(String)? onChanged,
+    String? Function(String?)? validator,
+    TextEditingController? controller}) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.start,
     crossAxisAlignment: CrossAxisAlignment.start,
     mainAxisSize: MainAxisSize.min,
     children: [
       CommonTextWidget(
+        style: commonTextStyle(fontSize: fontSize),
         text: title ?? emailAddress,
         top: top,
       ),
       CommonTextFieldWidget(
         hint: hint,
+        readOnly: readOnly,
+        colorFill: colorFill,
         controller: controller,
         obscureText: obscureText,
+        style: commonTextStyle(fontSize: 13),
         validator: validator,
         suffixIcon: suffixIcon,
         onChanged: onChanged,
-        hintStyle: GoogleFonts.outfit(color: Colors.grey.withOpacity(zero90)),
+        hintStyle: commonTextStyle(
+            color: Colors.grey.withOpacity(zero90), fontSize: 13),
         top: topTextFiled ?? five,
       )
     ],
@@ -87,4 +90,142 @@ BoxDecoration commonBoxDecoration(
       border: border,
       shape: shape,
       borderRadius: borderRadius);
+}
+
+void showCommonDialog(
+    {required BuildContext context,
+    required String title,
+    required String content,
+    String? btnPositive,
+    String? btnNegative,
+    bool isMessage = false,
+    VoidCallback? onPressPositive,
+    VoidCallback? onPressNegative}) {
+  showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) => CupertinoAlertDialog(
+            title: CommonTextWidget(
+              text: title,
+              style: commonTextStyle(fontWeight: FontWeight.w700, fontSize: 16),
+            ),
+            content: CommonTextWidget(text: content),
+            actions: [
+              if (!isMessage)
+                CupertinoDialogAction(
+                  onPressed: onPressNegative ??
+                      () {
+                        Navigator.of(context).pop();
+                      },
+                  child: CommonTextWidget(
+                    text: btnNegative ?? no,
+                  ),
+                ),
+
+              // Show only if isMessage is false
+              CupertinoDialogAction(
+                onPressed: onPressPositive ??
+                    () {
+                      Navigator.of(context).pop();
+                    },
+                child: CommonTextWidget(
+                  text: btnPositive ?? okay,
+                  style: commonTextStyle(color: Colors.red),
+                ),
+              ),
+            ],
+          ));
+}
+
+commonTab({String? text, required String icon}) {
+  return Tab(
+    child: SizedBox(
+      height: forty,
+      child: Align(
+        alignment: Alignment.center,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ImageIcon(
+              AssetImage(
+                icon,
+              ),
+              size: 24,
+            ),
+            const SizedBox(
+              width: five,
+            ),
+            Text(
+              text ?? "Status",
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+commonButtonStyle(
+    {Color? color,
+    TextStyle? textStyle,
+    Color? borderColor,
+    double? width,
+    double? borderRadius}) {
+  return ElevatedButton.styleFrom(
+    textStyle: textStyle,
+    backgroundColor: color ?? colorButton,
+    foregroundColor: color ?? colorButton,
+    disabledBackgroundColor: color ?? colorButton,
+    disabledForegroundColor: color ?? colorButton,
+    shape: RoundedRectangleBorder(
+      side: BorderSide(
+          color: borderColor ?? Colors.transparent, width: width ?? 0),
+      borderRadius: BorderRadius.circular(borderRadius ?? five), // <-- Radius
+    ),
+    elevation: zero,
+  );
+}
+
+commonText({
+  String? text,
+  double? fontSize,
+  FontWeight? fontWeight,
+  Color? colorText,
+}) {
+  return CommonTextWidget(
+    text: text,
+    style: commonTextStyle(
+        fontSize: fontSize ?? 10, color: colorText, fontWeight: fontWeight),
+  );
+}
+
+commonColText({String? text}) {
+  return commonText(
+      fontSize: 8,
+      text: text ?? user,
+      fontWeight: FontWeight.w800,
+      colorText: Colors.grey.withOpacity(zero50));
+}
+
+showAlertDialog({required BuildContext context,double? dialogHeight,double ?dialogWidth,required Widget child }){
+  showDialog(
+
+    context: context,
+    builder: (context) {
+      var size=MediaQuery.sizeOf(context);
+         return AlertDialog(
+           alignment: Alignment.center,
+           insetPadding: EdgeInsets.zero,
+        contentPadding: EdgeInsets.zero,
+        buttonPadding: EdgeInsets.zero,
+        titlePadding: EdgeInsets.zero,
+        actionsPadding: EdgeInsets.zero,
+        content: SizedBox(
+            height:dialogHeight?? size.height,
+            width: dialogWidth??size.width * 0.5,
+            child: child),
+      );
+    },
+  );
 }

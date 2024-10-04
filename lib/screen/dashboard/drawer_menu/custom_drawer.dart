@@ -25,7 +25,7 @@ class CustomDrawer extends StatelessWidget {
           children: <Widget>[
             DrawerHeader(
               decoration: const BoxDecoration(
-                color: Colors.green,
+                color: Colors.blue,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,29 +55,25 @@ class CustomDrawer extends StatelessWidget {
               child: ListView(
                 padding: EdgeInsets.zero,
                 children: provider.itemMenu.asMap().entries.map((items) {
-                  int index = items.key; // Get the index
-                  var item = items.value; // Get the item
+                  int index = items.key;
+                  var item = items.value;
                   final isSelected = menuProvider.expandedIndex == index;
                   return Container(
                     child: commonListView(
-                      item: item,
-                      initiallyExpanded: index == provider.selected,
-                      key: Key(
-                        provider.selected.toString(),
-                      ),
-                      //   colorBg:colorSelectedMenu,
-                      onExpansionChanged: (bool expanded) {
-                        if (expanded) {
-                          menuProvider.setExpandIndex = index;
-                          print('========ind${menuProvider.expandedIndex}');
-                        }
-                      },
-                      showTrailingIcon: item.subMenuItem != null ? true : false,
-                      children: buildSubItems(item.subMenuItem, provider),
-                      isSelected: isSelected,
-                      menuProvider: menuProvider,
-                      index: index,
-                    ),
+                        item: item,
+                        initiallyExpanded: index == provider.selected,
+                        key: Key(provider.selected.toString()),
+                        onExpansionChanged: (bool expanded) {
+                          if (expanded) {
+                            menuProvider.setExpandIndex = index;
+                          }
+                        },
+                        showTrailingIcon:
+                            item.subMenuItem != null ? true : false,
+                        children: buildSubItems(item.subMenuItem, provider),
+                        isSelected: isSelected,
+                        menuProvider: menuProvider,
+                        index: index),
                   );
                 }).toList(),
               ),
@@ -93,8 +89,8 @@ class CustomDrawer extends StatelessWidget {
     if (subItems == null) return [];
 
     return subItems.asMap().entries.map<Widget>((subItem) {
-      int index = subItem.key; // Get the index
-      var item = subItem.value; // Get the item
+      int index = subItem.key;
+      var item = subItem.value;
       final isSelected = menuProvider.expandedSubIndex == index;
       return Container(
         child: commonListView(
@@ -116,8 +112,8 @@ class CustomDrawer extends StatelessWidget {
       List<SubORMenuItem>? subSubItems, MenuProvider menuProvider) {
     if (subSubItems == null) return [];
     return subSubItems.asMap().entries.map<Widget>((subSubItem) {
-      int index = subSubItem.key; // Get the index
-      var item = subSubItem.value; // Get the item
+      int index = subSubItem.key;
+      var item = subSubItem.value;
       final isSelected = menuProvider.expandedSubSubIndex == index;
       return Container(
         child: commonListView(
@@ -125,7 +121,7 @@ class CustomDrawer extends StatelessWidget {
             isSelected: isSelected,
             showLeadingIcon: false,
             item: item,
-            left: 20,
+            left: twenty,
             menuProvider: menuProvider,
             showTrailingIcon: false,
             onExpansionChanged: (bool expanded) {

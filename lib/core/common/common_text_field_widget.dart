@@ -2,29 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:parsonskellogg/core/constants/num_constants.dart';
 
 class CommonTextFieldWidget extends StatelessWidget {
-  const CommonTextFieldWidget({
-    super.key,
-    this.hint,
-    this.controller,
-    this.suffixIcon,
-    this.onChanged,
-    this.obscureText = false,
-    this.bottom,
-    this.right,
-    this.left,
-    this.hintStyle,
-    this.validator,
-    this.style,
-    this.borderRadius,
-    this.top,
-    this.prefixIcon,
-  });
+  const CommonTextFieldWidget(
+      {super.key,
+      this.hint,
+      this.controller,
+      this.suffixIcon,
+      this.onChanged,
+      this.obscureText = false,
+      this.bottom,
+      this.right,
+      this.left,
+      this.hintStyle,
+      this.validator,
+      this.style,
+      this.colorFill,
+      this.borderRadius,
+      this.readOnly = false,
+      this.top,
+      this.prefixIcon});
 
   final String? hint;
   final TextEditingController? controller;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final bool? obscureText;
+  final bool? readOnly;
   final double? left;
   final double? right;
   final double? top;
@@ -32,6 +34,7 @@ class CommonTextFieldWidget extends StatelessWidget {
   final TextStyle? style;
   final TextStyle? hintStyle;
   final double? bottom;
+  final Color? colorFill;
   final String? Function(String?)? validator;
   final void Function(String)? onChanged;
 
@@ -40,8 +43,8 @@ class CommonTextFieldWidget extends StatelessWidget {
     //final theme = Theme.of(context);
 
     // Set border color based on the theme mode
-    //  final borderColor = theme.brightness == Brightness.dark ? Colors.black : Colors.grey.withOpacity(0.20);
-    //  final colorFill = theme.brightness == Brightness.dark ?colorDarkFillColor : Colors.white;
+  //  final borderColor = theme.brightness == Brightness.dark ? Colors.black : Colors.grey.withOpacity(0.20);
+  //  final colorFill = theme.brightness == Brightness.dark ?colorDarkFillColor : Colors.white;
 
     return Container(
       margin: EdgeInsets.only(
@@ -57,8 +60,9 @@ class CommonTextFieldWidget extends StatelessWidget {
         cursorColor: Colors.black,
         validator: validator,
         controller: controller,
+        readOnly: readOnly ?? false,
         autocorrect: false,
-        style: style ?? Theme.of(context).textTheme.bodyMedium,
+        style: style ?? Theme.of(context).textTheme.bodySmall,
         onChanged: onChanged,
         obscureText: obscureText ?? false,
         textAlignVertical: TextAlignVertical.center,
@@ -75,7 +79,7 @@ class CommonTextFieldWidget extends StatelessWidget {
           //  fillColor: Colors.white,
           // <--- and this
 
-          // fillColor: colorFill,
+          fillColor: colorFill,
 
           border: commonBorderView(),
         ),

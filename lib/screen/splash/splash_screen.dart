@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:parsonskellogg/core/color/color.dart';
 import 'package:parsonskellogg/core/component/component.dart';
 import 'package:parsonskellogg/core/constants/num_constants.dart';
@@ -24,9 +25,15 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.primary,
-      body: Center(
-        child: loadAssetImage(path: icLogoNew, width: size.width * zero7),
+      backgroundColor: colorWhite,
+      body: PopScope(
+        canPop: true,
+        onPopInvokedWithResult: (data, dynamic) {
+          SystemNavigator.pop();
+        },
+        child: Center(
+          child: loadAssetImage(path: icLogo, width: size.width * zero7),
+        ),
       ),
     );
   }
