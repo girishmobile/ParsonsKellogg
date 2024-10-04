@@ -1,14 +1,16 @@
-
 import 'package:flutter/material.dart';
 import 'package:parsonskellogg/core/router/route_name.dart';
 import 'package:parsonskellogg/screen/authentication/forgot_password/forgot_password_screen.dart';
 import 'package:parsonskellogg/screen/authentication/login/login_screen.dart';
 import 'package:parsonskellogg/screen/dashboard/dashboard_screen.dart';
+import 'package:parsonskellogg/screen/drag_drop_example.dart';
 import 'package:parsonskellogg/screen/splash/splash_screen.dart';
 
 class RouterGenerated {
-   static Route<dynamic> generateRoute(RouteSettings settings) {
+  static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case dragdropExample:
+        return MaterialPageRoute(builder: (context) => const DragDropExample());
       case splashScreen:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case loginScreen:

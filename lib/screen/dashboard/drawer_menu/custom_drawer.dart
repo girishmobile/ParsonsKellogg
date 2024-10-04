@@ -23,34 +23,36 @@ class CustomDrawer extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-             DrawerHeader(
+            DrawerHeader(
               decoration: const BoxDecoration(
-                color: Colors.blue,
+                color: Colors.green,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
                     height: eighty,
-                    width: eighty ,
+                    width: eighty,
                     child: CircleAvatar(
                       backgroundColor: Colors.white,
-                      child: CommonTextWidget(text: 'PK', style: commonTextStyle(),),
+                      child: CommonTextWidget(
+                        text: 'PK',
+                        style: commonTextStyle(),
+                      ),
                     ),
                   ),
                   const SizedBox(height: eight),
                   CommonTextWidget(
-                  text:   'PARSONSKELLOGG',
-                    style:  commonTextStyle(color: Colors.white),
+                    text: 'PARSONSKELLOGG',
+                    style: commonTextStyle(color: Colors.white),
                   ),
                 ],
               ),
             ),
-        SizedBox(
+            SizedBox(
               width: size.width,
               height: size.height,
               child: ListView(
-
                 padding: EdgeInsets.zero,
                 children: provider.itemMenu.asMap().entries.map((items) {
                   int index = items.key; // Get the index
@@ -58,38 +60,33 @@ class CustomDrawer extends StatelessWidget {
                   final isSelected = menuProvider.expandedIndex == index;
                   return Container(
                     child: commonListView(
-                        item: item,
-
-                        initiallyExpanded: index == provider.selected,
-                        key: Key(provider.selected.toString()),
-                     //
-                        //   colorBg:colorSelectedMenu,
-                        onExpansionChanged: (bool expanded) {
-
-                          if(expanded){
-                            menuProvider.setExpandIndex=index;
-                            print('========ind${menuProvider.expandedIndex}');
-                          }
-                        },
-                        showTrailingIcon:
-                            item.subMenuItem != null ? true : false,
-                        children: buildSubItems(item.subMenuItem, provider),
-                        isSelected: isSelected,
-                        menuProvider: menuProvider,
-                        index: index),
+                      item: item,
+                      initiallyExpanded: index == provider.selected,
+                      key: Key(
+                        provider.selected.toString(),
+                      ),
+                      //   colorBg:colorSelectedMenu,
+                      onExpansionChanged: (bool expanded) {
+                        if (expanded) {
+                          menuProvider.setExpandIndex = index;
+                          print('========ind${menuProvider.expandedIndex}');
+                        }
+                      },
+                      showTrailingIcon: item.subMenuItem != null ? true : false,
+                      children: buildSubItems(item.subMenuItem, provider),
+                      isSelected: isSelected,
+                      menuProvider: menuProvider,
+                      index: index,
+                    ),
                   );
                 }).toList(),
               ),
             ),
-
-
-
           ],
         ),
       );
     });
   }
-
 
   List<Widget> buildSubItems(
       List<SubMenuItem>? subItems, MenuProvider menuProvider) {
@@ -146,7 +143,7 @@ class CustomDrawer extends StatelessWidget {
       required MenuProvider menuProvider,
       required bool showTrailingIcon,
       double? left,
-        Key? key,
+      Key? key,
       Color? colorBg,
       bool? showLeadingIcon = true,
       bool? isHeading = false,
@@ -156,7 +153,7 @@ class CustomDrawer extends StatelessWidget {
       Widget? text,
       dynamic item}) {
     return ExpansionTile(
-    key: key,
+      key: key,
       collapsedBackgroundColor: Colors.white,
       backgroundColor: colorBg,
       shape: const Border(),

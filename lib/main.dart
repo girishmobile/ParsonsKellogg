@@ -7,6 +7,7 @@ import 'package:parsonskellogg/provider/auth_provider.dart';
 import 'package:parsonskellogg/provider/dashboard_provider.dart';
 import 'package:parsonskellogg/provider/menu_provider.dart';
 import 'package:parsonskellogg/provider/theme_provider.dart';
+import 'package:parsonskellogg/theme/theme.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -20,30 +21,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<ThemeProvider>(create: (_) => ThemeProvider()),
         ChangeNotifierProvider<AuthProvider>(create: (_) => AuthProvider()),
         ChangeNotifierProvider<MenuProvider>(create: (_) => MenuProvider()),
-        ChangeNotifierProvider<DashboardProvider>(create: (_) => DashboardProvider()),
-
+        ChangeNotifierProvider<DashboardProvider>(
+            create: (_) => DashboardProvider()),
       ],
-      child: Consumer<ThemeProvider>(
-        builder: (context,themeProvider,child) {
-          return MaterialApp(
-            title: appName,
-            theme: lightMode,
-            debugShowCheckedModeBanner: false,
-            onGenerateRoute: RouterGenerated.generateRoute,
-            initialRoute: splashScreen,
-            darkTheme: darkMode,
-            themeMode: themeProvider.themeMode,
-            //theme: ThemeData.light(),
-          );
-        }
-      ),
+      child: Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
+        return MaterialApp(
+          title: appName,
+          theme: lightTheme,
+          debugShowCheckedModeBanner: false,
+          onGenerateRoute: RouterGenerated.generateRoute,
+          initialRoute: splashScreen,
+          darkTheme: darkTheme,
+          themeMode: ThemeMode.system,
+          //theme: ThemeData.light(),
+        );
+      }),
     );
   }
 }
-

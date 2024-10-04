@@ -24,9 +24,9 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
     return Scaffold(
-      backgroundColor: colorWhite,
+      backgroundColor: Theme.of(context).colorScheme.primary,
       body: Center(
-        child: loadAssetImage(path: icLogo, width: size.width * zero7),
+        child: loadAssetImage(path: icLogoNew, width: size.width * zero7),
       ),
     );
   }

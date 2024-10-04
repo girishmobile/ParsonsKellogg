@@ -15,9 +15,7 @@ import 'package:provider/provider.dart';
 
 class LoginComponent extends StatelessWidget {
   const LoginComponent({super.key, required this.size});
-
   final Size size;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,17 +33,21 @@ class LoginComponent extends StatelessWidget {
   }
 
   _loginView({required Size size, required BuildContext context}) {
-
     return Consumer<AuthProvider>(builder: (context, provider, child) {
       return Form(
         key: provider.formLoginKey,
         child: Container(
           margin: const EdgeInsets.all(fifteen),
           decoration: commonBoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(ten)),
+            color: Theme.of(context).colorScheme.primary.withOpacity(1),
+            borderRadius: BorderRadius.circular(ten),
+          ),
           padding: const EdgeInsets.all(twenty),
           child: Column(
             children: [
+              const SizedBox(
+                height: 16,
+              ),
               loadAssetImage(path: icLoginLogo, width: size.width * zero5),
               commonTextFieldWithTextView(
                   onChanged: (value) {
@@ -57,7 +59,6 @@ class LoginComponent extends StatelessWidget {
               commonTextFieldWithTextView(
                   top: fifteen,
                   title: password,
-
                   onChanged: (value) {
                     provider.setPassword = value;
                   },
@@ -88,12 +89,13 @@ class LoginComponent extends StatelessWidget {
               CommonButtonWidget(
                 text: login,
                 onTap: () {
-                 /* if(provider.formLoginKey.currentState!.validate()){
+                  /* if(provider.formLoginKey.currentState!.validate()){
 
                   }*/
 
-                  provider.redirectToDashboard(context);
+                  //provider.redirectToDashboard(context);
 
+                  provider.redirectToDragDropView(context);
                 },
                 top: size.height * zero03,
                 width: size.width,

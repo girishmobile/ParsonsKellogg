@@ -5,8 +5,6 @@ import 'package:parsonskellogg/core/common/common_text_field_widget.dart';
 import 'package:parsonskellogg/core/common/common_text_widget.dart';
 import 'package:parsonskellogg/core/constants/num_constants.dart';
 import 'package:parsonskellogg/core/string_utils/string_utils.dart';
-import 'package:parsonskellogg/provider/menu_provider.dart';
-import 'package:provider/provider.dart';
 
 commonInkWell({Widget? child, VoidCallback? onTap}) {
   return InkWell(
@@ -30,17 +28,30 @@ loadAssetImage({required String path, double? width, double? height}) {
   );
 }
 
-TextStyle commonTextStyle({Color? color,FontWeight? fontWeight,double? fontSize}){
-
- return  GoogleFonts.inter(
-    color: color??colorText,
-   fontWeight: fontWeight??FontWeight.w500,
-   fontSize: fontSize??fourteen
+TextStyle commonTextStyle({
+  Color? color,
+  FontWeight? fontWeight,
+  double? fontSize,
+}) {
+  return GoogleFonts.inter(
+    color: color ?? colorText,
+    fontWeight: fontWeight ?? FontWeight.w500,
+    fontSize: fontSize ?? fourteen,
+    letterSpacing: 1.1,
   );
 }
 
-commonTextFieldWithTextView(
-    {String? title, String? hint, double? top, double? topTextFiled, bool? obscureText = false, Widget? suffixIcon, void Function(String)? onChanged, String? Function(String?)? validator, TextEditingController? controller}) {
+commonTextFieldWithTextView({
+  String? title,
+  String? hint,
+  double? top,
+  double? topTextFiled,
+  bool? obscureText = false,
+  Widget? suffixIcon,
+  void Function(String)? onChanged,
+  String? Function(String?)? validator,
+  TextEditingController? controller,
+}) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.start,
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,13 +63,11 @@ commonTextFieldWithTextView(
       ),
       CommonTextFieldWidget(
         hint: hint,
-        controller
-        :controller,
+        controller: controller,
         obscureText: obscureText,
         validator: validator,
         suffixIcon: suffixIcon,
         onChanged: onChanged,
-
         hintStyle: GoogleFonts.outfit(color: Colors.grey.withOpacity(zero90)),
         top: topTextFiled ?? five,
       )
@@ -66,11 +75,12 @@ commonTextFieldWithTextView(
   );
 }
 
-BoxDecoration commonBoxDecoration({Color? color,
-  BoxBorder? border,
-  BoxShape shape = BoxShape.rectangle,
-  BorderRadiusGeometry? borderRadius,
-  DecorationImage? image}) {
+BoxDecoration commonBoxDecoration(
+    {Color? color,
+    BoxBorder? border,
+    BoxShape shape = BoxShape.rectangle,
+    BorderRadiusGeometry? borderRadius,
+    DecorationImage? image}) {
   return BoxDecoration(
       color: color,
       image: image,
@@ -78,5 +88,3 @@ BoxDecoration commonBoxDecoration({Color? color,
       shape: shape,
       borderRadius: borderRadius);
 }
-
-

@@ -5,24 +5,24 @@ import 'package:parsonskellogg/screen/authentication/login/component/login_compo
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
     return Container(
       decoration: commonBoxDecoration(
-          image: const DecorationImage(
-        fit: BoxFit.cover,
-        image: AssetImage(
-          icLoginBg,
+        image: const DecorationImage(
+          fit: BoxFit.cover,
+          image: AssetImage(
+            icLoginBg,
+          ),
         ),
-      )),
+      ),
       child: Material(
         color: Colors.transparent,
-        child:LoginComponent(size: size,),
+        child: LoginComponent(
+          size: size,
+        ),
       ),
     );
   }
-
-
 }

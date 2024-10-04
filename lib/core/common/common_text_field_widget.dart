@@ -2,22 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:parsonskellogg/core/constants/num_constants.dart';
 
 class CommonTextFieldWidget extends StatelessWidget {
-  const CommonTextFieldWidget(
-      {super.key,
-      this.hint,
-      this.controller,
-      this.suffixIcon,
-      this.onChanged,
-      this.obscureText = false,
-      this.bottom,
-      this.right,
-      this.left,
-      this.hintStyle,
-        this.validator,
-      this.style,
-      this.borderRadius,
-      this.top,
-      this.prefixIcon});
+  const CommonTextFieldWidget({
+    super.key,
+    this.hint,
+    this.controller,
+    this.suffixIcon,
+    this.onChanged,
+    this.obscureText = false,
+    this.bottom,
+    this.right,
+    this.left,
+    this.hintStyle,
+    this.validator,
+    this.style,
+    this.borderRadius,
+    this.top,
+    this.prefixIcon,
+  });
 
   final String? hint;
   final TextEditingController? controller;
@@ -39,8 +40,8 @@ class CommonTextFieldWidget extends StatelessWidget {
     //final theme = Theme.of(context);
 
     // Set border color based on the theme mode
-  //  final borderColor = theme.brightness == Brightness.dark ? Colors.black : Colors.grey.withOpacity(0.20);
-  //  final colorFill = theme.brightness == Brightness.dark ?colorDarkFillColor : Colors.white;
+    //  final borderColor = theme.brightness == Brightness.dark ? Colors.black : Colors.grey.withOpacity(0.20);
+    //  final colorFill = theme.brightness == Brightness.dark ?colorDarkFillColor : Colors.white;
 
     return Container(
       margin: EdgeInsets.only(
@@ -62,18 +63,19 @@ class CommonTextFieldWidget extends StatelessWidget {
         obscureText: obscureText ?? false,
         textAlignVertical: TextAlignVertical.center,
         decoration: InputDecoration(
+          contentPadding: const EdgeInsets.symmetric(horizontal: 10),
           hintText: hint,
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
           hintStyle: hintStyle ?? Theme.of(context).textTheme.bodyMedium,
           focusedBorder: commonBorderView(borderColor: Colors.green),
-          enabledBorder:  commonBorderView(),
+          enabledBorder: commonBorderView(),
           filled: true,
           // <-- add filled
           //  fillColor: Colors.white,
           // <--- and this
 
-         // fillColor: colorFill,
+          // fillColor: colorFill,
 
           border: commonBorderView(),
         ),
@@ -81,12 +83,11 @@ class CommonTextFieldWidget extends StatelessWidget {
     );
   }
 
-
-  commonBorderView({Color? borderColor}){
+  commonBorderView({Color? borderColor}) {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(borderRadius ?? ten),
       borderSide: BorderSide(
-        color: borderColor??Colors.black.withOpacity(0.20),
+        color: borderColor ?? Colors.black.withOpacity(0.20),
         width: one,
       ),
     );
