@@ -40,11 +40,7 @@ class CommonTextFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final theme = Theme.of(context);
 
-    // Set border color based on the theme mode
-  //  final borderColor = theme.brightness == Brightness.dark ? Colors.black : Colors.grey.withOpacity(0.20);
-  //  final colorFill = theme.brightness == Brightness.dark ?colorDarkFillColor : Colors.white;
 
     return Container(
       margin: EdgeInsets.only(
@@ -71,7 +67,7 @@ class CommonTextFieldWidget extends StatelessWidget {
           hintText: hint,
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
-          hintStyle: hintStyle ?? Theme.of(context).textTheme.bodyMedium,
+          hintStyle: hintStyle ?? Theme.of(context).textTheme.bodySmall,
           focusedBorder: commonBorderView(borderColor: Colors.green),
           enabledBorder: commonBorderView(),
           filled: true,

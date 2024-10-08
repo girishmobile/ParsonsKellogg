@@ -49,8 +49,12 @@ class MenuProvider extends ChangeNotifier {
     notifyListeners();
 
     _itemMenu = [
-      MenuModel(title: "Dashboard", titleIndex: 500, ),
-      MenuModel(title: "Master Product Feed", titleIndex: 501, subMenuItem: [
+      MenuModel(
+        icon: const Icon(Icons.space_dashboard_outlined ),
+        title: "Dashboard", titleIndex: 500, ),
+      MenuModel(
+          icon: const Icon(Icons.library_books_outlined),
+          title: "Master Product Feed", titleIndex: 501, subMenuItem: [
         SubMenuItem(index: 0, title: "Dashboard"),
         SubMenuItem(index: 1, title: "Product Database"),
         SubMenuItem(index: 2, title: "Core ProductFeed"),
@@ -62,7 +66,9 @@ class MenuProvider extends ChangeNotifier {
         ]),
         SubMenuItem(index: 4, title: "Setting", isBold: true),
       ]),
-      MenuModel(title: "Store", titleIndex: 502, subMenuItem: [
+      MenuModel(
+          icon: const Icon(Icons.store),
+          title: "Store", titleIndex: 502, subMenuItem: [
         SubMenuItem(index: 5, title: "Dashboard"),
         SubMenuItem(index: 6, title: "All Store", isBold: true),
         SubMenuItem(index: 7, title: "Ecommerce", isBold: true),
@@ -70,14 +76,18 @@ class MenuProvider extends ChangeNotifier {
         SubMenuItem(index: 9, title: "Store Builder", isBold: true),
         SubMenuItem(index: 10, title: "Form Builder", isBold: true),
       ]),
-      MenuModel(title: "Content Management", titleIndex: 503, subMenuItem: [
+      MenuModel(
+          icon: const Icon(Icons.article_outlined),
+          title: "Content Management", titleIndex: 503, subMenuItem: [
         SubMenuItem(index: 11, title: "Dashboard"),
         SubMenuItem(index: 12, title: "Content"),
         SubMenuItem(index: 13, title: "Template"),
         SubMenuItem(index: 14, title: "Asset Library"),
         SubMenuItem(index: 15, title: "Story Category"),
       ]),
-      MenuModel(title: "Customer", titleIndex: 504, subMenuItem: [
+      MenuModel(
+          icon: const Icon(Icons.person_outlined ),
+          title: "Customer", titleIndex: 504, subMenuItem: [
         SubMenuItem(index: 16, title: "Dashboard"),
         SubMenuItem(index: 17, title: "Customer"),
         SubMenuItem(index: 18, title: "Company"),
@@ -90,15 +100,21 @@ class MenuProvider extends ChangeNotifier {
         SubMenuItem(index: 25, title: "Special Request"),
         SubMenuItem(index: 26, title: "Customer Quote List"),
       ]),
-      MenuModel(title: "Promotion", titleIndex: 505, subMenuItem: [
+      MenuModel(
+          icon: const Icon(Icons.local_offer_outlined),
+          title: "Promotion", titleIndex: 505, subMenuItem: [
         SubMenuItem(index: 27, title: "Coupon Codes"),
       ]),
-      MenuModel(title: "Orders", titleIndex: 506, subMenuItem: [
+      MenuModel(
+          icon: const Icon(Icons.local_mall_outlined),
+          title: "Orders", titleIndex: 506, subMenuItem: [
         SubMenuItem(index: 28, title: "Dashboard"),
         SubMenuItem(index: 29, title: "Order List"),
         SubMenuItem(index: 30, title: "Draft/ Phone Order"),
       ]),
-      MenuModel(title: "Setting", titleIndex: 507, subMenuItem: [
+      MenuModel(
+          icon: const Icon(Icons.manage_accounts_outlined  ),
+          title: "Setting", titleIndex: 507, subMenuItem: [
         SubMenuItem(index: 31, title: "Dashboard"),
         SubMenuItem(index: 32, title: "Profile"),
         SubMenuItem(index: 33, title: "Roles"),
@@ -106,7 +122,9 @@ class MenuProvider extends ChangeNotifier {
         SubMenuItem(index: 35, title: "System Log"),
         SubMenuItem(index: 36, title: "Activity Activity"),
       ]),
-      MenuModel(title: "Admin theme", titleIndex: 508, subMenuItem: [
+      MenuModel(
+          icon: const Icon(Icons.settings_outlined ),
+          title: "Admin theme", titleIndex: 508, subMenuItem: [
         SubMenuItem(index: 37, title: "Company Configuration"),
         SubMenuItem(index: 38, title: "Modules"),
         SubMenuItem(index: 39, title: "SEO Configuration"),
@@ -115,8 +133,12 @@ class MenuProvider extends ChangeNotifier {
         SubMenuItem(index: 42, title: "Setting"),
         SubMenuItem(index: 43, title: "Widget Module Mapping"),
       ]),
-      MenuModel(title: "Google Analytics", titleIndex: 509, ),
-      MenuModel(title: "Report", titleIndex: 510, ),
+      MenuModel(
+        icon: const Icon( Icons.analytics_outlined),
+        title: "Google Analytics", titleIndex: 509, ),
+      MenuModel(title: "Report", titleIndex: 510,
+      
+      icon: const Icon(Icons.fact_check_outlined  )),
     ];
   }
 }

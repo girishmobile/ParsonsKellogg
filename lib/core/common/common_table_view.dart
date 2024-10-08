@@ -43,15 +43,19 @@ class CommonTableView extends StatelessWidget {
           }),
           dividerThickness: zero2,
         ),
-        child: PaginatedDataTable(
-            header: header,
-            rowsPerPage: rowsPerPage,
-            sortColumnIndex: sortColumnIndex,
-            // Add sorting column index
-            sortAscending: sortAscending,
-            onRowsPerPageChanged: onRowsPerPageChange,
-            columns: columns,
-            source: source),
+        child: SingleChildScrollView(
+          child: PaginatedDataTable(
+              header: header,
+
+              showEmptyRows: false,
+              rowsPerPage: rowsPerPage,
+              sortColumnIndex: sortColumnIndex,
+              // Add sorting column index
+              sortAscending: sortAscending,
+              onRowsPerPageChanged: onRowsPerPageChange,
+              columns: columns,
+              source: source),
+        ),
       ),
     );
   }

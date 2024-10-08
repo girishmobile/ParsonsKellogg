@@ -9,6 +9,8 @@ const Color colorSelectedMenu=Color.fromRGBO(10, 160, 219, 1);
 const Color colorBg=Color.fromRGBO(241, 245, 249, 1);
 const Color colorTab=Color.fromRGBO(10, 160, 219, 1);
 const Color colorBtnChange=Color.fromRGBO(99, 102, 241, 1);
+const Color colorEmptyGraph=Color.fromRGBO(134,239,172, 1);
+const Color colorFillGraph=Color.fromRGBO(38,60,255, 1);
 
 const colorPRIMARY = Colors.deepOrangeAccent;
 const colorAccent = Colors.orange;

@@ -1,21 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:parsonskellogg/core/component/component.dart';
+import 'package:parsonskellogg/core/constants/num_constants.dart';
 import 'package:parsonskellogg/models/dashboard_item.dart';
+import 'package:parsonskellogg/provider/dashboard_provider.dart';
+
+class DashboardTopWidget extends StatelessWidget {
+  const DashboardTopWidget({super.key, required this.provider});
+
+  final DashboardProvider provider;
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      primary: false,
+      itemCount: provider.dashboardItem.length,
+      shrinkWrap: true,
+      padding: const EdgeInsets.all(ten),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 16,
+      ),
+      itemBuilder: (BuildContext context, int index) {
+        return DashboardGridItem(dashBoardItem: provider.dashboardItem[index]);
+      },
+    );
+  }
+}
 
 class DashboardGridItem extends StatelessWidget {
   const DashboardGridItem({super.key, required this.dashBoardItem});
 
   final DashboardItem dashBoardItem;
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {},
       splashColor: Theme.of(context).colorScheme.surface,
-      //borderRadius: BorderRadius.circular(8.0),
       child: Container(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(sixteen),
         decoration: BoxDecoration(
-          // borderRadius: BorderRadius.circular(8),
           boxShadow: [
             BoxShadow(
               color: Theme.of(context).colorScheme.onSurface.withOpacity(0.1),
@@ -39,18 +64,20 @@ class DashboardGridItem extends StatelessWidget {
           children: [
             Icon(
               dashBoardItem.iconName,
-              size: 28,
+              size: twentyEight,
               color: Theme.of(context).colorScheme.onSurface,
             ),
-            Text(
-              dashBoardItem.title,
-              style: commonTextStyle(fontSize: 14),
+            commonText(
+                textAlign: TextAlign.center,
+                text: dashBoardItem.title,
+                fontSize: fourteen,
+                fontWeight: FontWeight.w600),
+            commonText(
               textAlign: TextAlign.center,
-            ),
-            Text(
-              dashBoardItem.subTitle,
-              style: Theme.of(context).textTheme.titleMedium,
-              textAlign: TextAlign.center,
+              fontSize: ten,
+              colorText: Colors.grey,
+              fontWeight: FontWeight.w600,
+              text: dashBoardItem.subTitle,
             ),
           ],
         ),

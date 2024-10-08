@@ -12,9 +12,10 @@ import 'package:provider/provider.dart';
 
 class CommonScaffold extends StatelessWidget {
   const CommonScaffold(
-      {super.key, this.child, this.appBar, this.showDrawer = true,required this.onSelectedPage,});
+      {super.key, this.child, this.appBar, this.showDrawer = true,required this.onSelectedPage,this.endDrawer});
 
   final Widget? child;
+  final Widget? endDrawer;
   final PreferredSizeWidget? appBar;
   final bool? showDrawer;
   final Function(String) onSelectedPage;
@@ -25,8 +26,10 @@ class CommonScaffold extends StatelessWidget {
     return Scaffold(
 
       backgroundColor: colorBg,
+      endDrawer: endDrawer,
       appBar: appBar ??
           AppBar(
+            elevation: 0.4,
             titleSpacing: showDrawer == false ? null : zero,
             centerTitle: false,
             backgroundColor: colorBg,
@@ -34,16 +37,16 @@ class CommonScaffold extends StatelessWidget {
                 loadAssetImage(path: icLoginLogo, width: size.width * zero29),
             actions: [
               Container(
+
                 width: thirtyFive,
                 height: thirtyFive,
+                clipBehavior: Clip.antiAlias,
                 decoration: commonBoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(color: Colors.grey, width: one)),
-                child: ClipOval(
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  child: loadAssetImage(path: icDummyUser),
-                ),
+                child: loadAssetImage(path: icDummyUser),
               ),
+
               const SizedBox(
                 width: ten,
               ),
@@ -95,7 +98,7 @@ class CommonScaffold extends StatelessWidget {
             ],
           ),
       body: child,
-      drawer: showDrawer == false ? null : const CustomDrawer(),
+      drawer: showDrawer == false ? null :  CustomDrawer(onSelectedPage:onSelectedPage ,),
     );
   }
 

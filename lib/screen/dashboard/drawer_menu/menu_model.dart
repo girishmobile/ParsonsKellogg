@@ -1,13 +1,17 @@
+import 'package:flutter/cupertino.dart';
+
 class MenuModel {
   String? title;
   int titleIndex = -1;
   bool isExpanded;
+  Widget ? icon;
 
   List<SubMenuItem>? subMenuItem;
 
   MenuModel(
       {this.title,
       this.subMenuItem,
+        this.icon,
       required this.titleIndex,
       this.isExpanded = false});
 }
