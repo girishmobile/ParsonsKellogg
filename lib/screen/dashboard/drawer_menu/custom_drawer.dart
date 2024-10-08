@@ -9,8 +9,8 @@ import 'package:parsonskellogg/screen/dashboard/drawer_menu/menu_model.dart';
 import 'package:provider/provider.dart';
 
 class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({super.key});
-
+   const CustomDrawer({super.key,required this.onSelectedPage});
+  final Function(String) onSelectedPage;
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.sizeOf(context);
@@ -61,16 +61,25 @@ class CustomDrawer extends StatelessWidget {
                   return Container(
                     child: commonListView(
                         item: item,
+                        leading: items.value.icon,
                         initiallyExpanded: index == provider.selected,
                         key: Key(provider.selected.toString()),
                         onExpansionChanged: (bool expanded) {
+                          onSelectedPage('Header_${item.title.toString()}');
+                         // print('=================================header=====index#${item.title}');
                           if (expanded) {
                             menuProvider.setExpandIndex = index;
+                            //Navigator.of(context).pop();
+
                           }
+                          if( item.subMenuItem == null ){
+                            Navigator.of(context).pop();
+                          }
+
                         },
                         showTrailingIcon:
                             item.subMenuItem != null ? true : false,
-                        children: buildSubItems(item.subMenuItem, provider),
+                        children: buildSubItems(item.subMenuItem, provider,onSelectedPage),
                         isSelected: isSelected,
                         menuProvider: menuProvider,
                         index: index),
@@ -85,7 +94,7 @@ class CustomDrawer extends StatelessWidget {
   }
 
   List<Widget> buildSubItems(
-      List<SubMenuItem>? subItems, MenuProvider menuProvider) {
+      List<SubMenuItem>? subItems, MenuProvider menuProvider, final Function(String) onSelectedPage) {
     if (subItems == null) return [];
 
     return subItems.asMap().entries.map<Widget>((subItem) {
@@ -97,10 +106,11 @@ class CustomDrawer extends StatelessWidget {
             item: item,
             showLeadingIcon: false,
             onExpansionChanged: (bool expanded) {
+              onSelectedPage('child_${item.title.toString()}');
               menuProvider.setSubExpandIndex = index;
             },
             showTrailingIcon: item.subOrMenuItem != null ? true : false,
-            children: buildSubSubItems(item.subOrMenuItem, menuProvider),
+            children: buildSubSubItems(item.subOrMenuItem, menuProvider,onSelectedPage),
             isSelected: isSelected,
             menuProvider: menuProvider,
             index: index),
@@ -109,7 +119,7 @@ class CustomDrawer extends StatelessWidget {
   }
 
   List<Widget> buildSubSubItems(
-      List<SubORMenuItem>? subSubItems, MenuProvider menuProvider) {
+      List<SubORMenuItem>? subSubItems, MenuProvider menuProvider,final Function(String) onSelectedPage) {
     if (subSubItems == null) return [];
     return subSubItems.asMap().entries.map<Widget>((subSubItem) {
       int index = subSubItem.key;
@@ -125,6 +135,7 @@ class CustomDrawer extends StatelessWidget {
             menuProvider: menuProvider,
             showTrailingIcon: false,
             onExpansionChanged: (bool expanded) {
+              onSelectedPage('sub_child_${item.title.toString()}');
               menuProvider.setSubSubExpandIndex = index;
             },
             index: index),
@@ -140,6 +151,7 @@ class CustomDrawer extends StatelessWidget {
       required bool showTrailingIcon,
       double? left,
       Key? key,
+        Widget? leading,
       Color? colorBg,
       bool? showLeadingIcon = true,
       bool? isHeading = false,
@@ -152,15 +164,13 @@ class CustomDrawer extends StatelessWidget {
       key: key,
       collapsedBackgroundColor: Colors.white,
       backgroundColor: colorBg,
+      iconColor: colorText,
       shape: const Border(),
       initiallyExpanded: initiallyExpanded,
       visualDensity: const VisualDensity(vertical: -4),
       collapsedIconColor: Colors.grey,
       leading: showLeadingIcon ?? true
-          ? Icon(
-              Icons.inventory,
-              color: isSelected ? Colors.black : Colors.grey,
-            )
+          ? leading
           : const SizedBox.shrink(),
       onExpansionChanged: onExpansionChanged,
       showTrailingIcon:

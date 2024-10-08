@@ -44,9 +44,10 @@ ThemeData lightTheme = ThemeData.from(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       backgroundColor: Colors.green,
+      elevation: 0,
       foregroundColor: Colors.white,
       textStyle: GoogleFonts.outfit(
-        fontSize: 18,
+        fontSize: 14,
         fontWeight: FontWeight.bold,
         letterSpacing: 1.2,
       ),
@@ -96,10 +97,11 @@ ThemeData darkTheme = ThemeData.from(
 ).copyWith(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
+      elevation: 0,
       backgroundColor: Colors.black54,
       foregroundColor: Colors.white,
       textStyle: GoogleFonts.outfit(
-        fontSize: 18,
+        fontSize: 14,
         fontWeight: FontWeight.bold,
         letterSpacing: 1.2,
       ),

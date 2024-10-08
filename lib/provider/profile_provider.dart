@@ -148,15 +148,6 @@ class ProfileProvider extends ChangeNotifier {
   }
 
   // You can add methods to modify the data and notify listeners
-  void addActivityLog(Map<String, dynamic> newLog) {
-    _activityLogs.add(newLog);
-    notifyListeners();
-  }
-
-  void removeActivityLog(int index) {
-    _activityLogs.removeAt(index);
-    notifyListeners();
-  }
 
   void sortActivityLogs<T>(
       Comparable<T> Function(Map<String, dynamic> log) getField,

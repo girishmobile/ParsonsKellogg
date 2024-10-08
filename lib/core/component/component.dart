@@ -32,6 +32,7 @@ loadAssetImage({required String path, double? width, double? height}) {
 TextStyle commonTextStyle(
     {Color? color, FontWeight? fontWeight, double? fontSize}) {
   return GoogleFonts.inter(
+
       color: color ?? colorText,
       fontWeight: fontWeight ?? FontWeight.w500,
       fontSize: fontSize ?? fourteen);
@@ -190,11 +191,13 @@ commonButtonStyle(
 commonText({
   String? text,
   double? fontSize,
+  TextAlign? textAlign,
   FontWeight? fontWeight,
   Color? colorText,
 }) {
   return CommonTextWidget(
     text: text,
+     textAlign: textAlign,
     style: commonTextStyle(
         fontSize: fontSize ?? 10, color: colorText, fontWeight: fontWeight),
   );
@@ -202,10 +205,10 @@ commonText({
 
 commonColText({String? text}) {
   return commonText(
-      fontSize: 8,
+      fontSize: 11,
       text: text ?? user,
-      fontWeight: FontWeight.w800,
-      colorText: Colors.grey.withOpacity(zero50));
+      fontWeight: FontWeight.w900,
+      colorText: Colors.grey);
 }
 
 showAlertDialog({required BuildContext context,double? dialogHeight,double ?dialogWidth,required Widget child }){

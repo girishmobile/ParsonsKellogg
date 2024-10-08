@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:parsonskellogg/core/common/common_scaffold.dart';
-import 'package:parsonskellogg/data/dummy_dashboar_items.dart';
-import 'package:parsonskellogg/models/dashboard_item.dart';
 import 'package:parsonskellogg/provider/dashboard_provider.dart';
-import 'package:parsonskellogg/widgets/dashboard/dashboard_grid_item.dart';
 import 'package:provider/provider.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -17,7 +14,8 @@ class DashboardScreen extends StatelessWidget {
         return CommonScaffold(
           showDrawer: true,
           onSelectedPage: (String  value) {
-            provider.updatePage=value;
+
+          provider.updatePage=value;
           },
           child: provider.currentPage,
         );
