@@ -9,7 +9,7 @@ import 'package:parsonskellogg/screen/dashboard/drawer_menu/menu_model.dart';
 import 'package:provider/provider.dart';
 
 class CustomDrawer extends StatelessWidget {
-   const CustomDrawer({super.key,required this.onSelectedPage});
+  const CustomDrawer({super.key, required this.onSelectedPage});
   final Function(String) onSelectedPage;
   @override
   Widget build(BuildContext context) {
@@ -66,20 +66,19 @@ class CustomDrawer extends StatelessWidget {
                         key: Key(provider.selected.toString()),
                         onExpansionChanged: (bool expanded) {
                           onSelectedPage('Header_${item.title.toString()}');
-                         // print('=================================header=====index#${item.title}');
+                          // print('=================================header=====index#${item.title}');
                           if (expanded) {
                             menuProvider.setExpandIndex = index;
                             //Navigator.of(context).pop();
-
                           }
-                          if( item.subMenuItem == null ){
+                          if (item.subMenuItem == null) {
                             Navigator.of(context).pop();
                           }
-
                         },
                         showTrailingIcon:
                             item.subMenuItem != null ? true : false,
-                        children: buildSubItems(item.subMenuItem, provider,onSelectedPage),
+                        children: buildSubItems(
+                            item.subMenuItem, provider, onSelectedPage),
                         isSelected: isSelected,
                         menuProvider: menuProvider,
                         index: index),
@@ -93,8 +92,8 @@ class CustomDrawer extends StatelessWidget {
     });
   }
 
-  List<Widget> buildSubItems(
-      List<SubMenuItem>? subItems, MenuProvider menuProvider, final Function(String) onSelectedPage) {
+  List<Widget> buildSubItems(List<SubMenuItem>? subItems,
+      MenuProvider menuProvider, final Function(String) onSelectedPage) {
     if (subItems == null) return [];
 
     return subItems.asMap().entries.map<Widget>((subItem) {
@@ -110,7 +109,8 @@ class CustomDrawer extends StatelessWidget {
               menuProvider.setSubExpandIndex = index;
             },
             showTrailingIcon: item.subOrMenuItem != null ? true : false,
-            children: buildSubSubItems(item.subOrMenuItem, menuProvider,onSelectedPage),
+            children: buildSubSubItems(
+                item.subOrMenuItem, menuProvider, onSelectedPage),
             isSelected: isSelected,
             menuProvider: menuProvider,
             index: index),
@@ -118,8 +118,8 @@ class CustomDrawer extends StatelessWidget {
     }).toList();
   }
 
-  List<Widget> buildSubSubItems(
-      List<SubORMenuItem>? subSubItems, MenuProvider menuProvider,final Function(String) onSelectedPage) {
+  List<Widget> buildSubSubItems(List<SubORMenuItem>? subSubItems,
+      MenuProvider menuProvider, final Function(String) onSelectedPage) {
     if (subSubItems == null) return [];
     return subSubItems.asMap().entries.map<Widget>((subSubItem) {
       int index = subSubItem.key;
@@ -151,7 +151,7 @@ class CustomDrawer extends StatelessWidget {
       required bool showTrailingIcon,
       double? left,
       Key? key,
-        Widget? leading,
+      Widget? leading,
       Color? colorBg,
       bool? showLeadingIcon = true,
       bool? isHeading = false,
@@ -169,9 +169,7 @@ class CustomDrawer extends StatelessWidget {
       initiallyExpanded: initiallyExpanded,
       visualDensity: const VisualDensity(vertical: -4),
       collapsedIconColor: Colors.grey,
-      leading: showLeadingIcon ?? true
-          ? leading
-          : const SizedBox.shrink(),
+      leading: showLeadingIcon ?? true ? leading : const SizedBox.shrink(),
       onExpansionChanged: onExpansionChanged,
       showTrailingIcon:
           showTrailingIcon /*item.subMenuItem != null ? true : false*/,

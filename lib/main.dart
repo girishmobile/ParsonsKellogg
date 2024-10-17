@@ -22,31 +22,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<ThemeProvider>(create: (_) => ThemeProvider()),
         ChangeNotifierProvider<AuthProvider>(create: (_) => AuthProvider()),
         ChangeNotifierProvider<MenuProvider>(create: (_) => MenuProvider()),
-        ChangeNotifierProvider<DashboardProvider>(create: (_) => DashboardProvider()),
+        ChangeNotifierProvider<DashboardProvider>(
+            create: (_) => DashboardProvider()),
         ChangeNotifierProvider<CommonProvider>(create: (_) => CommonProvider()),
-        ChangeNotifierProvider<ProfileProvider>(create: (_) => ProfileProvider()),
-
+        ChangeNotifierProvider<ProfileProvider>(
+            create: (_) => ProfileProvider()),
       ],
-      child: Consumer<ThemeProvider>(
-        builder: (context,themeProvider,child) {
-          return MaterialApp(
-            title: appName,
-            theme: lightTheme,
-            debugShowCheckedModeBanner: false,
-            onGenerateRoute: RouterGenerated.generateRoute,
-            initialRoute: RouteName.splashScreen,
-            darkTheme: darkTheme,
-            themeMode: ThemeMode.system,
-          );
-        }
-      ),
+      child: Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
+        return MaterialApp(
+          title: appName,
+          theme: lightTheme,
+          debugShowCheckedModeBanner: false,
+          onGenerateRoute: RouterGenerated.generateRoute,
+          initialRoute: RouteName.splashScreen,
+          darkTheme: darkTheme,
+          themeMode: ThemeMode.system,
+        );
+      }),
     );
   }
 }
-

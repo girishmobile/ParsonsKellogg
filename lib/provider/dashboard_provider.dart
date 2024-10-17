@@ -5,9 +5,11 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:parsonskellogg/core/component/component.dart';
 
 import 'package:parsonskellogg/screen/dashboard/dashboard_page/dashboard_page.dart';
+import 'package:parsonskellogg/screen/master_product_feed/master_dashboard_screen.dart';
 import 'package:parsonskellogg/screen/profile/profile_view.dart';
 
 import '../models/dashboard_item.dart';
+
 class OrderData {
   final String state;
   final int orders;
@@ -15,7 +17,8 @@ class OrderData {
 
   OrderData({required this.state, required this.orders, required this.revenue});
 }
-class DashboardProvider extends ChangeNotifier{
+
+class DashboardProvider extends ChangeNotifier {
   int? _hoveredIndex;
 
   int? get hoveredIndex => _hoveredIndex;
@@ -29,14 +32,15 @@ class DashboardProvider extends ChangeNotifier{
 
   Widget get currentPage => _currentPage;
   set updatePage(String value) {
-    if(value=="Header_Dashboard"){
+    if (value == "Header_Dashboard") {
       _currentPage = const DashboardPage();
-    }
-   else if (value == "profile") {
+    } else if (value == 'child_Dashboard') {
+      _currentPage = const MasterDashboardScreen();
+    } else if (value == "profile") {
       _currentPage = const ProfileView();
     } else {
       _currentPage = Center(
-        child: commonText(text: "no"),
+        child: commonText(text: "page not found"),
       ); // Default page or other pages
     }
     notifyListeners(); // Notify listeners to rebuild
@@ -79,19 +83,13 @@ class DashboardProvider extends ChangeNotifier{
     'Current years',
     'Previous Half Year',
     'Previous Year',
-
   ];
-
 
   final List<String> itemsAllStore = [
     'All Store ',
     '24 On tour',
     'Uniti',
-
   ];
-
-
-
 
   //Dashboard
   List<DashboardItem> get dashboardItem => _dashboardItem;
@@ -151,93 +149,105 @@ class DashboardProvider extends ChangeNotifier{
   final List<DashboardItem> _dashboardWidgetItem = [
     const DashboardItem(
       id: 'd1',
-      imageUrl: "https://storagemedia.corporategear.com/storagemedia/common/chartimages/Last10Orders.png",
+      imageUrl:
+          "https://storagemedia.corporategear.com/storagemedia/common/chartimages/Last10Orders.png",
       title: 'Last 10 orders',
-      iconName: Icons.drag_indicator ,
+      iconName: Icons.drag_indicator,
     ),
     const DashboardItem(
       id: 'd1',
-      imageUrl: "https://storagemedia.corporategear.com/storagemedia/common/chartimages/Last10Orders.png",
+      imageUrl:
+          "https://storagemedia.corporategear.com/storagemedia/common/chartimages/Last10Orders.png",
       title: 'Order By Store',
-      iconName: Icons.drag_indicator ,
+      iconName: Icons.drag_indicator,
     ),
     const DashboardItem(
       id: 'd1',
-      imageUrl: "https://storagemedia.corporategear.com/storagemedia/common/chartimages/DRAFTPAGES.png",
+      imageUrl:
+          "https://storagemedia.corporategear.com/storagemedia/common/chartimages/DRAFTPAGES.png",
       title: 'Draft Page',
-      iconName: Icons.drag_indicator ,
+      iconName: Icons.drag_indicator,
     ),
     const DashboardItem(
       id: 'd1',
-      imageUrl: "https://storagemedia.corporategear.com/storagemedia/common/chartimages/MetaKeywords.png",
+      imageUrl:
+          "https://storagemedia.corporategear.com/storagemedia/common/chartimages/MetaKeywords.png",
       title: 'Meta Keyword',
-      iconName: Icons.drag_indicator ,
+      iconName: Icons.drag_indicator,
     ),
     const DashboardItem(
       id: 'd1',
-      imageUrl: "https://storagemedia.corporategear.com/storagemedia/common/chartimages/MetaKeywords.png",
+      imageUrl:
+          "https://storagemedia.corporategear.com/storagemedia/common/chartimages/MetaKeywords.png",
       title: 'Page Title',
-      iconName: Icons.drag_indicator ,
+      iconName: Icons.drag_indicator,
     ),
     const DashboardItem(
       id: 'd1',
-      imageUrl: "https://storagemedia.corporategear.com/storagemedia/common/chartimages/Top10ItemsbySales.png",
+      imageUrl:
+          "https://storagemedia.corporategear.com/storagemedia/common/chartimages/Top10ItemsbySales.png",
       title: 'Top 10 Items by Sales',
-      iconName: Icons.drag_indicator ,
+      iconName: Icons.drag_indicator,
     ),
-
     const DashboardItem(
       id: 'd1',
-      imageUrl: "https://storagemedia.corporategear.com/storagemedia/common/chartimages/Top5Stores.png",
+      imageUrl:
+          "https://storagemedia.corporategear.com/storagemedia/common/chartimages/Top5Stores.png",
       title: 'Top 5 Stores',
-      iconName: Icons.drag_indicator ,
+      iconName: Icons.drag_indicator,
     ),
     const DashboardItem(
       id: 'd1',
-      imageUrl: "https://storagemedia.corporategear.com/storagemedia/common/chartimages/CustomerOrderReport.png",
+      imageUrl:
+          "https://storagemedia.corporategear.com/storagemedia/common/chartimages/CustomerOrderReport.png",
       title: 'Customer Order Report',
-      iconName: Icons.drag_indicator ,
+      iconName: Icons.drag_indicator,
     ),
     const DashboardItem(
       id: 'd1',
-      imageUrl: "https://storagemedia.corporategear.com/storagemedia/common/chartimages/OrderReport.png",
+      imageUrl:
+          "https://storagemedia.corporategear.com/storagemedia/common/chartimages/OrderReport.png",
       title: 'Order Report',
-      iconName: Icons.drag_indicator ,
+      iconName: Icons.drag_indicator,
     ),
     const DashboardItem(
       id: 'd1',
-      imageUrl: "https://storagemedia.corporategear.com/storagemedia/common/chartimages/ProductNAVSyncStatusReport.png",
+      imageUrl:
+          "https://storagemedia.corporategear.com/storagemedia/common/chartimages/ProductNAVSyncStatusReport.png",
       title: 'Product NAV Sync Status Report',
-      iconName: Icons.drag_indicator ,
+      iconName: Icons.drag_indicator,
     ),
     const DashboardItem(
       id: 'd1',
-      imageUrl: "https://storagemedia.corporategear.com/storagemedia/common/chartimages/ProductStatusReport.png",
+      imageUrl:
+          "https://storagemedia.corporategear.com/storagemedia/common/chartimages/ProductStatusReport.png",
       title: 'Product Status Report',
-      iconName: Icons.drag_indicator ,
+      iconName: Icons.drag_indicator,
     ),
     const DashboardItem(
       id: 'd1',
-      imageUrl: "https://storagemedia.corporategear.com/storagemedia/common/chartimages/PUBLISHEDPAGES.png",
+      imageUrl:
+          "https://storagemedia.corporategear.com/storagemedia/common/chartimages/PUBLISHEDPAGES.png",
       title: 'Published Page',
-      iconName: Icons.drag_indicator ,
+      iconName: Icons.drag_indicator,
     ),
     const DashboardItem(
       id: 'd1',
-      imageUrl: "https://storagemedia.corporategear.com/storagemedia/common/chartimages/SECUREPAGES.png",
+      imageUrl:
+          "https://storagemedia.corporategear.com/storagemedia/common/chartimages/SECUREPAGES.png",
       title: 'Secure Page',
-      iconName: Icons.drag_indicator ,
+      iconName: Icons.drag_indicator,
     ),
     const DashboardItem(
       id: 'd1',
-      imageUrl: "https://storagemedia.corporategear.com/storagemedia/common/chartimages/Top10CustomerApplicationRequest.png",
+      imageUrl:
+          "https://storagemedia.corporategear.com/storagemedia/common/chartimages/Top10CustomerApplicationRequest.png",
       title: 'Top 10 Customer Application Request',
-      iconName: Icons.drag_indicator ,
+      iconName: Icons.drag_indicator,
     ),
   ];
 
   //top ten record
-
 
   int _sortColumnIndex = 0;
 
@@ -252,7 +262,6 @@ class DashboardProvider extends ChangeNotifier{
   int get sortColumnIndex => _sortColumnIndex;
 
   bool get isAscending => _isAscending;
-
 
   set setRowPerPageValue(int value) {
     _rowsPerPageValue = value;
@@ -289,6 +298,7 @@ class DashboardProvider extends ChangeNotifier{
     });
     notifyListeners();
   }
+
   List<Map<String, dynamic>> get dashboardTopList => _dashboardTopList;
   final List<Map<String, dynamic>> _dashboardTopList = [
     {
@@ -385,10 +395,10 @@ class DashboardProvider extends ChangeNotifier{
     empty = total - filled;
   }
 
-
 //Map
 
-  LatLng _center = const LatLng(37.7749, -122.4194); // Default location (San Francisco)
+  LatLng _center =
+      const LatLng(37.7749, -122.4194); // Default location (San Francisco)
   Set<Marker> _markers = {};
   GoogleMapController? _controller;
 
