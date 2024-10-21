@@ -37,7 +37,6 @@ class UserProfileWidget extends StatelessWidget {
             },
             fontSize: thirteen,
             title: "$firstName*",
-
             top: size.height * zero02),
         commonTextFieldWithTextView(
             hint: "Sameer",
@@ -51,7 +50,6 @@ class UserProfileWidget extends StatelessWidget {
         commonTextFieldWithTextView(
             hint: "Sameer",
             fontSize: thirteen,
-
             title: "$phoneNo*",
             controller: provider.tetPhone,
             onChanged: (value) {
@@ -68,16 +66,63 @@ class UserProfileWidget extends StatelessWidget {
               Icons.keyboard_arrow_down,
               color: Colors.grey,
             ),
-            onChanged: (value) {
-            },
+            onChanged: (value) {},
             top: size.height * zero02),
         SizedBox(
           height: size.height * zero01,
         ),
-
         const Align(
             alignment: Alignment.topRight,
-            child: CommonButtonWidget(text: update,)),
+            child: CommonButtonWidget(
+              text: update,
+            )),
+        Column(
+          children: [
+            Row(
+              children: [
+                Checkbox(
+                  visualDensity: const VisualDensity(vertical: -4),
+                  value: provider.isChecked,
+                  onChanged: provider.toggleCheckbox,
+                ),
+                const CommonTextWidget(
+                  text: superUsers,
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Checkbox(
+                  visualDensity: const VisualDensity(vertical: -4),
+                  value: provider.isCheckedReceive,
+                  onChanged: provider.toggleCheckReview,
+                ),
+                const Expanded(
+                  child: CommonTextWidget(
+                    text: acceptReceive,
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
+        CommonTextWidget(
+          top: size.height * zero02,
+          text: email,
+          style:
+              commonTextStyle(fontSize: fourteen, fontWeight: FontWeight.w600),
+        ),
+        CommonTextWidget(
+          top: ten,
+          text: "sameer@redefinesolutions.com",
+          style: commonTextStyle(fontSize: twelve),
+        ),
+      ],
+    );
+  }
+}
+//REMOVED CODE
+    /*
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -104,18 +149,4 @@ class UserProfileWidget extends StatelessWidget {
             ),
           ],
         ),
-        CommonTextWidget(
-          top: size.height * zero02,
-          text: email,
-          style:
-              commonTextStyle(fontSize: fourteen, fontWeight: FontWeight.w600),
-        ),
-        CommonTextWidget(
-          top: ten,
-          text: "sameer@redefinesolutions.com",
-          style: commonTextStyle(fontSize: twelve),
-        ),
-      ],
-    );
-  }
-}
+       */

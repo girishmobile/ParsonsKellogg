@@ -212,3 +212,6 @@ const List<Map<String, String>> formBuilder = [
     'count': '158',
   },
 ];
+//------------------------------------ Master Product Feed ---------------------------------------------------
+
+const List<Map<String, Map<String, dynamic>>> masterFeed = [];

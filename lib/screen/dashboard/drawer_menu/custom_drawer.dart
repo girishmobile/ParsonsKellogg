@@ -77,8 +77,8 @@ class CustomDrawer extends StatelessWidget {
                         },
                         showTrailingIcon:
                             item.subMenuItem != null ? true : false,
-                        children: buildSubItems(
-                            item.subMenuItem, provider, onSelectedPage),
+                        children: buildSubItems(item.subMenuItem, context,
+                            provider, onSelectedPage),
                         isSelected: isSelected,
                         menuProvider: menuProvider,
                         index: index),
@@ -92,7 +92,7 @@ class CustomDrawer extends StatelessWidget {
     });
   }
 
-  List<Widget> buildSubItems(List<SubMenuItem>? subItems,
+  List<Widget> buildSubItems(List<SubMenuItem>? subItems, BuildContext context,
       MenuProvider menuProvider, final Function(String) onSelectedPage) {
     if (subItems == null) return [];
 
@@ -107,6 +107,9 @@ class CustomDrawer extends StatelessWidget {
             onExpansionChanged: (bool expanded) {
               onSelectedPage('child_${item.title.toString()}');
               menuProvider.setSubExpandIndex = index;
+              if (item.subOrMenuItem == null) {
+                Navigator.of(context).pop();
+              }
             },
             showTrailingIcon: item.subOrMenuItem != null ? true : false,
             children: buildSubSubItems(

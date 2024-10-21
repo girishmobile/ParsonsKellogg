@@ -2,20 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:parsonskellogg/core/constants/num_constants.dart';
 
 class CommonTableView extends StatelessWidget {
-  const CommonTableView(
-      {super.key,
-      required this.rowsPerPage,
-      this.sortColumnIndex,
-      this.sortAscending = true,
-      this.onRowsPerPageChange,
-      required this.columns,
-      required this.source,
-      this.header});
+  const CommonTableView({
+    super.key,
+    required this.rowsPerPage,
+    this.sortColumnIndex,
+    this.sortAscending = true,
+    this.onRowsPerPageChange,
+    required this.columns,
+    required this.source,
+    this.header,
+  });
 
   final int rowsPerPage;
-
   final int? sortColumnIndex;
-
   final bool sortAscending;
   final void Function(int?)? onRowsPerPageChange;
   final List<DataColumn> columns;
@@ -46,7 +45,6 @@ class CommonTableView extends StatelessWidget {
         child: SingleChildScrollView(
           child: PaginatedDataTable(
               header: header,
-
               showEmptyRows: false,
               rowsPerPage: rowsPerPage,
               sortColumnIndex: sortColumnIndex,
