@@ -123,7 +123,7 @@ class ProfileProvider extends ChangeNotifier {
   int _rowsPerPageValue = 0;
   bool _isAscending = true;
 
-  final int _rowsPerPage = PaginatedDataTable.defaultRowsPerPage;
+  final int _rowsPerPage = 15; // PaginatedDataTable.defaultRowsPerPage;
 
   int get rowsPerPage => _rowsPerPage;
 
@@ -178,7 +178,6 @@ class ProfileProvider extends ChangeNotifier {
   List<Map<String, dynamic>> get filteredData => _filteredData;
 
   void filter(String query) {
-
     if (query.isEmpty) {
       _filteredData = List.from(_activityLogs);
     } else {
@@ -306,7 +305,6 @@ class ProfileProvider extends ChangeNotifier {
     // Add more data entries here
   ];
 
-
   //========================================for columns dialog
 
   Map<String, bool> _columnsVisibility = {
@@ -331,14 +329,15 @@ class ProfileProvider extends ChangeNotifier {
       return _columnsVisibility.keys.toList();
     }
     return _columnsVisibility.keys
-        .where((column) => column.toLowerCase().contains(_searchTerm.toLowerCase()))
+        .where((column) =>
+            column.toLowerCase().contains(_searchTerm.toLowerCase()))
         .toList();
   }
+
   void updateSearchTerm(String term) {
     _searchTerm = term;
     notifyListeners();
   }
-
 }
 
 class SwitchItem {

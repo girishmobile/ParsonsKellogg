@@ -52,8 +52,7 @@ ThemeData lightTheme = ThemeData.from(
         letterSpacing: 1.2,
       ),
     ),
-  ),
-);
+  ));
 
 ThemeData darkTheme = ThemeData.from(
   useMaterial3: false,
@@ -105,6 +104,5 @@ ThemeData darkTheme = ThemeData.from(
         fontWeight: FontWeight.bold,
         letterSpacing: 1.2,
       ),
-    ),
-  ),
-);
+
+)));

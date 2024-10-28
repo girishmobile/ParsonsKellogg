@@ -9,7 +9,8 @@ import 'package:parsonskellogg/provider/profile_provider.dart';
 import 'package:parsonskellogg/screen/profile/account_activity/dialog/edit_columns_dialog.dart';
 
 class CommonTableSearchView extends StatelessWidget {
-  const CommonTableSearchView({super.key, required this.tetSearch, this.onChanged});
+  const CommonTableSearchView(
+      {super.key, required this.tetSearch, this.onChanged});
 
   final TextEditingController tetSearch;
 
@@ -35,31 +36,32 @@ class CommonTableSearchView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               buildIconContainer(
-                onTap: (){
-                  showAlertDialog(
-                      dialogHeight: size.height*0.7,
-                      dialogWidth:size.width*0.9 ,
-                      context: context, child: const EditColumnsDialog());
-                },
-                  context: context, icon: icEditColum, label: editColumns),
+                  onTap: () {
+                    showAlertDialog(
+                        dialogHeight: size.height * 0.7,
+                        dialogWidth: size.width * 0.9,
+                        context: context,
+                        child: const EditColumnsDialog());
+                  },
+                  context: context,
+                  icon: icEditColum,
+                  label: editColumns),
               buildIconContainer(
                   context: context, icon: icDownload, label: download),
               buildIconContainer(context: context, icon: icRefresh),
-
-
             ],
           );
         }),
         Row(
           children: [
             SizedBox(
-
               child: buildIconContainer(
                   context: context, icon: icFilter, label: moreFilter),
             ),
-            SizedBox(width: 20,),
-            buildIconContainer(
-                context: context, icon: icDownload, label: save),
+            SizedBox(
+              width: 20,
+            ),
+            buildIconContainer(context: context, icon: icDownload, label: save),
           ],
         )
       ],
@@ -84,21 +86,27 @@ class CommonTableSearchView extends StatelessWidget {
   }
 
   Widget buildIconContainer(
-      {required BuildContext context, String? icon, String? label,VoidCallback? onTap}) {
+      {required BuildContext context,
+      String? icon,
+      String? label,
+      VoidCallback? onTap}) {
     return commonInkWell(
-      onTap:onTap ,
+      onTap: onTap,
       child: Container(
         margin: const EdgeInsets.only(top: ten),
         padding: const EdgeInsets.all(ten),
         decoration: commonBoxDecoration(
-            border: Border.all(color: Colors.grey.withOpacity(zero20), width: one),
+            border:
+                Border.all(color: Colors.grey.withOpacity(zero20), width: one),
             borderRadius: BorderRadius.circular(five)),
         child: Row(
           children: [
-            loadAssetImage(path: icon ?? icEditColum, width: twentyFour, height: twentyFour),
+            loadAssetImage(
+                path: icon ?? icEditColum,
+                width: twentyFour,
+                height: twentyFour),
             CommonTextWidget(
               left: five,
-
               text: label,
               style: commonTextStyle(fontSize: eleven, color: Colors.black),
             )
