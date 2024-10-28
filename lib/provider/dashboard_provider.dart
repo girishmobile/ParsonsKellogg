@@ -5,6 +5,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:parsonskellogg/core/component/component.dart';
 
 import 'package:parsonskellogg/screen/dashboard/dashboard_page/dashboard_page.dart';
+import 'package:parsonskellogg/screen/master_product_feed/core_product_feed/core_product_feed.dart';
 import 'package:parsonskellogg/screen/master_product_feed/master_dashboard_screen.dart';
 import 'package:parsonskellogg/screen/master_product_feed/product_database_screen.dart';
 import 'package:parsonskellogg/screen/profile/profile_view.dart';
@@ -34,12 +35,15 @@ class DashboardProvider extends ChangeNotifier {
 //****************************************** Navigation of Menu Item *******************************************
   Widget get currentPage => _currentPage;
   set updatePage(String value) {
+    print('=============Value: $value ============');
     if (value == "Header_Dashboard") {
       _currentPage = const DashboardPage();
     } else if (value == 'child_Dashboard') {
       _currentPage = const MasterDashboardScreen();
     } else if (value == 'child_Product Database') {
       _currentPage = const ProductDatabaseScreen();
+    } else if (value == 'child_Core ProductFeed') {
+      _currentPage = const CoreProductFeed();
     } else if (value == "profile") {
       _currentPage = const ProfileView();
     } else {
