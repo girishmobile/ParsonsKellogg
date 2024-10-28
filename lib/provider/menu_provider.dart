@@ -58,13 +58,13 @@ class MenuProvider extends ChangeNotifier {
         SubMenuItem(index: 0, title: "Dashboard"),
         SubMenuItem(index: 1, title: "Product Database"),
         SubMenuItem(index: 2, title: "Core ProductFeed"),
-        SubMenuItem(index: 3, title: "Configurator", isBold: true,subOrMenuItem: [
+        /*SubMenuItem(index: 3, title: "Configurator", isBold: true,subOrMenuItem: [
 
           SubORMenuItem(index: 1001, title: "ddd"),
           SubORMenuItem(index: 1002, title: "ddd Database"),
           SubORMenuItem(index: 1003, title: "Cordddde ProductFeed"),
-        ]),
-        SubMenuItem(index: 4, title: "Setting", isBold: true),
+        ]),*/
+        //SubMenuItem(index: 4, title: "Setting", isBold: true),
       ]),
       MenuModel(
           icon: const Icon(Icons.store),
