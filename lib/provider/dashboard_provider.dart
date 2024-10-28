@@ -11,6 +11,7 @@ import 'package:parsonskellogg/screen/report/report_screen.dart';
 import 'package:parsonskellogg/screen/setting/setting_dashboard_screen.dart';
 
 import '../models/dashboard_item.dart';
+import '../screen/setting/role/role_setting_screen.dart';
 
 class OrderData {
   final String state;
@@ -56,6 +57,13 @@ class DashboardProvider extends ChangeNotifier {
     else if (value == "Setting_Dashboard") {
       _currentPage = const SettingDashboardScreen();
     }
+    else if (value == "Setting_Profile") {
+      _currentPage = const ProfileView();
+    }
+    else if (value == "Setting_Roles") {
+      _currentPage = const RoleSettingScreen();
+    }
+
     else {
       _currentPage = Center(
         child: commonText(text: "page not found"),
@@ -671,5 +679,7 @@ class DashboardProvider extends ChangeNotifier {
       'color': const Color.fromRGBO(232, 24, 104, 1.0)
     },
   ];
+
+
 
 }
