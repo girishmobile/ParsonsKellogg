@@ -3,12 +3,14 @@ import 'package:parsonskellogg/core/common/common_text_widget.dart';
 import 'package:parsonskellogg/screen/master_product_feed/provider/product_database_provider.dart';
 
 class SimpleSearchbar extends StatelessWidget {
-  const SimpleSearchbar(
-      {super.key,
-      required this.prodProvider,
-      this.onChanged,
-      required this.onMoreFilter});
-
+  const SimpleSearchbar({
+    super.key,
+    required this.prodProvider,
+    this.onChanged,
+    required this.onMoreFilter,
+    required this.title,
+  });
+  final String title;
   final void Function(String)? onChanged;
 
   final VoidCallback onMoreFilter;
@@ -25,7 +27,7 @@ class SimpleSearchbar extends StatelessWidget {
           color: Colors.white,
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           child: CommonTextWidget(
-            text: 'Produt Database',
+            text: title,
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w700,
