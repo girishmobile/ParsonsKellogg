@@ -41,11 +41,11 @@ class DashboardProvider extends ChangeNotifier {
     print('=============Value: $value ============');
     if (value == "Header_Dashboard") {
       _currentPage = const DashboardPage();
-    } else if (value == 'child_Dashboard') {
+    } else if (value == 'Master Product Feed_Dashboard') {
       _currentPage = const MasterDashboardScreen();
-    } else if (value == 'child_Product Database') {
+    } else if (value == 'Master Product Feed_Product Database') {
       _currentPage = const ProductDatabaseScreen();
-    } else if (value == 'child_Core ProductFeed') {
+    } else if (value == 'Master Product Feed_Core ProductFeed') {
       _currentPage = const CoreProductFeed();
     } else if (value == "Header_Report") {
       _currentPage = const ReportScreen();
