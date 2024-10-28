@@ -10,9 +10,6 @@ import 'package:parsonskellogg/provider/profile_provider.dart';
 import 'package:parsonskellogg/provider/theme_provider.dart';
 import 'package:parsonskellogg/theme/theme.dart';
 
-import 'package:parsonskellogg/provider/theme_notifier.dart';
-import 'package:parsonskellogg/screens/home_page.dart';
-import 'package:parsonskellogg/theme/custom_theme.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -39,16 +36,13 @@ class MyApp extends StatelessWidget {
       child: Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
         return MaterialApp(
           title: appName,
-          theme: lightTheme,
+        theme: lightTheme,
           debugShowCheckedModeBanner: false,
           onGenerateRoute: RouterGenerated.generateRoute,
           initialRoute: RouteName.splashScreen,
           darkTheme: darkTheme,
           themeMode: ThemeMode.system,
         );
-      }),
-    return MaterialApp(
-      home: const HomePage(),
-    );
+      }));
   }
 }
