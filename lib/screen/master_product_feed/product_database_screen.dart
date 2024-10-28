@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 //   final List<String> details;
 //   Item(this.title, this.details);
 // }
-
+///jljlkjkljlkjl
 class ProductDatabaseScreen extends StatelessWidget {
   const ProductDatabaseScreen({super.key});
 
