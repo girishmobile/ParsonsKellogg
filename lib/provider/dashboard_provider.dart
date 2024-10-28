@@ -1,13 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:parsonskellogg/core/component/component.dart';
-
 import 'package:parsonskellogg/screen/dashboard/dashboard_page/dashboard_page.dart';
 import 'package:parsonskellogg/screen/master_product_feed/master_dashboard_screen.dart';
 import 'package:parsonskellogg/screen/master_product_feed/product_database_screen.dart';
 import 'package:parsonskellogg/screen/profile/profile_view.dart';
+import 'package:parsonskellogg/screen/report/report_screen.dart';
 
 import '../models/dashboard_item.dart';
 
@@ -22,6 +21,11 @@ class OrderData {
 class DashboardProvider extends ChangeNotifier {
   int? _hoveredIndex;
 
+
+  String? _selectedValue;
+
+
+  String? get selectedValue => _selectedValue;
   int? get hoveredIndex => _hoveredIndex;
 
   void setHoveredIndex(int? index) {
@@ -33,6 +37,7 @@ class DashboardProvider extends ChangeNotifier {
 
 //****************************************** Navigation of Menu Item *******************************************
   Widget get currentPage => _currentPage;
+
   set updatePage(String value) {
     if (value == "Header_Dashboard") {
       _currentPage = const DashboardPage();
@@ -40,6 +45,8 @@ class DashboardProvider extends ChangeNotifier {
       _currentPage = const MasterDashboardScreen();
     } else if (value == 'child_Product Database') {
       _currentPage = const ProductDatabaseScreen();
+    } else if (value == "Header_Report") {
+      _currentPage = const ReportScreen();
     } else if (value == "profile") {
       _currentPage = const ProfileView();
     } else {
@@ -63,17 +70,22 @@ class DashboardProvider extends ChangeNotifier {
     _orders[state] = OrderData(state: state, orders: orders, revenue: revenue);
     notifyListeners();
   }
+
 //===============================for filter=================================
 
   String? _selectedValueDuration;
+
   String? get selectedValueDuration => _selectedValueDuration;
+
   set selectionValueDuration(String newPin) {
     _selectedValueDuration = newPin;
     notifyListeners();
   }
 
   String? _selectedValueAllStore;
+
   String? get selectedValueAllStore => _selectedValueAllStore;
+
   set selectionValueAllStore(String newPin) {
     _selectedValueAllStore = newPin;
     notifyListeners();
@@ -147,6 +159,7 @@ class DashboardProvider extends ChangeNotifier {
       iconName: Icons.people_alt_outlined,
     ),
   ];
+
 //==================================================================Dashboard Widget List
 
   List<DashboardItem> get dashboardWidgetItem => _dashboardWidgetItem;
@@ -261,6 +274,7 @@ class DashboardProvider extends ChangeNotifier {
 
   int get rowsPerPage => _rowsPerPage;
   int _rowsPerPageValue = 0;
+
   int get rowsPerPageValue => _rowsPerPageValue;
 
   int get sortColumnIndex => _sortColumnIndex;
@@ -407,10 +421,13 @@ class DashboardProvider extends ChangeNotifier {
   GoogleMapController? _controller;
 
   LatLng get center => _center;
+
   Set<Marker> get markers => _markers;
 
   String _mapStyle = '';
+
   String get mapStyle => _mapStyle;
+
   void updateMapController(GoogleMapController controller) {
     _controller = controller;
     _setMapStyle();
@@ -438,4 +455,110 @@ class DashboardProvider extends ChangeNotifier {
       notifyListeners(); // Notify listeners to update the state if necessary
     }
   }
+
+  //=======================Report
+
+  final List<double> productReadyScoreValues = [40, 60, 80, 100];
+  final List<String> productReadyScoreLabels = ['54', '61', '63', '100'];
+
+  final List<double> topBrandsValue = [20, 80];
+  final List<String> topBrandsLabels = ['Adidas', 'Patagonia'];
+
+  final List<Map<String, dynamic>> productStatusReportChartList = [
+    {
+      'category': 'Active',
+      'value': 30,
+      'color': Color.fromRGBO(134, 239, 172, 1)
+    },
+    {'category': 'Draft', 'value': 20, 'color': Color.fromRGBO(38, 60, 255, 1)},
+    {
+      'category': 'InActive',
+      'value': 50,
+      'color': Color.fromRGBO(253, 224, 71, 1)
+    },
+    {
+      'category': 'Pending',
+      'value': 90,
+      'color': Color.fromRGBO(125, 211, 252, 1)
+    },
+    {
+      'category': 'Archived',
+      'value': 50,
+      'color': Color.fromRGBO(252, 125, 195, 1.0)
+    },
+    {
+      'category': 'Discontinue',
+      'value': 0,
+      'color': Color.fromRGBO(154, 17, 106, 1.0)
+    },
+    {
+      'category': 'out of stock',
+      'value': 0,
+      'color': Color.fromRGBO(169, 193, 26, 1.0)
+    },
+    {
+      'category': 'Back order',
+      'value': 0,
+      'color': Color.fromRGBO(232, 24, 104, 1.0)
+    },
+  ];
+
+  final List<Map<String, dynamic>> productBCChartList = [
+    {
+      'category': 'Category A',
+      'value': 90,
+      'color': Color.fromRGBO(134, 239, 172, 1)
+    },
+    {
+      'category': 'Category B',
+      'value': 20,
+      'color': Color.fromRGBO(38, 60, 255, 1)
+    },
+  ];
+
+
+  final List<Map<String, dynamic>> customerOrderChartList = [
+    {
+      'category': 'Registered User Order',
+      'value': 90,
+      'color': Color.fromRGBO(134, 239, 172, 1)
+    },
+    {
+      'category': 'Guest User Order',
+      'value': 10,
+      'color': Color.fromRGBO(38, 60, 255, 1)
+    },
+  ];
+
+
+  List<String> productList = [
+    "Item sales by market",
+    "Product Summary",
+    "Comparative sales by time period",
+    "Top 100 selling products",
+    "Low inventory",
+    "Brandwise Product Report",
+    "Vendorwise Product Report",
+    "Product Status Report",
+    "Product Listing Report",
+    "Product Calculation Report",
+    "Master Product Inventory Report",
+  ];
+  List<String> orderReportsList = [
+    "Order beneficial report",
+    "Order state tax report",
+    "Order number sales tax report",
+    "Order statistics",
+  ];
+  List<String> salesReportsList = [
+    "Sales summary By Store (Received Orders)",
+    "Revenue Summary",
+    "Sales Summary By Store (Shipped Date)",
+    "Business Intelligence",
+  ];
+
+  List<String> mailReportsList = [
+    "Mail Log",
+    "Inquiries list",
+  ];
 }
