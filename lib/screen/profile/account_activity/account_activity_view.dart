@@ -6,6 +6,7 @@ import 'package:parsonskellogg/core/constants/num_constants.dart';
 import 'package:parsonskellogg/core/string_utils/string_utils.dart';
 import 'package:parsonskellogg/provider/profile_provider.dart';
 import 'package:provider/provider.dart';
+
 class AccountActivityView extends StatelessWidget {
   const AccountActivityView({super.key});
 
@@ -19,14 +20,12 @@ class AccountActivityView extends StatelessWidget {
         : provider.rowsPerPage;
     return ListView(
       children: [
-
-
-         CommonTableSearchView(
-
-           tetSearch: searchController,
-           onChanged: (value) {
-           provider.filter(value);
-         },),
+        CommonTableSearchView(
+          tetSearch: searchController,
+          onChanged: (value) {
+            provider.filter(value);
+          },
+        ),
         CommonTableView(
           rowsPerPage: provider.rowsPerPageValue,
           columns: [
@@ -56,8 +55,8 @@ class AccountActivityView extends StatelessWidget {
                 label: commonColText(text: activity)),
             DataColumn(
                 onSort: (columnIndex, ascending) {
-                  provider.sort<String>((log) => log['ip'], columnIndex, ascending,
-                      provider, context);
+                  provider.sort<String>((log) => log['ip'], columnIndex,
+                      ascending, provider, context);
                 },
                 label: commonColText(text: ipAddress)),
             DataColumn(
@@ -68,22 +67,19 @@ class AccountActivityView extends StatelessWidget {
                 label: commonColText(text: location)),
           ],
           source: _ActivityLogDataSource(provider.activityLogs),
-
           onRowsPerPageChange: totalRecords > provider.rowsPerPage
               ? (value) {
-            provider.setRowPerPageValue = value!;
-          }
+                  provider.setRowPerPageValue = value!;
+                }
               : null,
           sortAscending: provider.isAscending,
           sortColumnIndex: provider.sortColumnIndex,
         ),
       ],
     );
-
   }
-
-
 }
+
 class _ActivityLogDataSource extends DataTableSource {
   final List<Map<String, dynamic>> _activityLogs;
 

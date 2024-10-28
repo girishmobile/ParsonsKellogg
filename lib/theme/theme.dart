@@ -18,14 +18,14 @@ ThemeData lightTheme = ThemeData.from(
     titleLarge: GoogleFonts.outfit(
       fontSize: 15,
       fontWeight: FontWeight.w700,
-      letterSpacing: 1.2,
-      color: Colors.black87,
+      letterSpacing: 1.3,
+      color: Colors.black.withOpacity(0.7),
     ),
     titleMedium: GoogleFonts.outfit(
       fontSize: 13,
       fontWeight: FontWeight.w500,
       letterSpacing: 1.2,
-      color: Colors.grey[600],
+      color: Colors.grey[800],
     ),
     titleSmall: GoogleFonts.outfit(
       fontSize: 11,
@@ -41,20 +41,24 @@ ThemeData lightTheme = ThemeData.from(
     ),
   ),
 ).copyWith(
-  elevatedButtonTheme: ElevatedButtonThemeData(
-    style: ElevatedButton.styleFrom(
-      backgroundColor: Colors.green,
-      elevation: 0,
-      foregroundColor: Colors.white,
-      textStyle: GoogleFonts.outfit(
-        fontSize: 14,
-        fontWeight: FontWeight.bold,
-        letterSpacing: 1.2,
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.green,
+        elevation: 0,
+        foregroundColor: Colors.white,
+        textStyle: GoogleFonts.outfit(
+          fontSize: 14,
+          fontWeight: FontWeight.bold,
+          letterSpacing: 1.2,
+        ),
       ),
     ),
-  ),
-);
-
+    checkboxTheme: CheckboxThemeData(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(2), // Custom border radius
+      ),
+      side: BorderSide(color: Colors.green.shade400), // Custom border color
+    ));
 ThemeData darkTheme = ThemeData.from(
   useMaterial3: false,
   colorScheme: const ColorScheme(
