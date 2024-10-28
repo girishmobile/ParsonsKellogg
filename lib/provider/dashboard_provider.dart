@@ -21,12 +21,9 @@ class OrderData {
 
 class DashboardProvider extends ChangeNotifier {
   int? _hoveredIndex;
-
   String? _selectedValue;
-
   String? get selectedValue => _selectedValue;
   int? get hoveredIndex => _hoveredIndex;
-
   void setHoveredIndex(int? index) {
     _hoveredIndex = index;
     notifyListeners();

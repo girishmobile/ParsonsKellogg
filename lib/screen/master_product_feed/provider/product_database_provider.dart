@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:parsonskellogg/core/string_utils/string_utils.dart';
 import 'package:parsonskellogg/screen/master_product_feed/model/filter_product_model.dart';
 import 'package:parsonskellogg/screen/master_product_feed/model/product_database_model.dart';
 
@@ -16,6 +15,7 @@ class ProductDatabaseProvider extends ChangeNotifier {
   List<List<bool>> get checkboxStates => _checkboxStates;
 
   TextEditingController get searchController => _searchController;
+
   List<ProductDatabaseModel> get products {
     return _filteredProducts.where((product) {
       final matchesFilter =
