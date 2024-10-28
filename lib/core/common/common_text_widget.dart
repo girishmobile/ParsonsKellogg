@@ -10,7 +10,9 @@ class CommonTextWidget extends StatelessWidget {
       this.textAlign,
       this.text,
       this.textOverflow,
+        this.softWrap,
       this.style,
+        this.maxLines,
       super.key});
 
   final String? text;
@@ -20,8 +22,10 @@ class CommonTextWidget extends StatelessWidget {
   final double? left;
   final double? right;
   final double? top;
+  final int? maxLines;
   final TextOverflow? textOverflow;
   final double? bottom;
+  final bool? softWrap;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +36,10 @@ class CommonTextWidget extends StatelessWidget {
           bottom: bottom ?? zero,
           top: top ?? zero),
       child: Text(
+
         overflow: textOverflow,
+        softWrap: softWrap,
+        maxLines: maxLines,
         textAlign: textAlign,
         text ?? '',
         style: style ?? Theme.of(context).textTheme.bodyMedium,
