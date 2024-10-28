@@ -1,60 +1,108 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-final kColorScheme = ColorScheme.fromSeed(
-  seedColor: const Color.fromRGBO(96, 209, 56, 1),
-  brightness: Brightness.light,
-);
-final kDarkColorScheme = ColorScheme.fromSeed(
-  seedColor: const Color.fromRGBO(9, 10, 9, 1),
-  brightness: Brightness.dark,
-);
-
-ThemeData lightTheme = ThemeData(
-  colorScheme: const ColorScheme.light().copyWith(
-    surface: kColorScheme.surface,
-    primary: kColorScheme.primary,
-    secondary: kColorScheme.secondary,
+ThemeData lightTheme = ThemeData.from(
+  useMaterial3: false,
+  colorScheme: const ColorScheme(
+    brightness: Brightness.light,
+    primary: Color.fromRGBO(241, 244, 248, 1),
+    onPrimary: Colors.black,
+    secondary: Colors.white70,
+    onSecondary: Colors.black87,
+    error: Colors.red,
+    onError: Colors.white,
+    surface: Colors.white,
+    onSurface: Colors.black87,
   ),
-  cardTheme: const CardTheme().copyWith(
-    color: kColorScheme.secondaryContainer,
-    margin: const EdgeInsets.all(16),
-  ),
-  elevatedButtonTheme: ElevatedButtonThemeData(
-    style: ElevatedButton.styleFrom(
-      backgroundColor: kColorScheme.primary,
-      foregroundColor: kColorScheme.onPrimary,
+  textTheme: TextTheme(
+    titleLarge: GoogleFonts.outfit(
+      fontSize: 15,
+      fontWeight: FontWeight.w700,
+      letterSpacing: 1.2,
+      color: Colors.black87,
+    ),
+    titleMedium: GoogleFonts.outfit(
+      fontSize: 13,
+      fontWeight: FontWeight.w500,
+      letterSpacing: 1.2,
+      color: Colors.grey[600],
+    ),
+    titleSmall: GoogleFonts.outfit(
+      fontSize: 11,
+      fontWeight: FontWeight.w400,
+      letterSpacing: 1.2,
+      color: Colors.grey.shade600,
+    ),
+    bodyMedium: GoogleFonts.outfit(
+      fontSize: 13,
+      fontWeight: FontWeight.w500,
+      letterSpacing: 1.2,
+      color: Colors.grey.shade800,
     ),
   ),
-  textTheme: ThemeData().textTheme.copyWith(
-        titleLarge: TextStyle(
-          fontWeight: FontWeight.normal,
-          color: kColorScheme.onSecondaryContainer,
-          fontSize: 16,
-        ),
-      ),
-);
-
-ThemeData darkTheme = ThemeData().copyWith(
-  colorScheme: const ColorScheme.dark().copyWith(
-    surface: kDarkColorScheme.surface,
-    primary: kDarkColorScheme.primary,
-    secondary: kDarkColorScheme.secondary,
-  ),
-  cardTheme: const CardTheme().copyWith(
-    color: kDarkColorScheme.secondaryContainer,
-    margin: const EdgeInsets.all(16),
-  ),
+).copyWith(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      backgroundColor: kDarkColorScheme.primary,
-      foregroundColor: kDarkColorScheme.onPrimary,
+      backgroundColor: Colors.green,
+      elevation: 0,
+      foregroundColor: Colors.white,
+      textStyle: GoogleFonts.outfit(
+        fontSize: 14,
+        fontWeight: FontWeight.bold,
+        letterSpacing: 1.2,
+      ),
+    ),
+  ));
+
+ThemeData darkTheme = ThemeData.from(
+  useMaterial3: false,
+  colorScheme: const ColorScheme(
+    brightness: Brightness.dark,
+    primary: Colors.black,
+    onPrimary: Colors.white,
+    secondary: Colors.black54,
+    onSecondary: Colors.white,
+    error: Colors.red,
+    onError: Colors.white,
+    surface: Colors.black54,
+    onSurface: Colors.white,
+  ),
+  textTheme: TextTheme(
+    titleLarge: GoogleFonts.outfit(
+      fontSize: 15,
+      fontWeight: FontWeight.w700,
+      letterSpacing: 1.2,
+      color: Colors.white,
+    ),
+    titleMedium: GoogleFonts.outfit(
+      fontSize: 13,
+      fontWeight: FontWeight.w500,
+      letterSpacing: 1.2,
+      color: Colors.white70,
+    ),
+    titleSmall: GoogleFonts.outfit(
+      fontSize: 11,
+      fontWeight: FontWeight.w400,
+      letterSpacing: 1.2,
+      color: Colors.grey.shade600,
+    ),
+    bodyMedium: GoogleFonts.outfit(
+      fontSize: 13,
+      fontWeight: FontWeight.w500,
+      letterSpacing: 1.2,
+      color: Colors.white,
     ),
   ),
-  textTheme: ThemeData().textTheme.copyWith(
-        titleLarge: TextStyle(
-          fontWeight: FontWeight.bold,
-          color: kDarkColorScheme.onSecondaryContainer,
-          fontSize: 16,
-        ),
+).copyWith(
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      elevation: 0,
+      backgroundColor: Colors.black54,
+      foregroundColor: Colors.white,
+      textStyle: GoogleFonts.outfit(
+        fontSize: 14,
+        fontWeight: FontWeight.bold,
+        letterSpacing: 1.2,
       ),
-);
+
+)));
