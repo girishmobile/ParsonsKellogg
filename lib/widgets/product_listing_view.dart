@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:parsonskellogg/core/component/component.dart';
 import 'package:parsonskellogg/screen/master_product_feed/provider/product_database_provider.dart';
-import 'package:parsonskellogg/screen/master_product_feed/widgets/product_data_source.dart';
+import 'package:parsonskellogg/widgets/product_data_source.dart';
 
 class ProductListingView extends StatelessWidget {
   const ProductListingView({super.key, required this.provider});
   final ProductDatabaseProvider provider;
+
   @override
   Widget build(BuildContext context) {
     int defaultRowsPerPage = 20; // Default rows per page

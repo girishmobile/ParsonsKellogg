@@ -8,6 +8,8 @@ import 'package:parsonskellogg/screen/master_product_feed/master_dashboard_scree
 import 'package:parsonskellogg/screen/master_product_feed/product_database_screen.dart';
 import 'package:parsonskellogg/screen/profile/profile_view.dart';
 import 'package:parsonskellogg/screen/report/report_screen.dart';
+import 'package:parsonskellogg/screen/stores/all_stores.dart';
+import 'package:parsonskellogg/screen/stores/store_dashboard_screen.dart';
 
 import '../models/dashboard_item.dart';
 
@@ -38,12 +40,16 @@ class DashboardProvider extends ChangeNotifier {
     print('=============Value: $value ============');
     if (value == "Header_Dashboard") {
       _currentPage = const DashboardPage();
-    } else if (value == 'child_Dashboard') {
+    } else if (value == 'Master Product Feed_Dashboard') {
       _currentPage = const MasterDashboardScreen();
-    } else if (value == 'child_Product Database') {
+    } else if (value == 'Master Product Feed_Product Database') {
       _currentPage = const ProductDatabaseScreen();
-    } else if (value == 'child_Core ProductFeed') {
+    } else if (value == 'Master Product Feed_Core ProductFeed') {
       _currentPage = const CoreProductFeed();
+    } else if (value == 'Store_Dashboard') {
+      _currentPage = const StoreDashboardScreen();
+    } else if (value == 'Store_All Store') {
+      _currentPage = const AllStores();
     } else if (value == "Header_Report") {
       _currentPage = const ReportScreen();
     } else if (value == "profile") {
@@ -55,8 +61,6 @@ class DashboardProvider extends ChangeNotifier {
     }
     notifyListeners(); // Notify listeners to rebuild
   }
-
-  //for map
 
   final Map<String, OrderData> _orders = {
     "Nevada": OrderData(state: "Nevada", orders: 34, revenue: 109149.83),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-////jhkjhjhkj
 class MasterFeedModel {
   MasterFeedModel({
     required this.id,
