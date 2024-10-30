@@ -338,6 +338,102 @@ class ProfileProvider extends ChangeNotifier {
     _searchTerm = term;
     notifyListeners();
   }
+
+
+  List<Map<String, dynamic>> get roleList => _roleList;
+  final List<Map<String, dynamic>> _roleList = [
+    {
+      "user": "Admin",
+      "date": "05/24/2023\n12:07 PM",
+      "created_by": "Vishal Patel",
+      "updated_by": "Vipul Solanki",
+      "update_status": "01/11/2024\n02:34 AM",
+      "status": "active"
+    },
+    {
+      "user": "Super Admin",
+      "date": "05/24/2023\n12:07 PM",
+      "created_by": "Vishal Patel",
+      "updated_by": "Vipul Solanki",
+      "update_status": "01/11/2024\n02:34 AM",
+      "status": "active"
+    },
+    {
+      "user": "Sales (CG)",
+      "date": "05/24/2023\n12:07 PM",
+      "created_by": "Vishal Patel",
+      "updated_by": "Vipul Solanki",
+      "update_status": "01/11/2024\n02:34 AM",
+      "status": "active"
+    },
+    {
+      "user": "Admin",
+      "date": "05/24/2023\n12:07 PM",
+      "created_by": "Vishal Patel",
+      "updated_by": "Vipul Solanki",
+      "update_status": "01/11/2024\n02:34 AM",
+      "status": "active"
+    },
+    {
+      "user": "Super Admin",
+      "date": "05/24/2023\n12:07 PM",
+      "created_by": "Vishal Patel",
+      "updated_by": "Vipul Solanki",
+      "update_status": "01/11/2024\n02:34 AM",
+      "status": "active"
+    },
+    {
+      "user": "Sales (CG)",
+      "date": "05/24/2023\n12:07 PM",
+      "created_by": "Vishal Patel",
+      "updated_by": "Vipul Solanki",
+      "update_status": "01/11/2024\n02:34 AM",
+      "status": "active"
+    },
+    {
+      "user": "Admin",
+      "date": "05/24/2023\n12:07 PM",
+      "created_by": "Vishal Patel",
+      "updated_by": "Vipul Solanki",
+      "update_status": "01/11/2024\n02:34 AM",
+      "status": "active"
+    },
+    {
+      "user": "Super Admin",
+      "date": "05/24/2023\n12:07 PM",
+      "created_by": "Vishal Patel",
+      "updated_by": "Vipul Solanki",
+      "update_status": "01/11/2024\n02:34 AM",
+      "status": "active"
+    },
+    {
+      "user": "Sales (CG)",
+      "date": "05/24/2023\n12:07 PM",
+      "created_by": "Vishal Patel",
+      "updated_by": "Vipul Solanki",
+      "update_status": "01/11/2024\n02:34 AM",
+      "status": "active"
+    },
+    // Add more data entries here
+  ];
+
+
+  List<Map<String, dynamic>> _filteredRoleData = [];
+
+  List<Map<String, dynamic>> get filteredRoleData => _filteredRoleData;
+
+  void filterRole(String query) {
+    if (query.isEmpty) {
+      _filteredRoleData = List.from(_roleList);
+    } else {
+      _filteredRoleData = _roleList
+          .where((data) =>
+          data['user'].toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    }
+    notifyListeners();
+  }
+
 }
 
 class SwitchItem {

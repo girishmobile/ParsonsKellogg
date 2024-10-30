@@ -204,9 +204,9 @@ commonText({
 
 commonColText({String? text}) {
   return commonText(
-      fontSize: 12,
+      fontSize: 11,
       text: text ?? user,
-      fontWeight: FontWeight.w900,
+      fontWeight: FontWeight.w700,
       colorText: Colors.black.withOpacity(0.7));
 }
 

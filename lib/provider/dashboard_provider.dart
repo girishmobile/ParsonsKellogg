@@ -8,10 +8,13 @@ import 'package:parsonskellogg/screen/master_product_feed/master_dashboard_scree
 import 'package:parsonskellogg/screen/master_product_feed/product_database_screen.dart';
 import 'package:parsonskellogg/screen/profile/profile_view.dart';
 import 'package:parsonskellogg/screen/report/report_screen.dart';
+
 import 'package:parsonskellogg/screen/stores/all_stores.dart';
 import 'package:parsonskellogg/screen/stores/store_dashboard_screen.dart';
+import 'package:parsonskellogg/screen/setting/setting_dashboard_screen.dart';
 
 import '../models/dashboard_item.dart';
+import '../screen/setting/role/role_setting_screen.dart';
 
 class OrderData {
   final String state;
@@ -54,6 +57,12 @@ class DashboardProvider extends ChangeNotifier {
       _currentPage = const ReportScreen();
     } else if (value == "profile") {
       _currentPage = const ProfileView();
+    } else if (value == "Setting_Dashboard") {
+      _currentPage = const SettingDashboardScreen();
+    } else if (value == "Setting_Profile") {
+      _currentPage = const ProfileView();
+    } else if (value == "Setting_Roles") {
+      _currentPage = const RoleSettingScreen();
     } else {
       _currentPage = Center(
         child: commonText(text: "page not found"),
@@ -471,38 +480,42 @@ class DashboardProvider extends ChangeNotifier {
     {
       'category': 'Active',
       'value': 30,
-      'color': Color.fromRGBO(134, 239, 172, 1)
+      'color': const Color.fromRGBO(134, 239, 172, 1)
     },
-    {'category': 'Draft', 'value': 20, 'color': Color.fromRGBO(38, 60, 255, 1)},
+    {
+      'category': 'Draft',
+      'value': 20,
+      'color': const Color.fromRGBO(38, 60, 255, 1)
+    },
     {
       'category': 'InActive',
       'value': 50,
-      'color': Color.fromRGBO(253, 224, 71, 1)
+      'color': const Color.fromRGBO(253, 224, 71, 1)
     },
     {
       'category': 'Pending',
       'value': 90,
-      'color': Color.fromRGBO(125, 211, 252, 1)
+      'color': const Color.fromRGBO(125, 211, 252, 1)
     },
     {
       'category': 'Archived',
       'value': 50,
-      'color': Color.fromRGBO(252, 125, 195, 1.0)
+      'color': const Color.fromRGBO(252, 125, 195, 1.0)
     },
     {
       'category': 'Discontinue',
       'value': 0,
-      'color': Color.fromRGBO(154, 17, 106, 1.0)
+      'color': const Color.fromRGBO(154, 17, 106, 1.0)
     },
     {
       'category': 'out of stock',
       'value': 0,
-      'color': Color.fromRGBO(169, 193, 26, 1.0)
+      'color': const Color.fromRGBO(169, 193, 26, 1.0)
     },
     {
       'category': 'Back order',
       'value': 0,
-      'color': Color.fromRGBO(232, 24, 104, 1.0)
+      'color': const Color.fromRGBO(232, 24, 104, 1.0)
     },
   ];
 
@@ -510,12 +523,12 @@ class DashboardProvider extends ChangeNotifier {
     {
       'category': 'Category A',
       'value': 90,
-      'color': Color.fromRGBO(134, 239, 172, 1)
+      'color': const Color.fromRGBO(134, 239, 172, 1)
     },
     {
       'category': 'Category B',
       'value': 20,
-      'color': Color.fromRGBO(38, 60, 255, 1)
+      'color': const Color.fromRGBO(38, 60, 255, 1)
     },
   ];
 
@@ -523,12 +536,12 @@ class DashboardProvider extends ChangeNotifier {
     {
       'category': 'Registered User Order',
       'value': 90,
-      'color': Color.fromRGBO(134, 239, 172, 1)
+      'color': const Color.fromRGBO(134, 239, 172, 1)
     },
     {
       'category': 'Guest User Order',
       'value': 10,
-      'color': Color.fromRGBO(38, 60, 255, 1)
+      'color': const Color.fromRGBO(38, 60, 255, 1)
     },
   ];
 
@@ -561,5 +574,71 @@ class DashboardProvider extends ChangeNotifier {
   List<String> mailReportsList = [
     "Mail Log",
     "Inquiries list",
+  ];
+  //=========================================For Setting
+
+  final List<Map<String, dynamic>> settingUserList = [
+    {'title': 'Active', 'value': '110'},
+    {'title': 'InActive', 'value': '0'},
+    {'title': 'Total', 'value': '115'},
+  ];
+  final List<Map<String, dynamic>> settingRoleList = [
+    {'title': 'Active', 'value': '28'},
+    {'title': 'InActive', 'value': '0'},
+    {'title': 'Total', 'value': '28'},
+  ];
+
+  final List<Map<String, dynamic>> settingModuleUserList = [
+    {'title': 'Master Product Feed', 'value': '77'},
+    {'title': 'Orders', 'value': '107'},
+    {'title': 'Customers', 'value': '108'},
+    {'title': 'Content Management', 'value': '66'},
+    {'title': 'Promotions', 'value': '49'},
+    {'title': 'Settings', 'value': '112'},
+    {'title': 'Admin Theme', 'value': '46'},
+    {'title': 'Stores', 'value': '122'},
+  ];
+
+  final List<Map<String, dynamic>> settingModuleUserGraphList = [
+    {
+      'category': 'Master Product Feed',
+      'value': 30,
+      'color': const Color.fromRGBO(134, 239, 172, 1)
+    },
+    {
+      'category': 'Orders',
+      'value': 20,
+      'color': const Color.fromRGBO(38, 60, 255, 1)
+    },
+    {
+      'category': 'Customers',
+      'value': 50,
+      'color': const Color.fromRGBO(253, 224, 71, 1)
+    },
+    {
+      'category': 'Content Management',
+      'value': 90,
+      'color': const Color.fromRGBO(125, 211, 252, 1)
+    },
+    {
+      'category': 'Promotions',
+      'value': 50,
+      'color': const Color.fromRGBO(252, 125, 195, 1.0)
+    },
+    {
+      'category': 'Settings',
+      'value': 0,
+      'color': const Color.fromRGBO(154, 17, 106, 1.0)
+    },
+    {
+      'category': 'Admin Theme',
+      'value': 0,
+      'color': const Color.fromRGBO(169, 193, 26, 1.0)
+    },
+    {
+      'category': 'Stores',
+      'value': 0,
+      'color': const Color.fromRGBO(232, 24, 104, 1.0)
+    },
   ];
 }
