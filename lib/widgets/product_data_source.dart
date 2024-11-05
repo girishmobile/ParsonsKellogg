@@ -52,9 +52,12 @@ class ProductDataSource extends DataTableSource {
             ),
           ),
         ),
-        DataCell(Text(
-          prodcuct.productName,
-          style: Theme.of(context).textTheme.titleMedium,
+        DataCell(Container(
+          constraints: const BoxConstraints(maxWidth: 120),
+          child: Text(
+            prodcuct.productName,
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
         )),
         DataCell(Text(prodcuct.brandName,
             style: Theme.of(context).textTheme.titleMedium)),

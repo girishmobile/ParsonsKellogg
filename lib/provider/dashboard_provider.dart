@@ -11,6 +11,9 @@ import 'package:parsonskellogg/screen/order/order_draft_phone_order_screen.dart'
 import 'package:parsonskellogg/screen/order/order_list/order_list_screen.dart';
 import 'package:parsonskellogg/screen/profile/profile_view.dart';
 import 'package:parsonskellogg/screen/report/report_screen.dart';
+
+import 'package:parsonskellogg/screen/stores/all_stores.dart';
+import 'package:parsonskellogg/screen/stores/store_dashboard_screen.dart';
 import 'package:parsonskellogg/screen/setting/activity_log/activity_log_screen.dart';
 import 'package:parsonskellogg/screen/setting/setting_dashboard_screen.dart';
 import 'package:parsonskellogg/screen/setting/system_log_screen.dart';
@@ -29,12 +32,9 @@ class OrderData {
 
 class DashboardProvider extends ChangeNotifier {
   int? _hoveredIndex;
-
   String? _selectedValue;
-
   String? get selectedValue => _selectedValue;
   int? get hoveredIndex => _hoveredIndex;
-
   void setHoveredIndex(int? index) {
     _hoveredIndex = index;
     notifyListeners();
@@ -55,18 +55,19 @@ class DashboardProvider extends ChangeNotifier {
       _currentPage = const ProductDatabaseScreen();
     } else if (value == 'Master Product Feed_Core ProductFeed') {
       _currentPage = const CoreProductFeed();
+    } else if (value == 'Store_Dashboard') {
+      _currentPage = const StoreDashboardScreen();
+    } else if (value == 'Store_All Store') {
+      _currentPage = const AllStores();
     } else if (value == "Header_Report") {
       _currentPage = const ReportScreen();
     } else if (value == "profile") {
       _currentPage = const ProfileView();
-    }
-    else if (value == "Setting_Dashboard") {
+    } else if (value == "Setting_Dashboard") {
       _currentPage = const SettingDashboardScreen();
-    }
-    else if (value == "Setting_Profile") {
+    } else if (value == "Setting_Profile") {
       _currentPage = const ProfileView();
-    }
-    else if (value == "Setting_Roles") {
+    } else if (value == "Setting_Roles") {
       _currentPage = const RoleSettingScreen();
     }
     else if (value == "Setting_Users") {
@@ -509,7 +510,11 @@ class DashboardProvider extends ChangeNotifier {
       'value': 30,
       'color': const Color.fromRGBO(134, 239, 172, 1)
     },
-    {'category': 'Draft', 'value': 20, 'color': const Color.fromRGBO(38, 60, 255, 1)},
+    {
+      'category': 'Draft',
+      'value': 20,
+      'color': const Color.fromRGBO(38, 60, 255, 1)
+    },
     {
       'category': 'InActive',
       'value': 50,
@@ -601,68 +606,25 @@ class DashboardProvider extends ChangeNotifier {
   //=========================================For Setting
 
   final List<Map<String, dynamic>> settingUserList = [
-    {
-      'title': 'Active',
-      'value': '110'
-    },
-    {
-      'title': 'InActive',
-      'value': '0'
-    },
-    {
-      'title': 'Total',
-      'value': '115'
-    },
+    {'title': 'Active', 'value': '110'},
+    {'title': 'InActive', 'value': '0'},
+    {'title': 'Total', 'value': '115'},
   ];
   final List<Map<String, dynamic>> settingRoleList = [
-    {
-      'title': 'Active',
-      'value': '28'
-    },
-    {
-      'title': 'InActive',
-      'value': '0'
-    },
-    {
-      'title': 'Total',
-      'value': '28'
-    },
+    {'title': 'Active', 'value': '28'},
+    {'title': 'InActive', 'value': '0'},
+    {'title': 'Total', 'value': '28'},
   ];
 
-
   final List<Map<String, dynamic>> settingModuleUserList = [
-    {
-      'title': 'Master Product Feed',
-      'value': '77'
-    },
-    {
-      'title': 'Orders',
-      'value': '107'
-    },
-    {
-      'title': 'Customers',
-      'value': '108'
-    },
-    {
-      'title': 'Content Management',
-      'value': '66'
-    },
-    {
-      'title': 'Promotions',
-      'value': '49'
-    },
-    {
-      'title': 'Settings',
-      'value': '112'
-    },
-    {
-      'title': 'Admin Theme',
-      'value': '46'
-    },
-    {
-      'title': 'Stores',
-      'value': '122'
-    },
+    {'title': 'Master Product Feed', 'value': '77'},
+    {'title': 'Orders', 'value': '107'},
+    {'title': 'Customers', 'value': '108'},
+    {'title': 'Content Management', 'value': '66'},
+    {'title': 'Promotions', 'value': '49'},
+    {'title': 'Settings', 'value': '112'},
+    {'title': 'Admin Theme', 'value': '46'},
+    {'title': 'Stores', 'value': '122'},
   ];
 
   final List<Map<String, dynamic>> settingModuleUserGraphList = [
@@ -671,7 +633,11 @@ class DashboardProvider extends ChangeNotifier {
       'value': 30,
       'color': const Color.fromRGBO(134, 239, 172, 1)
     },
-    {'category': 'Orders', 'value': 20, 'color': const Color.fromRGBO(38, 60, 255, 1)},
+    {
+      'category': 'Orders',
+      'value': 20,
+      'color': const Color.fromRGBO(38, 60, 255, 1)
+    },
     {
       'category': 'Customers',
       'value': 50,
@@ -703,7 +669,4 @@ class DashboardProvider extends ChangeNotifier {
       'color': const Color.fromRGBO(232, 24, 104, 1.0)
     },
   ];
-
-
-
 }

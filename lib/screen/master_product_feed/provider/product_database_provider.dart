@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:parsonskellogg/core/string_utils/string_utils.dart';
 import 'package:parsonskellogg/screen/master_product_feed/model/filter_product_model.dart';
 import 'package:parsonskellogg/screen/master_product_feed/model/product_database_model.dart';
 
 class ProductDatabaseProvider extends ChangeNotifier {
   final List<ProductDatabaseModel> _productList = dummyProductList;
+
   final TextEditingController _searchController = TextEditingController();
 
   final List<List<bool>> _checkboxStates = List.generate(filterItems.length,
@@ -13,9 +13,10 @@ class ProductDatabaseProvider extends ChangeNotifier {
   List<ProductDatabaseModel> _filteredProducts = [];
   String _currentFilter = 'All';
   String _searchTerm = ''; // New variable for search
-  List<List<bool>> get checkboxStates => _checkboxStates;
 
+  List<List<bool>> get checkboxStates => _checkboxStates;
   TextEditingController get searchController => _searchController;
+
   List<ProductDatabaseModel> get products {
     return _filteredProducts.where((product) {
       final matchesFilter =
@@ -40,6 +41,7 @@ class ProductDatabaseProvider extends ChangeNotifier {
   bool _sortUpdatedDateAsce = true;
   bool _sortUpdatedNameAsce = true;
   bool _sortStatusAscending = true;
+
 //for ToggleButton
   int _selectedIndex = 0;
   bool get sortAscending => _sortAscending;

@@ -1,38 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:parsonskellogg/core/color/color.dart';
-import 'package:parsonskellogg/core/component/component.dart';
-import 'package:parsonskellogg/core/image_path/image_path.dart';
-import 'package:intl/intl.dart';
-import 'package:parsonskellogg/screen/master_product_feed/model/filter_product_model.dart';
-import 'package:parsonskellogg/screen/master_product_feed/provider/product_database_provider.dart';
-import 'package:parsonskellogg/widgets/product_listing_view.dart';
-import 'package:parsonskellogg/widgets/product_searchbar.dart';
-import 'package:parsonskellogg/widgets/toggle_topbar.dart';
+import 'package:parsonskellogg/screen/master_product_feed/model/stores_model.dart';
+import 'package:parsonskellogg/screen/master_product_feed/provider/store_provider.dart';
+import 'package:parsonskellogg/widgets/store_listing_view.dart';
+import 'package:parsonskellogg/widgets/store_searchbar.dart';
 import 'package:provider/provider.dart';
 
-// class Item {
-//   final String title;
-//   final List<String> details;
-//   Item(this.title, this.details);
-// }
-///jljlkjkljlkjl
-class ProductDatabaseScreen extends StatelessWidget {
-  const ProductDatabaseScreen({super.key});
-
-  Future<void> selectedDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-        context: context, firstDate: DateTime(2000), lastDate: DateTime.now());
-    if (picked != null && picked != DateTime.now()) {
-      // ignore: use_build_context_synchronously
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Selected date:  ${picked.toLocal()}")));
-    }
-  }
+class AllStores extends StatelessWidget {
+  const AllStores({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final productProvider = Provider.of<ProductDatabaseProvider>(context);
-    final List<String> options = ['All', 'Active', 'InActive', 'Draft'];
+    final storeProvider = Provider.of<StoreProvider>(context);
     final screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -45,9 +24,10 @@ class ProductDatabaseScreen extends StatelessWidget {
             children: [
               Expanded(
                 child: ListView(
-                    children: filterItems.asMap().entries.map((entry) {
+                    children:
+                        dummyStorefilterItems.asMap().entries.map((entry) {
                   int groupIndex = entry.key;
-                  FilterItemModel item = entry.value;
+                  StorefilterModel item = entry.value;
                   return ExpansionTile(
                     title: Text(
                       item.title,
@@ -55,7 +35,7 @@ class ProductDatabaseScreen extends StatelessWidget {
                     ),
                     iconColor: Colors.black.withOpacity(0.8),
                     backgroundColor: Colors.transparent,
-                    children: item.details.asMap().entries.map((entry) {
+                    children: item.filterItems.asMap().entries.map((entry) {
                       int index = entry.key;
                       final detail = entry.value;
 
@@ -65,13 +45,14 @@ class ProductDatabaseScreen extends StatelessWidget {
                         return ListTile(
                           leading: Checkbox(
                               activeColor: Colors.green.shade400,
-                              value: productProvider.checkboxStates[groupIndex]
-                                  [index],
+                              value:
+                                  true, //productProvider.checkboxStates[groupIndex]
+                              //[index],
                               onChanged: (bool? value) {
                                 // checkboxStates[groupIndex][index] =
                                 //     value ?? false;
-                                productProvider.toggleCheckBox(
-                                    groupIndex, index, value ?? false);
+                                //productProvider.toggleCheckBox(
+                                //  groupIndex, index, value ?? false);
                               }),
                           title: Text(detail,
                               textAlign: TextAlign.left,
@@ -96,7 +77,7 @@ class ProductDatabaseScreen extends StatelessWidget {
                   children: [
                     TextButton(
                       onPressed: () {
-                        productProvider.clearCheckboxStates();
+                        // productProvider.clearCheckboxStates();
                       },
                       child: Text(
                         'Clear',
@@ -109,8 +90,8 @@ class ProductDatabaseScreen extends StatelessWidget {
                     ),
                     ElevatedButton(
                         onPressed: () {
-                          final filterArray = productProvider.applyFilters();
-                          print(filterArray.map((item) => item.title).toList());
+                          // final filterArray = productProvider.applyFilters();
+                          //print(filterArray.map((item) => item.title).toList());
                         },
                         child: const Text('Apply'))
                   ],
@@ -122,20 +103,22 @@ class ProductDatabaseScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          Builder(builder: (context) {
-            return ProductSearchbar(
-              title: 'Produt Database',
-              prodProvider: productProvider,
-              onChanged: (value) {
-                productProvider.searchByProductName(value);
-              },
-              onMoreFilter: () {
-                Scaffold.of(context).openEndDrawer();
-              },
-            );
-          }),
-          ToggleTopbar(options: options, provider: productProvider),
-          ProductListingView(provider: productProvider),
+          Builder(
+            builder: (context) {
+              return StoreSearchbar(
+                  title: 'Stores',
+                  provider: storeProvider,
+                  onMoreFilter: () {
+                    print('more filter');
+                  },
+                  onChanged: (value) {
+                    storeProvider.searchByProductName(value);
+                  });
+            },
+          ),
+          StoreListingView(
+            provider: storeProvider,
+          )
         ],
       ),
     );
@@ -166,21 +149,3 @@ class ProductDatabaseScreen extends StatelessWidget {
     );
   }
 }
- 
-
-/**
- /**
- * Scaffold(
-        backgroundColor: const Color.fromRGBO(238, 243, 248, 1),
-        body: Consumer<ProductDatabaseProvider>(
-          builder: (context, provider, child) => ListView(
-            children: [
-              SimpleSearchbar(seachTextController: searchController),
-              _toggleButtonExample(provider, options),
-              _productListView(context, provider),
-            ],
-          ),
-        ),
-        );
- */
- */

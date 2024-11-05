@@ -17,6 +17,23 @@ const List<Map<String, String>> productDatabase = [
     'count': '158',
   },
 ];
+const List<Map<String, String>> simpleStore = [
+  {
+    'id': 'strd1',
+    'name': 'Active',
+    'count': '6',
+  },
+  {
+    'id': 'strd2',
+    'name': 'InActive',
+    'count': '1',
+  },
+  {
+    'id': 'strd3',
+    'name': 'total Stores',
+    'count': '7',
+  },
+];
 //-----------------------------------------------CORPORATE STORE--------------------------------------------------------
 const List<Map<String, String>> coreProductFeed = [
   {
@@ -184,6 +201,7 @@ const List<Map<String, String>> storeBuilder = [
     'count': '158',
   },
 ];
+
 //----------------------------------------------- Form Bulder------------------------------
 const List<Map<String, String>> formBuilder = [
   {

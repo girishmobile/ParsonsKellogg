@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:parsonskellogg/core/color/color.dart';
 import 'package:parsonskellogg/screen/master_product_feed/provider/product_database_provider.dart';
-import 'package:parsonskellogg/screen/master_product_feed/widgets/product_listing_view.dart';
-import 'package:parsonskellogg/screen/master_product_feed/widgets/simple_searchbar.dart';
-import 'package:parsonskellogg/screen/master_product_feed/widgets/toggle_topbar.dart';
+import 'package:parsonskellogg/widgets/product_listing_view.dart';
+import 'package:parsonskellogg/widgets/product_searchbar.dart';
+import 'package:parsonskellogg/widgets/toggle_topbar.dart';
 import 'package:provider/provider.dart';
 
 class CoreProductFeed extends StatelessWidget {
@@ -28,7 +28,7 @@ class CoreProductFeed extends StatelessWidget {
       body: ListView(
         children: [
           Builder(builder: (context) {
-            return SimpleSearchbar(
+            return ProductSearchbar(
                 prodProvider: provider,
                 onChanged: (value) {
                   provider.searchByProductName(value);

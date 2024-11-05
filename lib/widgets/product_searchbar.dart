@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:parsonskellogg/core/common/common_text_widget.dart';
 import 'package:parsonskellogg/screen/master_product_feed/provider/product_database_provider.dart';
 
-class SimpleSearchbar extends StatelessWidget {
-  const SimpleSearchbar({
+class ProductSearchbar extends StatelessWidget {
+  const ProductSearchbar({
     super.key,
     required this.prodProvider,
     this.onChanged,
@@ -99,7 +99,7 @@ class SimpleSearchbar extends StatelessWidget {
                   icon: const Icon(
                     Icons.tune_outlined,
                     color: Colors.grey,
-                    size: 32,
+                    size: 24,
                   ),
                 ),
               )
