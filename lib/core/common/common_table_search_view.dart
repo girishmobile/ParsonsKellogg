@@ -76,6 +76,7 @@ class CommonTableSearchView extends StatelessWidget {
       hint: search,
       controller: controller,
       top: size.height * zero02,
+
       onChanged: onChanged,
       hintStyle: commonTextStyle(color: Colors.grey),
       prefixIcon: Icon(
@@ -102,13 +103,14 @@ class CommonTableSearchView extends StatelessWidget {
         child: Row(
           children: [
             loadAssetImage(
+              colorIcon: Colors.grey,
                 path: icon ?? icEditColum,
                 width: twentyFour,
                 height: twentyFour),
             CommonTextWidget(
               left: five,
               text: label,
-              style: commonTextStyle(fontSize: eleven, color: Colors.black),
+              style: commonTextStyle(fontSize: 10, color: Colors.grey),
             )
           ],
         ),

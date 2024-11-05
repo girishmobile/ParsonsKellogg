@@ -36,6 +36,14 @@ class ProfileProvider extends ChangeNotifier {
 
   bool get switchNotificationValue => _switchNotificationValue;
 
+
+  String? _selectionValue;
+  String ?get selectionValue => _selectionValue;
+  void setSelectionData(String? value) {
+    _selectionValue = value ;
+    notifyListeners();
+  }
+
   void toggleCheckbox(bool? value) {
     _isChecked = value ?? false;
     notifyListeners();
@@ -356,7 +364,31 @@ class ProfileProvider extends ChangeNotifier {
       "created_by": "Vishal Patel",
       "updated_by": "Vipul Solanki",
       "update_status": "01/11/2024\n02:34 AM",
+      "status": "pending"
+    },
+    {
+      "user": "Sales (CG)",
+      "date": "05/24/2023\n12:07 PM",
+      "created_by": "Vishal Patel",
+      "updated_by": "Vipul Solanki",
+      "update_status": "01/11/2024\n02:34 AM",
       "status": "active"
+    },
+    {
+      "user": "Admin",
+      "date": "05/24/2023\n12:07 PM",
+      "created_by": "Vishal Patel",
+      "updated_by": "Vipul Solanki",
+      "update_status": "01/11/2024\n02:34 AM",
+      "status": "active"
+    },
+    {
+      "user": "Super Admin",
+      "date": "05/24/2023\n12:07 PM",
+      "created_by": "Vishal Patel",
+      "updated_by": "Vipul Solanki",
+      "update_status": "01/11/2024\n02:34 AM",
+      "status": "pending"
     },
     {
       "user": "Sales (CG)",
@@ -388,31 +420,7 @@ class ProfileProvider extends ChangeNotifier {
       "created_by": "Vishal Patel",
       "updated_by": "Vipul Solanki",
       "update_status": "01/11/2024\n02:34 AM",
-      "status": "active"
-    },
-    {
-      "user": "Admin",
-      "date": "05/24/2023\n12:07 PM",
-      "created_by": "Vishal Patel",
-      "updated_by": "Vipul Solanki",
-      "update_status": "01/11/2024\n02:34 AM",
-      "status": "active"
-    },
-    {
-      "user": "Super Admin",
-      "date": "05/24/2023\n12:07 PM",
-      "created_by": "Vishal Patel",
-      "updated_by": "Vipul Solanki",
-      "update_status": "01/11/2024\n02:34 AM",
-      "status": "active"
-    },
-    {
-      "user": "Sales (CG)",
-      "date": "05/24/2023\n12:07 PM",
-      "created_by": "Vishal Patel",
-      "updated_by": "Vipul Solanki",
-      "update_status": "01/11/2024\n02:34 AM",
-      "status": "active"
+      "status": "pending"
     },
     // Add more data entries here
   ];

@@ -25,7 +25,7 @@ class CustomDrawer extends StatelessWidget {
           children: <Widget>[
             DrawerHeader(
               decoration: const BoxDecoration(
-                color: Colors.blue,
+                color: colorBg,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,7 +44,7 @@ class CustomDrawer extends StatelessWidget {
                   const SizedBox(height: eight),
                   CommonTextWidget(
                     text: 'PARSONSKELLOGG',
-                    style: commonTextStyle(color: Colors.white),
+                    style: commonTextStyle(color:colorText),
                   ),
                 ],
               ),
@@ -66,10 +66,9 @@ class CustomDrawer extends StatelessWidget {
                         key: Key(provider.selected.toString()),
                         onExpansionChanged: (bool expanded) {
                           onSelectedPage('Header_${item.title.toString()}');
-                          // print('=================================header=====index#${item.title}');
                           if (expanded) {
                             menuProvider.setExpandIndex = index;
-                            //Navigator.of(context).pop();
+
                           }
                           if (item.subMenuItem == null) {
                             Navigator.of(context).pop();
@@ -166,7 +165,7 @@ class CustomDrawer extends StatelessWidget {
     return ExpansionTile(
       key: key,
       collapsedBackgroundColor: Colors.white,
-      backgroundColor: colorBg,
+      backgroundColor:colorBg,
       iconColor: colorText,
       shape: const Border(),
       initiallyExpanded: initiallyExpanded,
@@ -182,7 +181,7 @@ class CustomDrawer extends StatelessWidget {
               text: item.title.toString(),
               style: GoogleFonts.outfit(
                 fontSize: twelve,
-                color: isSelected ? colorText : colorText,
+                color: isSelected ? colorSelectedMenu : colorText,
                 fontWeight: isSelected ? FontWeight.w800 : FontWeight.w500,
               )),
       children: children,
