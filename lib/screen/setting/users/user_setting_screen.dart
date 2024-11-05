@@ -1,16 +1,16 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:parsonskellogg/core/color/color.dart';
+import 'package:parsonskellogg/core/common/common_table_view.dart';
 import 'package:parsonskellogg/core/common/common_text_field_widget.dart';
+import 'package:parsonskellogg/core/common/common_text_widget.dart';
 import 'package:parsonskellogg/core/component/component.dart';
-
 import 'package:parsonskellogg/provider/profile_provider.dart';
 import 'package:provider/provider.dart';
 
-import '../../../core/common/common_table_view.dart';
+class UserSettingScreen extends StatelessWidget {
+  const UserSettingScreen({super.key});
 
-
-class RoleSettingScreen extends StatelessWidget {
-  const RoleSettingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +26,10 @@ class RoleSettingScreen extends StatelessWidget {
 
         Container(
 
-        decoration: commonBoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(5)
-        ),
+          decoration: commonBoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(5)
+          ),
           margin: const EdgeInsets.only(left: 10,right: 10,top: 20),
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -40,7 +40,7 @@ class RoleSettingScreen extends StatelessWidget {
                 child:  CommonTextFieldWidget(
 
                   onChanged: (value) {
-                  provider.filterRole(value);
+                    provider.filterRole(value);
                   },
                   prefixIcon: const Icon(Icons.search),
                   colorFill: Colors.white,
@@ -124,19 +124,40 @@ class RoleDataSource extends DataTableSource {
     final log = _roleList[index];
     return DataRow.byIndex(index: index, cells: [
       DataCell(
-        commonText(text: log['user'], fontSize: 10),
+
+       ListTile(
+          contentPadding: EdgeInsets.zero,
+
+         titleAlignment: ListTileTitleAlignment.center,
+        minVerticalPadding: 0,
+         minTileHeight: 50,
+         leading: Container(
+           width: 30,
+           height: 30,
+
+
+          decoration: commonBoxDecoration(
+            shape: BoxShape.circle,
+            color: Color.fromRGBO(220,252,231,1)
+          ),
+         ),
+
+         title:  CommonTextWidget(text: log['user'],style: commonTextStyle(fontSize: 12,fontWeight: FontWeight.w600)),
+         subtitle:  CommonTextWidget(text: "adumais@parsonskellogg.com",style: commonTextStyle(fontSize: 10,fontWeight: FontWeight.w400),),
+       )
       ),
-      DataCell(commonText(text: log['date'], fontSize: 10)),
-      DataCell(commonText(text: log['created_by'], fontSize: 10)),
-      DataCell(commonText(text: log['updated_by'], fontSize: 10)),
-      DataCell(commonText(text: log['update_status'], fontSize: 10)),
+      DataCell(CommonTextWidget(text: log['date'], style: commonTextStyle(fontSize: 10,fontWeight: FontWeight.w400))),
+      DataCell(CommonTextWidget(text: log['created_by'], style: commonTextStyle(fontSize: 10,fontWeight: FontWeight.w400))),
+      DataCell(CommonTextWidget(text: log['updated_by'], style: commonTextStyle(fontSize: 10,fontWeight: FontWeight.w400))),
+      DataCell(CommonTextWidget(text: log['update_status'], style: commonTextStyle(fontSize: 10,fontWeight: FontWeight.w400))),
       DataCell(Container(
+
         margin: const EdgeInsets.all(10),
         decoration: commonBoxDecoration(
-            border: Border.all(
-                color: log['status'] == "pending"
-                    ? colorPendingBorder:colorActiveBorder,width: 1
-            ),
+          border: Border.all(
+          color: log['status'] == "pending"
+              ? colorPendingBorder:colorActiveBorder,width: 1
+          ),
             borderRadius: BorderRadius.circular(5),
             color: log['status'] == "pending"
                 ? colorPendingBG:colorActiveBg

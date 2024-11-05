@@ -6,12 +6,18 @@ import 'package:parsonskellogg/screen/dashboard/dashboard_page/dashboard_page.da
 import 'package:parsonskellogg/screen/master_product_feed/core_product_feed/core_product_feed.dart';
 import 'package:parsonskellogg/screen/master_product_feed/master_dashboard_screen.dart';
 import 'package:parsonskellogg/screen/master_product_feed/product_database_screen.dart';
+import 'package:parsonskellogg/screen/order/order_dashboard.dart';
+import 'package:parsonskellogg/screen/order/order_draft_phone_order_screen.dart';
+import 'package:parsonskellogg/screen/order/order_list/order_list_screen.dart';
 import 'package:parsonskellogg/screen/profile/profile_view.dart';
 import 'package:parsonskellogg/screen/report/report_screen.dart';
 
 import 'package:parsonskellogg/screen/stores/all_stores.dart';
 import 'package:parsonskellogg/screen/stores/store_dashboard_screen.dart';
+import 'package:parsonskellogg/screen/setting/activity_log/activity_log_screen.dart';
 import 'package:parsonskellogg/screen/setting/setting_dashboard_screen.dart';
+import 'package:parsonskellogg/screen/setting/system_log_screen.dart';
+import 'package:parsonskellogg/screen/setting/users/user_setting_screen.dart';
 
 import '../models/dashboard_item.dart';
 import '../screen/setting/role/role_setting_screen.dart';
@@ -63,13 +69,35 @@ class DashboardProvider extends ChangeNotifier {
       _currentPage = const ProfileView();
     } else if (value == "Setting_Roles") {
       _currentPage = const RoleSettingScreen();
-    } else {
+    }
+    else if (value == "Setting_Users") {
+      _currentPage = const UserSettingScreen();
+    }
+    else if (value == "Setting_System Log") {
+      _currentPage = const SystemLogScreen();
+    }
+    else if (value == "Setting_Activity Activity") {
+      _currentPage = const ActivityLogScreen();
+    }
+    else if (value == "Orders_Dashboard") {
+      _currentPage = const OrderDashboard();
+    }
+    else if (value == "Orders_Draft/ Phone Order") {
+      _currentPage = const OrderDraftPhoneOrderScreen();
+    }
+    else if (value == "Orders_Order List") {
+      _currentPage = const OrderListScreen();
+    }
+
+    else {
       _currentPage = Center(
         child: commonText(text: "page not found"),
       ); // Default page or other pages
     }
     notifyListeners(); // Notify listeners to rebuild
   }
+
+  //for map
 
   final Map<String, OrderData> _orders = {
     "Nevada": OrderData(state: "Nevada", orders: 34, revenue: 109149.83),

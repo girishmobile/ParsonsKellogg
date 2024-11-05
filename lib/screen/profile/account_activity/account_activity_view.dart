@@ -18,64 +18,72 @@ class AccountActivityView extends StatelessWidget {
     provider.setRowPerPageValue = totalRecords < provider.rowsPerPage
         ? totalRecords
         : provider.rowsPerPage;
-    return ListView(
-      children: [
-        CommonTableSearchView(
-          tetSearch: searchController,
-          onChanged: (value) {
-            provider.filter(value);
-          },
-        ),
-        CommonTableView(
-          rowsPerPage: provider.rowsPerPageValue,
-          columns: [
-            DataColumn(
-                onSort: (columnIndex, ascending) {
-                  provider.sort<String>((log) => log['user'], columnIndex,
-                      ascending, provider, context);
-                },
-                label: commonColText(text: user)),
-            DataColumn(
-                onSort: (columnIndex, ascending) {
-                  provider.sort<String>((log) => log['browser'], columnIndex,
-                      ascending, provider, context);
-                },
-                label: commonColText(text: browser)),
-            DataColumn(
-                onSort: (columnIndex, ascending) {
-                  provider.sort<String>((log) => log['date'], columnIndex,
-                      ascending, provider, context);
-                },
-                label: commonColText(text: date)),
-            DataColumn(
-                onSort: (columnIndex, ascending) {
-                  provider.sort<String>((log) => log['activity'], columnIndex,
-                      ascending, provider, context);
-                },
-                label: commonColText(text: activity)),
-            DataColumn(
-                onSort: (columnIndex, ascending) {
-                  provider.sort<String>((log) => log['ip'], columnIndex,
-                      ascending, provider, context);
-                },
-                label: commonColText(text: ipAddress)),
-            DataColumn(
-                onSort: (columnIndex, ascending) {
-                  provider.sort<String>((log) => log['location'], columnIndex,
-                      ascending, provider, context);
-                },
-                label: commonColText(text: location)),
+    return Container(
+      color: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView(
+          shrinkWrap: true,
+          primary: false,
+          children: [
+            CommonTableSearchView(
+              tetSearch: searchController,
+              onChanged: (value) {
+                provider.filter(value);
+              },
+            ),
+            CommonTableView(
+              rowsPerPage: provider.rowsPerPageValue,
+              columns: [
+                DataColumn(
+                    onSort: (columnIndex, ascending) {
+                      provider.sort<String>((log) => log['user'], columnIndex,
+                          ascending, provider, context);
+                    },
+                    label: commonColText(text: user)),
+                DataColumn(
+                    onSort: (columnIndex, ascending) {
+                      provider.sort<String>((log) => log['browser'], columnIndex,
+                          ascending, provider, context);
+                    },
+                    label: commonColText(text: browser)),
+                DataColumn(
+                    onSort: (columnIndex, ascending) {
+                      provider.sort<String>((log) => log['date'], columnIndex,
+                          ascending, provider, context);
+                    },
+                    label: commonColText(text: date)),
+                DataColumn(
+                    onSort: (columnIndex, ascending) {
+                      provider.sort<String>((log) => log['activity'], columnIndex,
+                          ascending, provider, context);
+                    },
+                    label: commonColText(text: activity)),
+                DataColumn(
+                    onSort: (columnIndex, ascending) {
+                      provider.sort<String>((log) => log['ip'], columnIndex,
+                          ascending, provider, context);
+                    },
+                    label: commonColText(text: ipAddress)),
+                DataColumn(
+                    onSort: (columnIndex, ascending) {
+                      provider.sort<String>((log) => log['location'], columnIndex,
+                          ascending, provider, context);
+                    },
+                    label: commonColText(text: location)),
+              ],
+              source: _ActivityLogDataSource(provider.activityLogs),
+              onRowsPerPageChange: totalRecords > provider.rowsPerPage
+                  ? (value) {
+                      provider.setRowPerPageValue = value!;
+                    }
+                  : null,
+              sortAscending: provider.isAscending,
+              sortColumnIndex: provider.sortColumnIndex,
+            ),
           ],
-          source: _ActivityLogDataSource(provider.activityLogs),
-          onRowsPerPageChange: totalRecords > provider.rowsPerPage
-              ? (value) {
-                  provider.setRowPerPageValue = value!;
-                }
-              : null,
-          sortAscending: provider.isAscending,
-          sortColumnIndex: provider.sortColumnIndex,
         ),
-      ],
+      ),
     );
   }
 }
