@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:parsonskellogg/core/constants/num_constants.dart';
 
 class CommonTextWidget extends StatelessWidget {
@@ -42,7 +43,8 @@ class CommonTextWidget extends StatelessWidget {
         maxLines: maxLines,
         textAlign: textAlign,
         text ?? '',
-        style: style ?? Theme.of(context).textTheme.bodyMedium,
+        style: style ??  GoogleFonts.roboto
+          ()
       ),
     );
   }

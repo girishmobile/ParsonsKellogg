@@ -6,6 +6,7 @@ import 'package:parsonskellogg/provider/auth_provider.dart';
 import 'package:parsonskellogg/provider/common_provider.dart';
 import 'package:parsonskellogg/provider/dashboard_provider.dart';
 import 'package:parsonskellogg/provider/menu_provider.dart';
+import 'package:parsonskellogg/provider/order_provider.dart';
 import 'package:parsonskellogg/provider/profile_provider.dart';
 import 'package:parsonskellogg/provider/theme_provider.dart';
 import 'package:parsonskellogg/screen/master_product_feed/provider/product_database_provider.dart';
@@ -37,6 +38,8 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider<ProductDatabaseProvider>(
               create: (_) => ProductDatabaseProvider()),
           ChangeNotifierProvider<StoreProvider>(create: (_) => StoreProvider())
+          ChangeNotifierProvider<ProductDatabaseProvider>(create: (_) => ProductDatabaseProvider()),
+          ChangeNotifierProvider<OrderProvider>(create: (_) => OrderProvider())
         ],
         child:
             Consumer<ThemeProvider>(builder: (context, themeProvider, child) {

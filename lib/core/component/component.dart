@@ -21,9 +21,10 @@ commonVerticalLine({double? indent, double? endIndent}) {
   );
 }
 
-loadAssetImage({required String path, double? width, double? height}) {
+loadAssetImage({required String path, double? width, double? height,Color ?colorIcon}) {
   return Image.asset(
     path,
+    color:colorIcon,
     width: width,
     height: height,
   );
@@ -31,7 +32,7 @@ loadAssetImage({required String path, double? width, double? height}) {
 
 TextStyle commonTextStyle(
     {Color? color, FontWeight? fontWeight, double? fontSize}) {
-  return GoogleFonts.inter(
+  return GoogleFonts.roboto(
       color: color ?? colorText,
       fontWeight: fontWeight ?? FontWeight.w500,
       fontSize: fontSize ?? fourteen);
@@ -202,12 +203,12 @@ commonText({
   );
 }
 
-commonColText({String? text}) {
+commonColText({String? text,Color ?colorText}) {
   return commonText(
       fontSize: 11,
       text: text ?? user,
       fontWeight: FontWeight.w700,
-      colorText: Colors.black.withOpacity(0.7));
+      colorText: colorText??Colors.black.withOpacity(0.7));
 }
 
 showAlertDialog(

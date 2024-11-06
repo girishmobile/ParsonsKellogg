@@ -20,3 +20,10 @@ const colorBackgroundDark = Color(0xFF171822);
 const colorDarkFillColor = Color(0xFF212330);
 
 const colorBackGroundLight = Color(0xFFF1F3F6);
+
+const colorActiveBg=Color.fromRGBO(220,252,231,1);
+const colorActiveText=Color.fromRGBO(22, 163,74,1);
+const colorActiveBorder=Color.fromRGBO(134,239,172 ,1);
+const colorPendingText=Color.fromRGBO(202, 138, 4,1);
+const colorPendingBG=Color.fromRGBO(254, 249, 195,1);
+const colorPendingBorder=Color.fromRGBO(253 ,224 ,71,1);
