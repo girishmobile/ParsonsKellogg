@@ -15,7 +15,6 @@ class StoreDataSource extends DataTableSource {
   DataRow? getRow(int index) {
     // final prodcuct = dummyProductList[index];
     final store = storeProvider.stores[index];
-
     final cretedDateformatted =
         DateFormat('dd/MM/yyyy').format(store.createdDate);
     final cretedTimeformatted = DateFormat('hh:mm a').format(store.createdDate);

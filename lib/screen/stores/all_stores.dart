@@ -8,12 +8,10 @@ import 'package:provider/provider.dart';
 
 class AllStores extends StatelessWidget {
   const AllStores({super.key});
-
   @override
   Widget build(BuildContext context) {
     final storeProvider = Provider.of<StoreProvider>(context);
     final screenSize = MediaQuery.of(context).size;
-
     return Scaffold(
       backgroundColor: scafolledBgColor,
       endDrawer: Container(
@@ -46,7 +44,7 @@ class AllStores extends StatelessWidget {
                           leading: Checkbox(
                               activeColor: Colors.green.shade400,
                               value:
-                                  true, //productProvider.checkboxStates[groupIndex]
+                                  false, //productProvider.checkboxStates[groupIndex]
                               //[index],
                               onChanged: (bool? value) {
                                 // checkboxStates[groupIndex][index] =
@@ -109,7 +107,7 @@ class AllStores extends StatelessWidget {
                   title: 'Stores',
                   provider: storeProvider,
                   onMoreFilter: () {
-                    print('more filter');
+                    Scaffold.of(context).openEndDrawer();
                   },
                   onChanged: (value) {
                     storeProvider.searchByProductName(value);
