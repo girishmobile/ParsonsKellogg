@@ -101,8 +101,7 @@ class MasterProductFeed extends StatelessWidget {
                                 width: double.infinity,
                                 padding: const EdgeInsets.all(8),
                                 color: const Color.fromRGBO(238, 242, 246, 1),
-                                child:
-                                    CommonTextWidget(text: itemFeed.name ?? ''),
+                                child: CommonTextWidget(text: itemFeed.name),
                               ),
                             ],
                           ),

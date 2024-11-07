@@ -13,6 +13,9 @@ import 'package:parsonskellogg/screen/profile/profile_view.dart';
 import 'package:parsonskellogg/screen/report/report_screen.dart';
 
 import 'package:parsonskellogg/screen/stores/all_stores.dart';
+import 'package:parsonskellogg/screen/stores/corporate_store.dart';
+import 'package:parsonskellogg/screen/stores/ecommerce_store.dart';
+import 'package:parsonskellogg/screen/stores/store_builder.dart';
 import 'package:parsonskellogg/screen/stores/store_dashboard_screen.dart';
 import 'package:parsonskellogg/screen/setting/activity_log/activity_log_screen.dart';
 import 'package:parsonskellogg/screen/setting/setting_dashboard_screen.dart';
@@ -59,6 +62,12 @@ class DashboardProvider extends ChangeNotifier {
       _currentPage = const StoreDashboardScreen();
     } else if (value == 'Store_All Store') {
       _currentPage = const AllStores();
+    } else if (value == 'Store_Ecommerce') {
+      _currentPage = const EcommerceStore();
+    } else if (value == 'Store_Corporate Store') {
+      _currentPage = const CorporateStore();
+    } else if (value == 'Store_Store Builder') {
+      _currentPage = const StoreBuilder();
     } else if (value == "Header_Report") {
       _currentPage = const ReportScreen();
     } else if (value == "profile") {
@@ -69,27 +78,19 @@ class DashboardProvider extends ChangeNotifier {
       _currentPage = const ProfileView();
     } else if (value == "Setting_Roles") {
       _currentPage = const RoleSettingScreen();
-    }
-    else if (value == "Setting_Users") {
+    } else if (value == "Setting_Users") {
       _currentPage = const UserSettingScreen();
-    }
-    else if (value == "Setting_System Log") {
+    } else if (value == "Setting_System Log") {
       _currentPage = const SystemLogScreen();
-    }
-    else if (value == "Setting_Activity Activity") {
+    } else if (value == "Setting_Activity Activity") {
       _currentPage = const ActivityLogScreen();
-    }
-    else if (value == "Orders_Dashboard") {
+    } else if (value == "Orders_Dashboard") {
       _currentPage = const OrderDashboard();
-    }
-    else if (value == "Orders_Draft/ Phone Order") {
+    } else if (value == "Orders_Draft/ Phone Order") {
       _currentPage = const OrderDraftPhoneOrderScreen();
-    }
-    else if (value == "Orders_Order List") {
+    } else if (value == "Orders_Order List") {
       _currentPage = const OrderListScreen();
-    }
-
-    else {
+    } else {
       _currentPage = Center(
         child: commonText(text: "page not found"),
       ); // Default page or other pages

@@ -21,10 +21,11 @@ commonVerticalLine({double? indent, double? endIndent}) {
   );
 }
 
-loadAssetImage({required String path, double? width, double? height,Color ?colorIcon}) {
+loadAssetImage(
+    {required String path, double? width, double? height, Color? colorIcon}) {
   return Image.asset(
     path,
-    color:colorIcon,
+    color: colorIcon,
     width: width,
     height: height,
   );
@@ -203,12 +204,12 @@ commonText({
   );
 }
 
-commonColText({String? text,Color ?colorText}) {
+commonColText({String? text, Color? colorText}) {
   return commonText(
       fontSize: 11,
       text: text ?? user,
       fontWeight: FontWeight.w700,
-      colorText: colorText??Colors.black.withOpacity(0.7));
+      colorText: colorText ?? Colors.black.withOpacity(0.7));
 }
 
 showAlertDialog(

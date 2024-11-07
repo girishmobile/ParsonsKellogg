@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:parsonskellogg/core/image_path/image_path.dart';
-import 'package:parsonskellogg/core/string_utils/string_utils.dart';
 
 import 'package:parsonskellogg/screen/master_product_feed/provider/store_provider.dart';
 
@@ -135,7 +134,6 @@ class StoreDataSource extends DataTableSource {
         )),
       ],
     );
-    ;
   }
 
   @override

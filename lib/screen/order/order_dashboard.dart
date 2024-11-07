@@ -283,13 +283,12 @@ class OrderDashboard extends StatelessWidget {
             ),
             SizedBox(
               height: 400,
-              width: size.width,
+              // width: size.width,
               child: commonCardView(
                 title: "Top 5 Store Order By MarketPlace",
                 child: Consumer<OrderProvider>(
                     builder: (context, provider, child) {
                   return DataTable(
-
                     dataRowMaxHeight: 56,
                     columns: [
                       DataColumn(
@@ -311,64 +310,67 @@ class OrderDashboard extends StatelessWidget {
                       ),
                       DataColumn(
                         label: CommonTextWidget(
-                            text: '# Of Orders',
+                            text: '#Orders',
                             style: commonTextStyle(
                                 fontWeight: FontWeight.w600,
                                 color: Colors.grey,
                                 fontSize: 12)),
                       ),
                     ],
-
-                    rows: context.read<OrderProvider>().orderListTable.map((item)=>
-                        DataRow(cells: [
-                          DataCell(Expanded(
-                            child: CommonTextWidget(
-                              text: '1.',
-                              style: commonTextStyle(fontSize: 12),
-                            ),
-                          )),
-                          DataCell(Expanded(
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Expanded(
-                                  child: Container(
+                    rows: context
+                        .read<OrderProvider>()
+                        .orderListTable
+                        .map((item) => DataRow(cells: [
+                              DataCell(CommonTextWidget(
+                                text: '1.',
+                                style: commonTextStyle(fontSize: 12),
+                              )),
+                              DataCell(Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Container(
                                     decoration: BoxDecoration(
-                                      color: colorActiveText,
+                                        color: colorActiveText,
                                         shape: BoxShape.circle,
                                         border: Border.all(
                                             color: Colors.white, width: 1)),
                                     width: 35,
                                     height: 35,
                                     child: Center(
-                                      child: CommonTextWidget(text: item.title?[0],style: commonTextStyle(fontWeight: FontWeight.w700,fontSize: 11,color: Colors.white),),
+                                      child: CommonTextWidget(
+                                        text: item.title?[0],
+                                        style: commonTextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 11,
+                                            color: Colors.white),
+                                      ),
                                     ),
                                   ),
-                                ),
-                                CommonTextWidget(
-                                    left: 10,
-                                    text: item.title,
-                                    style: commonTextStyle(fontSize: 10))
-                              ],
-                            ),
-                          )),
-                          DataCell(Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CommonTextWidget(
-                                  text: '1',
-                                  style: commonTextStyle(
-                                      fontSize: 12, fontWeight: FontWeight.w400)),
-                              CommonTextWidget(
-                                  text: '\$${item.price}',
-                                  style: commonTextStyle(
-                                      fontSize: 12,
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.w400)),
-                            ],
-                          )),
-                        ])).toList(),
+                                  CommonTextWidget(
+                                      left: 10,
+                                      text: item.title,
+                                      style: commonTextStyle(fontSize: 10))
+                                ],
+                              )),
+                              DataCell(Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CommonTextWidget(
+                                      text: '1',
+                                      style: commonTextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w400)),
+                                  CommonTextWidget(
+                                      text: '\$${item.price}',
+                                      style: commonTextStyle(
+                                          fontSize: 12,
+                                          color: Colors.grey,
+                                          fontWeight: FontWeight.w400)),
+                                ],
+                              )),
+                            ]))
+                        .toList(),
                   );
                 }),
               ),
@@ -383,40 +385,47 @@ class OrderDashboard extends StatelessWidget {
                     title: "Customer Orders By Last 15 Days",
                     child: Consumer<OrderProvider>(
                         builder: (context, provider, child) {
-                          return SizedBox(
-                            height: 400,
-                            child: CommonTableView(rowsPerPage: provider.customerOrderList.length, columns: [
-
-                              DataColumn(label: commonColText(
-                                  colorText: Colors.grey,
-
-                                  text: "Customer Name".toUpperCase())),
-                              DataColumn(label: commonColText(
-                                  colorText: Colors.grey,
-                                  text: "Order Number".toUpperCase())),
-                              DataColumn(label: commonColText(
-                                  colorText: Colors.grey,
-                                  text: "Order Note".toUpperCase())),
-                              DataColumn(label: commonColText(
-                                  colorText: Colors.grey,
-                                  text: "Order Is Cancel".toUpperCase())),
-                              DataColumn(label: commonColText(
-                                  colorText: Colors.grey,
-                                  text: "Total Items".toUpperCase())),
-                              DataColumn(label: commonColText(
-                                  colorText: Colors.grey,
-                                  text: "Sub Total (\$)".toUpperCase())),
-                              DataColumn(label: commonColText(
-                                  colorText: Colors.grey,
-                                  text: "Total (\$)".toUpperCase())),
-                              DataColumn(label: commonColText(
-                                  colorText: Colors.grey,
-                                  text: "Order Date".toUpperCase())),
+                      return SizedBox(
+                        height: 400,
+                        child: CommonTableView(
+                            rowsPerPage: provider.customerOrderList.length,
+                            columns: [
+                              DataColumn(
+                                  label: commonColText(
+                                      colorText: Colors.grey,
+                                      text: "Customer Name".toUpperCase())),
+                              DataColumn(
+                                  label: commonColText(
+                                      colorText: Colors.grey,
+                                      text: "Order Number".toUpperCase())),
+                              DataColumn(
+                                  label: commonColText(
+                                      colorText: Colors.grey,
+                                      text: "Order Note".toUpperCase())),
+                              DataColumn(
+                                  label: commonColText(
+                                      colorText: Colors.grey,
+                                      text: "Order Is Cancel".toUpperCase())),
+                              DataColumn(
+                                  label: commonColText(
+                                      colorText: Colors.grey,
+                                      text: "Total Items".toUpperCase())),
+                              DataColumn(
+                                  label: commonColText(
+                                      colorText: Colors.grey,
+                                      text: "Sub Total (\$)".toUpperCase())),
+                              DataColumn(
+                                  label: commonColText(
+                                      colorText: Colors.grey,
+                                      text: "Total (\$)".toUpperCase())),
+                              DataColumn(
+                                  label: commonColText(
+                                      colorText: Colors.grey,
+                                      text: "Order Date".toUpperCase())),
                             ],
-
-                                source: RoleDataSource(provider.customerOrderList)),
-                          );
-                        }),
+                            source: RoleDataSource(provider.customerOrderList)),
+                      );
+                    }),
                   ),
                 ),
               ],
@@ -429,23 +438,21 @@ class OrderDashboard extends StatelessWidget {
                     flex: 6,
                     child: SizedBox(
                       child: commonGraph(
-
                           provider: provider,
                           context: context,
                           text: "Total Order",
-                          value: "3", item: provider.customerOrderChartList),
+                          value: "3",
+                          item: provider.customerOrderChartList),
                     ),
                   ),
                   Expanded(
                       flex: 4,
-                      child:   Container(
+                      child: Container(
                         width: size.width,
-
                         padding: const EdgeInsets.all(10.0),
                         child: Wrap(
                             alignment: WrapAlignment.start,
                             direction: Axis.horizontal,
-
                             spacing: 10, // Space between items horizontally
                             runSpacing: 10, // Space between items vertically
                             children: provider.customerOrderChartList.map((e) {
@@ -453,9 +460,7 @@ class OrderDashboard extends StatelessWidget {
                                 color: e['color'],
                                 text: e['category'],
                               );
-                            }).toList()
-
-                        ),
+                            }).toList()),
                       ))
                 ],
               ),
@@ -468,23 +473,21 @@ class OrderDashboard extends StatelessWidget {
                     flex: 6,
                     child: SizedBox(
                       child: commonGraph(
-
                           provider: provider,
                           context: context,
                           text: "",
-                          value: "", item: provider.orderSaleChart),
+                          value: "",
+                          item: provider.orderSaleChart),
                     ),
                   ),
                   Expanded(
                       flex: 4,
-                      child:   Container(
+                      child: Container(
                         width: size.width,
-
                         padding: const EdgeInsets.all(10.0),
                         child: Wrap(
                             alignment: WrapAlignment.start,
                             direction: Axis.horizontal,
-
                             spacing: 10, // Space between items horizontally
                             runSpacing: 10, // Space between items vertically
                             children: provider.orderSaleChart.map((e) {
@@ -492,9 +495,7 @@ class OrderDashboard extends StatelessWidget {
                                 color: e['color'],
                                 text: e['category'],
                               );
-                            }).toList()
-
-                        ),
+                            }).toList()),
                       ))
                 ],
               ),
@@ -507,33 +508,29 @@ class OrderDashboard extends StatelessWidget {
                     flex: 6,
                     child: SizedBox(
                       child: commonGraph(
-
                           provider: provider,
                           context: context,
                           text: "Total Order",
-                          value: "3", item: provider.orderStoreChart),
+                          value: "3",
+                          item: provider.orderStoreChart),
                     ),
                   ),
                   Expanded(
                       flex: 4,
-                      child:   Container(
+                      child: Container(
                         width: size.width,
-
                         padding: const EdgeInsets.all(10.0),
                         child: Wrap(
                             alignment: WrapAlignment.start,
                             direction: Axis.horizontal,
-
                             spacing: 10, // Space between items horizontally
                             runSpacing: 10, // Space between items vertically
-                            children: provider.orderStoreChart  .map((e) {
+                            children: provider.orderStoreChart.map((e) {
                               return Indicator(
                                 color: e['color'],
                                 text: e['category'],
                               );
-                            }).toList()
-
-                        ),
+                            }).toList()),
                       ))
                 ],
               ),
@@ -546,33 +543,29 @@ class OrderDashboard extends StatelessWidget {
                     flex: 6,
                     child: SizedBox(
                       child: commonGraph(
-
                           provider: provider,
                           context: context,
                           text: "",
-                          value: "", item: provider.orderTopFiveChart),
+                          value: "",
+                          item: provider.orderTopFiveChart),
                     ),
                   ),
                   Expanded(
                       flex: 4,
-                      child:   Container(
+                      child: Container(
                         width: size.width,
-
                         padding: const EdgeInsets.all(10.0),
                         child: Wrap(
                             alignment: WrapAlignment.start,
                             direction: Axis.horizontal,
-
                             spacing: 10, // Space between items horizontally
                             runSpacing: 10, // Space between items vertically
-                            children: provider.orderTopFiveChart  .map((e) {
+                            children: provider.orderTopFiveChart.map((e) {
                               return Indicator(
                                 color: e['color'],
                                 text: e['category'],
                               );
-                            }).toList()
-
-                        ),
+                            }).toList()),
                       ))
                 ],
               ),
@@ -586,38 +579,44 @@ class OrderDashboard extends StatelessWidget {
                     title: "Uncaptured Orders",
                     child: Consumer<OrderProvider>(
                         builder: (context, provider, child) {
-                          return SizedBox(
-                            height: 400,
-                            child: CommonTableView(rowsPerPage: provider.customerUncapturedList.length, columns: [
-
-                              DataColumn(label: commonColText(
-                                  colorText: Colors.grey,
-
-                                  text: "StoreName".toUpperCase())),
-                              DataColumn(label: commonColText(
-                                  colorText: Colors.grey,
-                                  text: "Order".toUpperCase())),
-                              DataColumn(label: commonColText(
-                                  colorText: Colors.grey,
-                                  text: "Order Date".toUpperCase())),
-                              DataColumn(label: commonColText(
-                                  colorText: Colors.grey,
-                                  text: "Customer Name".toUpperCase())),
-                              DataColumn(label: commonColText(
-                                  colorText: Colors.grey,
-                                  text: "Email".toUpperCase())),
-                              DataColumn(label: commonColText(
-                                  colorText: Colors.grey,
-                                  text: "Order Total (\$)".toUpperCase())),
-                              DataColumn(label: commonColText(
-                                  colorText: Colors.grey,
-                                  text: "Status".toUpperCase())),
-
+                      return SizedBox(
+                        height: 400,
+                        child: CommonTableView(
+                            rowsPerPage: provider.customerUncapturedList.length,
+                            columns: [
+                              DataColumn(
+                                  label: commonColText(
+                                      colorText: Colors.grey,
+                                      text: "StoreName".toUpperCase())),
+                              DataColumn(
+                                  label: commonColText(
+                                      colorText: Colors.grey,
+                                      text: "Order".toUpperCase())),
+                              DataColumn(
+                                  label: commonColText(
+                                      colorText: Colors.grey,
+                                      text: "Order Date".toUpperCase())),
+                              DataColumn(
+                                  label: commonColText(
+                                      colorText: Colors.grey,
+                                      text: "Customer Name".toUpperCase())),
+                              DataColumn(
+                                  label: commonColText(
+                                      colorText: Colors.grey,
+                                      text: "Email".toUpperCase())),
+                              DataColumn(
+                                  label: commonColText(
+                                      colorText: Colors.grey,
+                                      text: "Order Total (\$)".toUpperCase())),
+                              DataColumn(
+                                  label: commonColText(
+                                      colorText: Colors.grey,
+                                      text: "Status".toUpperCase())),
                             ],
-
-                                source: RoleDataSourceUncaptured(provider.customerUncapturedList)),
-                          );
-                        }),
+                            source: RoleDataSourceUncaptured(
+                                provider.customerUncapturedList)),
+                      );
+                    }),
                   ),
                 ),
               ],
@@ -626,7 +625,6 @@ class OrderDashboard extends StatelessWidget {
             ListView(
               shrinkWrap: true,
               primary: false,
-
               children: [
                 SizedBox(
                   width: size.width,
@@ -634,37 +632,41 @@ class OrderDashboard extends StatelessWidget {
                     title: "Order By Customer and Employee",
                     child: Consumer<OrderProvider>(
                         builder: (context, provider, child) {
-                          return SizedBox(
-                            height: 400,
-                            child: CommonTableView(rowsPerPage: provider.customerListCustomerAndEMp.length, columns: [
-
-                              DataColumn(label: commonColText(
-                                  colorText: Colors.grey,
-
-                                  text: "Store Logo".toUpperCase())),
-                              DataColumn(label: commonColText(
-                                  colorText: Colors.grey,
-                                  text: "Store Name".toUpperCase())),
-
-                              DataColumn(label: commonColText(
-                                  colorText: Colors.grey,
-                                  text: "Customer Name".toUpperCase())),
-                              DataColumn(label: commonColText(
-                                  colorText: Colors.grey,
-                                  text: "Customer Email".toUpperCase())),
-
-                              DataColumn(label: commonColText(
-                                  colorText: Colors.grey,
-                                  text: "Total Orders ".toUpperCase())),
-                              DataColumn(label: commonColText(
-                                  colorText: Colors.grey,
-                                  text: "Order Total (\$)".toUpperCase())),
-
+                      return SizedBox(
+                        height: 400,
+                        child: CommonTableView(
+                            rowsPerPage:
+                                provider.customerListCustomerAndEMp.length,
+                            columns: [
+                              DataColumn(
+                                  label: commonColText(
+                                      colorText: Colors.grey,
+                                      text: "Store Logo".toUpperCase())),
+                              DataColumn(
+                                  label: commonColText(
+                                      colorText: Colors.grey,
+                                      text: "Store Name".toUpperCase())),
+                              DataColumn(
+                                  label: commonColText(
+                                      colorText: Colors.grey,
+                                      text: "Customer Name".toUpperCase())),
+                              DataColumn(
+                                  label: commonColText(
+                                      colorText: Colors.grey,
+                                      text: "Customer Email".toUpperCase())),
+                              DataColumn(
+                                  label: commonColText(
+                                      colorText: Colors.grey,
+                                      text: "Total Orders ".toUpperCase())),
+                              DataColumn(
+                                  label: commonColText(
+                                      colorText: Colors.grey,
+                                      text: "Order Total (\$)".toUpperCase())),
                             ],
-
-                                source: RoleDataSourceEmpCustomer(provider.customerListCustomerAndEMp)),
-                          );
-                        }),
+                            source: RoleDataSourceEmpCustomer(
+                                provider.customerListCustomerAndEMp)),
+                      );
+                    }),
                   ),
                 ),
               ],
@@ -675,18 +677,16 @@ class OrderDashboard extends StatelessWidget {
     );
   }
 
-
   commonGraph(
       {required OrderProvider provider,
-        String? value,
-        String? text,
-        required List<Map<String, dynamic>> item,
-        required BuildContext context}) {
+      String? value,
+      String? text,
+      required List<Map<String, dynamic>> item,
+      required BuildContext context}) {
     List<PieChartSectionData> pieChartSections = item.map((e) {
-      return  PieChartSectionData(
-        color:  e['color'],
+      return PieChartSectionData(
+        color: e['color'],
         value: e['value']?.toDouble() ?? 0,
-
         title: '',
         titleStyle: commonTextStyle(color: Colors.white),
         radius: twenty,
@@ -705,7 +705,7 @@ class OrderDashboard extends StatelessWidget {
             ),
           ),
         ),
-       Positioned(
+        Positioned(
             top: zero,
             bottom: zero,
             left: zero,
@@ -729,6 +729,7 @@ class OrderDashboard extends StatelessWidget {
       ],
     );
   }
+
   commonRow({
     String? value,
     String? text,
@@ -897,6 +898,7 @@ commonBarchart(
     ),
   );
 }
+
 class RoleDataSource extends DataTableSource {
   final List<Map<String, dynamic>> _roleList;
 
@@ -907,13 +909,10 @@ class RoleDataSource extends DataTableSource {
     final log = _roleList[index];
     return DataRow.byIndex(index: index, cells: [
       DataCell(
-        commonText(
-
-            text: log['user'], fontSize: 10),
+        commonText(text: log['user'], fontSize: 10),
       ),
       DataCell(commonText(
-          colorText: Colors.blue,
-          text: log['order_no'], fontSize: 10)),
+          colorText: Colors.blue, text: log['order_no'], fontSize: 10)),
       DataCell(commonText(text: log['order_note'], fontSize: 10)),
       DataCell(commonText(text: log['order_cancel'], fontSize: 10)),
       DataCell(commonText(text: log['total_team'], fontSize: 10)),
@@ -927,11 +926,9 @@ class RoleDataSource extends DataTableSource {
           commonText(text: log['order_tiem'], fontSize: 8)
         ],
       )),
-    //  DataCell(commonText(text: log['order_tiem'], fontSize: 10)),
+      //  DataCell(commonText(text: log['order_tiem'], fontSize: 10)),
 
       //DataCell()
-
-
     ]);
   }
 
@@ -945,7 +942,7 @@ class RoleDataSource extends DataTableSource {
   int get selectedRowCount => 0;
 }
 
-class RoleDataSourceUncaptured  extends DataTableSource {
+class RoleDataSourceUncaptured extends DataTableSource {
   final List<Map<String, dynamic>> _roleList;
 
   RoleDataSourceUncaptured(this._roleList);
@@ -955,13 +952,10 @@ class RoleDataSourceUncaptured  extends DataTableSource {
     final log = _roleList[index];
     return DataRow.byIndex(index: index, cells: [
       DataCell(
-        commonText(
-
-            text: log['store_name'], fontSize: 10),
+        commonText(text: log['store_name'], fontSize: 10),
       ),
       DataCell(commonText(
-          colorText: Colors.blue,
-          text: log['order_no'], fontSize: 10)),
+          colorText: Colors.blue, text: log['order_no'], fontSize: 10)),
       DataCell(Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -978,26 +972,29 @@ class RoleDataSourceUncaptured  extends DataTableSource {
         decoration: commonBoxDecoration(
             border: Border.all(
                 color: log['status'] == "pending"
-                    ? colorPendingBorder:colorActiveBorder,width: 1
-            ),
+                    ? colorPendingBorder
+                    : colorActiveBorder,
+                width: 1),
             borderRadius: BorderRadius.circular(5),
-            color: log['status'] == "pending"
-                ? colorPendingBG:colorActiveBg
-        ),
+            color: log['status'] == "pending" ? colorPendingBG : colorActiveBg),
         child: Padding(
-          padding: const EdgeInsets.only(left: 20,right: 20),
+          padding: const EdgeInsets.only(left: 20, right: 20),
           child: Center(
-            child: commonText(text: log['status'].toString().toUpperCase(), fontSize: 8,colorText: log['status']=="pending"?colorPendingText:colorActiveText,fontWeight: FontWeight.w800),
+            child: commonText(
+                text: log['status'].toString().toUpperCase(),
+                fontSize: 8,
+                colorText: log['status'] == "pending"
+                    ? colorPendingText
+                    : colorActiveText,
+                fontWeight: FontWeight.w800),
           ),
         ),
       )),
-    //  DataCell(commonText(text: log['total'], fontSize: 10)),
+      //  DataCell(commonText(text: log['total'], fontSize: 10)),
 
       //  DataCell(commonText(text: log['order_tiem'], fontSize: 10)),
 
       //DataCell()
-
-
     ]);
   }
 
@@ -1010,7 +1007,8 @@ class RoleDataSourceUncaptured  extends DataTableSource {
   @override
   int get selectedRowCount => 0;
 }
-class RoleDataSourceEmpCustomer  extends DataTableSource {
+
+class RoleDataSourceEmpCustomer extends DataTableSource {
   final List<Map<String, dynamic>> _roleList;
 
   RoleDataSourceEmpCustomer(this._roleList);
@@ -1020,33 +1018,26 @@ class RoleDataSourceEmpCustomer  extends DataTableSource {
     final log = _roleList[index];
     return DataRow.byIndex(index: index, cells: [
       DataCell(Container(
-
         width: 60,
         margin: EdgeInsets.all(4),
         height: 60,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(1),
-          border: Border.all(color: Colors.grey,width: 1)
-        ),
+            borderRadius: BorderRadius.circular(1),
+            border: Border.all(color: Colors.grey, width: 1)),
         child: Center(
-          child: CommonTextWidget(text: "Logo",),
+          child: CommonTextWidget(
+            text: "Logo",
+          ),
         ),
       )),
       DataCell(
-        commonText(
-
-            text: log['store_name'], fontSize: 10),
+        commonText(text: log['store_name'], fontSize: 10),
       ),
       DataCell(commonText(
-          colorText: Colors.blue,
-          text: log['customer_name'], fontSize: 10)),
-
+          colorText: Colors.blue, text: log['customer_name'], fontSize: 10)),
       DataCell(commonText(text: log['email'], fontSize: 10)),
       DataCell(commonText(text: log['total_orders'], fontSize: 10)),
       DataCell(commonText(text: log['order_total'], fontSize: 10)),
-
-
-
     ]);
   }
 
