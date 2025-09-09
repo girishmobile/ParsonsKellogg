@@ -28,7 +28,7 @@ class CommonTableView extends StatelessWidget {
       data: Theme.of(context).copyWith(
         dividerColor: Colors.green,
         iconTheme: theme.iconTheme.copyWith(color: Colors.grey),
-        cardTheme: const CardTheme(
+        cardTheme: const CardThemeData(
           elevation: zero, // remove shadow
         ),
       ),

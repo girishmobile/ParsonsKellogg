@@ -321,36 +321,30 @@ class OrderDashboard extends StatelessWidget {
 
                     rows: context.read<OrderProvider>().orderListTable.map((item)=>
                         DataRow(cells: [
-                          DataCell(Expanded(
-                            child: CommonTextWidget(
-                              text: '1.',
-                              style: commonTextStyle(fontSize: 12),
-                            ),
+                          DataCell(CommonTextWidget(
+                            text: '1.',
+                            style: commonTextStyle(fontSize: 12),
                           )),
-                          DataCell(Expanded(
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Expanded(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: colorActiveText,
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                            color: Colors.white, width: 1)),
-                                    width: 35,
-                                    height: 35,
-                                    child: Center(
-                                      child: CommonTextWidget(text: item.title?[0],style: commonTextStyle(fontWeight: FontWeight.w700,fontSize: 11,color: Colors.white),),
-                                    ),
-                                  ),
+                          DataCell(Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: colorActiveText,
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                        color: Colors.white, width: 1)),
+                                width: 35,
+                                height: 35,
+                                child: Center(
+                                  child: CommonTextWidget(text: item.title?[0],style: commonTextStyle(fontWeight: FontWeight.w700,fontSize: 11,color: Colors.white),),
                                 ),
-                                CommonTextWidget(
-                                    left: 10,
-                                    text: item.title,
-                                    style: commonTextStyle(fontSize: 10))
-                              ],
-                            ),
+                              ),
+                              CommonTextWidget(
+                                  left: 10,
+                                  text: item.title,
+                                  style: commonTextStyle(fontSize: 10))
+                            ],
                           )),
                           DataCell(Column(
                             mainAxisAlignment: MainAxisAlignment.center,

@@ -76,7 +76,7 @@ class MenuProvider extends ChangeNotifier {
         SubMenuItem(index: 9, title: "Store Builder", isBold: true),
         SubMenuItem(index: 10, title: "Form Builder", isBold: true),
       ]),
-      MenuModel(
+      /*MenuModel(
           icon: const Icon(Icons.article_outlined),
           title: "Content Management", titleIndex: 503, subMenuItem: [
         SubMenuItem(index: 11, title: "Dashboard"),
@@ -84,7 +84,7 @@ class MenuProvider extends ChangeNotifier {
         SubMenuItem(index: 13, title: "Template"),
         SubMenuItem(index: 14, title: "Asset Library"),
         SubMenuItem(index: 15, title: "Story Category"),
-      ]),
+      ]),*/
       MenuModel(
           icon: const Icon(Icons.person_outlined ),
           title: "Customer", titleIndex: 504, subMenuItem: [
@@ -122,7 +122,7 @@ class MenuProvider extends ChangeNotifier {
         SubMenuItem(index: 35, title: "System Log"),
         SubMenuItem(index: 36, title: "Activity Activity"),
       ]),
-      MenuModel(
+     /* MenuModel(
           icon: const Icon(Icons.settings_outlined ),
           title: "Admin theme", titleIndex: 508, subMenuItem: [
         SubMenuItem(index: 37, title: "Company Configuration"),
@@ -132,10 +132,10 @@ class MenuProvider extends ChangeNotifier {
         SubMenuItem(index: 41, title: "Third Party Service"),
         SubMenuItem(index: 42, title: "Setting"),
         SubMenuItem(index: 43, title: "Widget Module Mapping"),
-      ]),
-      MenuModel(
+      ]),*/
+     /* MenuModel(
         icon: const Icon( Icons.analytics_outlined),
-        title: "Google Analytics", titleIndex: 509, ),
+        title: "Google Analytics", titleIndex: 509, ),*/
       MenuModel(title: "Report", titleIndex: 510,
       
       icon: const Icon(Icons.fact_check_outlined  )),

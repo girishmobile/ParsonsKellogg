@@ -22,7 +22,7 @@ class ProductListingView extends StatelessWidget {
     }
     return Theme(
       data: Theme.of(context).copyWith(
-        cardTheme: const CardTheme(
+        cardTheme: const CardThemeData(
           elevation: 0,
           margin: EdgeInsets.zero,
           color: Colors.white,
