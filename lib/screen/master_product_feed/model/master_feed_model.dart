@@ -39,6 +39,70 @@ class CoreItemFeed {
   final IconData iconName;
 }
 
+final List<ItemFeed> dummyStoreBuilderFeed = [
+  const ItemFeed(
+    id: 'strb1',
+    name: 'Active Store Builders',
+    count: '6',
+    iconName: Icons.done_all_outlined,
+  ),
+  const ItemFeed(
+    id: 'strb2',
+    name: 'Inactive Store Builders',
+    iconName: Icons.remove_done_outlined,
+    count: '0',
+  ),
+  const ItemFeed(
+    id: 'strb3',
+    name: 'Brands',
+    iconName: Icons.diamond_outlined,
+    count: '73',
+  ),
+  const ItemFeed(
+    id: 'strb4',
+    name: 'Product Categories',
+    iconName: Icons.account_tree_outlined,
+    count: '254',
+  ),
+  const ItemFeed(
+    id: 'strb5',
+    name: 'Total Store Builders',
+    iconName: Icons.auto_awesome_motion_outlined,
+    count: '29700  ',
+  ),
+];
+final List<ItemFeed> dummyStoreProduct = [
+  const ItemFeed(
+    id: 'pdf1',
+    name: 'Active Product',
+    count: '27698',
+    iconName: Icons.done_all_outlined,
+  ),
+  const ItemFeed(
+    id: 'pdf2',
+    name: 'InActive Product',
+    iconName: Icons.remove_done_outlined,
+    count: '662',
+  ),
+  const ItemFeed(
+    id: 'pdf3',
+    name: 'Brands',
+    iconName: Icons.diamond_outlined,
+    count: '173',
+  ),
+  const ItemFeed(
+    id: 'pdf4',
+    name: 'Product Categories',
+    iconName: Icons.account_tree_outlined,
+    count: '485',
+  ),
+  const ItemFeed(
+    id: 'pdf5',
+    name: 'Total Products',
+    iconName: Icons.auto_awesome_motion_outlined,
+    count: '29700  ',
+  ),
+];
 final List<MasterFeedModel> masterFeedsData = [
   MasterFeedModel(
     id: 'm1',

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:parsonskellogg/core/image_path/image_path.dart';
-import 'package:parsonskellogg/core/string_utils/string_utils.dart';
 
 import 'package:parsonskellogg/screen/master_product_feed/provider/store_provider.dart';
 
@@ -15,7 +14,6 @@ class StoreDataSource extends DataTableSource {
   DataRow? getRow(int index) {
     // final prodcuct = dummyProductList[index];
     final store = storeProvider.stores[index];
-
     final cretedDateformatted =
         DateFormat('dd/MM/yyyy').format(store.createdDate);
     final cretedTimeformatted = DateFormat('hh:mm a').format(store.createdDate);
@@ -136,7 +134,6 @@ class StoreDataSource extends DataTableSource {
         )),
       ],
     );
-    ;
   }
 
   @override

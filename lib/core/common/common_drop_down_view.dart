@@ -31,7 +31,6 @@ class CommonDropDownView extends StatelessWidget {
       child: DropdownButton2<String>(
         isDense: true,
         isExpanded: true,
-
         dropdownStyleData: DropdownStyleData(
           offset: const Offset(-0, -5),
           decoration: BoxDecoration(
@@ -47,14 +46,12 @@ class CommonDropDownView extends StatelessWidget {
                 child: CommonTextWidget(
                   text: hint ?? 'Select Item',
                   left: horizontal != null ? ten : twenty,
-          
                 ),
               ),
               const VerticalDivider(
                 color: Colors.grey,
                 thickness: 1,
               ),
-
             ],
           ),
         ),

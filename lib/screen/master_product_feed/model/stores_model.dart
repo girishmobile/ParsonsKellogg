@@ -29,6 +29,7 @@ class StoresModel {
   final String status;
   final String action;
 }
+
 DateTime? convertStringToDate(String dateString) {
   try {
     DateFormat formate = DateFormat('dd/MM/yyyy hh:mm a');
@@ -37,7 +38,9 @@ DateTime? convertStringToDate(String dateString) {
     return null;
   }
 }
+
 final now = DateTime.now();
+
 List<StoresModel> dummystoresList = [
   StoresModel(
     imageName: 'imageName',

@@ -14,7 +14,6 @@ class StoreSearchbar extends StatelessWidget {
   final StoreProvider provider;
   final void Function(String)? onChanged;
   final VoidCallback onMoreFilter;
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -35,10 +34,12 @@ class StoreSearchbar extends StatelessWidget {
                   color: Colors.black.withOpacity(0.8),
                 ),
               ),
-              ElevatedButton.icon(
-                  icon: const Icon(Icons.add),
-                  onPressed: () {},
-                  label: const Text('Add Store'))
+              // ElevatedButton.icon(
+              //     icon: const Icon(Icons.add),
+              //     onPressed: () {},
+              //     label: const Text(
+              //       'Add Store',
+              //     ))
             ],
           ),
         ),

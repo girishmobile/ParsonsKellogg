@@ -3,23 +3,23 @@ import 'package:google_fonts/google_fonts.dart';
 
 ThemeData lightTheme = ThemeData.from(
   useMaterial3: false,
-  colorScheme: const ColorScheme(
+  colorScheme: ColorScheme(
     brightness: Brightness.light,
-    primary: Color.fromRGBO(241, 244, 248, 1),
+    primary: const Color.fromRGBO(241, 244, 248, 1),
     onPrimary: Colors.black,
     secondary: Colors.white70,
     onSecondary: Colors.black87,
     error: Colors.red,
     onError: Colors.white,
     surface: Colors.white,
-    onSurface: Colors.black87,
+    onSurface: Colors.black.withOpacity(0.7),
   ),
   textTheme: TextTheme(
     titleLarge: GoogleFonts.outfit(
       fontSize: 15,
       fontWeight: FontWeight.w700,
       letterSpacing: 1.2,
-      color: Colors.black87,
+      color: Colors.black.withOpacity(0.7),
     ),
     titleMedium: GoogleFonts.outfit(
       fontSize: 13,
@@ -41,19 +41,18 @@ ThemeData lightTheme = ThemeData.from(
     ),
   ),
 ).copyWith(
-  elevatedButtonTheme: ElevatedButtonThemeData(
-    style: ElevatedButton.styleFrom(
-      backgroundColor: Colors.green,
-      elevation: 0,
-      foregroundColor: Colors.white,
-      textStyle: GoogleFonts.outfit(
-        fontSize: 14,
-        fontWeight: FontWeight.bold,
-        letterSpacing: 1.2,
-      ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+  style: ElevatedButton.styleFrom(
+    backgroundColor: Colors.green,
+    elevation: 0,
+    foregroundColor: Colors.white,
+    textStyle: GoogleFonts.outfit(
+      fontSize: 14,
+      fontWeight: FontWeight.bold,
+      letterSpacing: 1.2,
     ),
-  ));
-
+  ),
+));
 ThemeData darkTheme = ThemeData.from(
   useMaterial3: false,
   colorScheme: const ColorScheme(
@@ -94,15 +93,14 @@ ThemeData darkTheme = ThemeData.from(
     ),
   ),
 ).copyWith(
-  elevatedButtonTheme: ElevatedButtonThemeData(
-    style: ElevatedButton.styleFrom(
-      elevation: 0,
-      backgroundColor: Colors.black54,
-      foregroundColor: Colors.white,
-      textStyle: GoogleFonts.outfit(
-        fontSize: 14,
-        fontWeight: FontWeight.bold,
-        letterSpacing: 1.2,
-      ),
-
+    elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+  elevation: 0,
+  backgroundColor: Colors.black54,
+  foregroundColor: Colors.white,
+  textStyle: GoogleFonts.outfit(
+    fontSize: 14,
+    fontWeight: FontWeight.bold,
+    letterSpacing: 1.2,
+  ),
 )));
